@@ -1,4 +1,5 @@
 export interface NavLink {
   label: string;
   route: string;
+  icon: JSX.Element;
 }
