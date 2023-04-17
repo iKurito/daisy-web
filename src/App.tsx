@@ -1,7 +1,21 @@
+import { Suspense, lazy } from 'react';
+import { BrowserRouter, Navigate, Route } from 'react-router-dom';
+import { PublicRoutes } from './models';
+import { RoutesWithNotFound } from './components';
+
+const Home = lazy(() => import('./pages/Home/Home'));
+
 function App() {
   return (
-    <div className="bg-red-300">
-      <h1>Hello World</h1>
+    <div className="App">
+      <Suspense fallback={<div>Loading...</div>}>
+        <BrowserRouter>
+          <RoutesWithNotFound>
+            <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
+            <Route path={PublicRoutes.HOME} element={<Home />} />
+          </RoutesWithNotFound>
+        </BrowserRouter>
+      </Suspense>
     </div>
   );
 }
