@@ -7,14 +7,14 @@ export function Navbar() {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
-    <nav className="sticky top-0 z-50 shadow-lg bg-cyan-200">
-      <div className="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+    <nav className="sticky top-0 z-50 shadow-lg bg-cyan-400">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <ul className="flex">
           <li>
             <Link to={PublicRoutes.HOME} className="flex items-center gap-2">
               <img
                 src="/assets/img/daisy_logo.webp"
-                alt="logo"
+                alt="Daisy"
                 className="h-12"
               />
               <span className="text-gray-500 text-base sm:text-lg">Daisy</span>
