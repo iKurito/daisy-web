@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export function Footer() {
   return (
-    <footer className="absolute bottom-0 w-full bg-cyan-400">
+    <footer className="absolute bottom-0 w-full bg-primary">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <Link
           to="https://bioinformatica.org"

@@ -7,7 +7,7 @@ export function Navbar() {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
-    <nav className="sticky top-0 z-50 shadow-lg bg-cyan-400">
+    <nav className="sticky top-0 z-50 shadow-lg bg-primary">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <ul className="flex">
           <li>

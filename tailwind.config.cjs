@@ -7,18 +7,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#392099',
-          800: '#2A177B',
-          900: '#11064f',
-        },
+        primary: '#AED9E0',
       },
       spacing: {
         128: '32rem',
