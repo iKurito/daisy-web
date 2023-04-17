@@ -6,7 +6,7 @@ function HomePage() {
       <div className="max-w-[1440px] md:mx-auto hero min-h-[calc(100vh_-_100px)] w-full">
         <div className="cover min-h-[calc(100vh_-_100px)] w-full flex justify-between">
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-10 z-50 place-items-center p-4 sm:p-10">
-            <div className="col-span-2 lg:col-span-1 lg:mb-10">
+            <div className="lg:mb-10">
               <h1 className="text-7xl xs:text-9xl sm:text-[150px] text-third tracking-widest">
                 Daisy
               </h1>
@@ -14,8 +14,8 @@ function HomePage() {
                 The complete service for repeat protein curation
               </h2>
             </div>
-            <div className="col-span-2 lg:col-span-1">
-              <div className="p-4 rounded-lg bg-secondary shadow-lg">
+            <div className="">
+              <div className="p-4 rounded-lg bg-secondary shadow-lg w-full xl:w-[700px] 2xl:w-[800px]">
                 <h3 className="text-[25px] xs:text-[30px] sm:text-[35px] text-black tracking-tight font-bold">
                   Repeat units identification
                 </h3>
@@ -27,7 +27,7 @@ function HomePage() {
                   Protein structure, sequence or PDB ID{' '}
                   <span className="text-fourth">*</span>
                 </h4>
-                <textarea className="w-full border rounded-lg h-40 border-gray-500" />
+                <textarea className="w-full border rounded-lg h-40 border-gray-500 outline-none px-3 py-2 resize-none" />
                 <div className="flex flex-col xs:flex-row xs:inline-flex xs:items-center gap-1">
                   <span className="text-[15px] sm:text-[20px] text-black tracking-tight">
                     or

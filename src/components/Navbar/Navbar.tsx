@@ -8,7 +8,7 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 shadow-lg bg-primary">
-      <div className="max-w-[1440px] mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="max-w-[1440px] mx-auto py-3 flex justify-between items-center">
         <ul className="flex">
           <li>
             <Link to={PublicRoutes.HOME} className="flex items-center gap-2">
