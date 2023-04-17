@@ -3,7 +3,10 @@ import { BrowserRouter, Navigate, Route } from 'react-router-dom';
 import { PublicRoutes } from './data';
 import { Layout, RoutesWithNotFound } from './components';
 
-const Home = lazy(() => import('./pages/Home/Home'));
+const HomePage = lazy(() => import('./pages/Home/HomePage'));
+const SearchPage = lazy(() => import('./pages/Search/SearchPage'));
+const HelpPage = lazy(() => import('./pages/Help/HelpPage'));
+const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
           <RoutesWithNotFound>
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
-              <Route path={PublicRoutes.HOME} element={<Home />} />
+              <Route path={PublicRoutes.HOME} element={<HomePage />} />
+              <Route path={PublicRoutes.SEARCH} element={<SearchPage />} />
+              <Route path={PublicRoutes.HELP} element={<HelpPage />} />
+              <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />
             </Route>
           </RoutesWithNotFound>
         </BrowserRouter>
