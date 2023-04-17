@@ -7,14 +7,14 @@ function XIcon() {
       stroke="currentColor"
       strokeWidth={1.5}
       className="w-6 h-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M6 18 18 6M6 6l12 12"
-    />
-  </svg>
-  )
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18 18 6M6 6l12 12"
+      />
+    </svg>
+  );
 }
 
-export default XIcon
+export default XIcon;
