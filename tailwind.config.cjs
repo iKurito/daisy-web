@@ -3,7 +3,7 @@ module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      montserrat: ['Montserrat', 'sans-serif'],
+      fredoka: ['Fredoka', 'sans-serif'],
     },
     extend: {
       colors: {

@@ -17,7 +17,7 @@ export function Navbar() {
                 alt="logo"
                 className="h-12"
               />
-              <span className="text-base sm:text-lg">Daisy</span>
+              <span className="text-gray-500 text-base sm:text-lg">Daisy</span>
             </Link>
           </li>
         </ul>
