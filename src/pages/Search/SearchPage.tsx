@@ -82,7 +82,7 @@ function SearchPage() {
           </li>
         </ul>
         <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
-          <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 flex flex-row gap-6">
+          <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 flex flex-col lg:flex-row gap-6">
             <div className="">
               <h5 className="text-[15px] sm:text-[18px] font-semibold">
                 3D structure viewer
@@ -90,7 +90,7 @@ function SearchPage() {
               <div className="h-auto">
                 <div
                   id="myViewer"
-                  className="w-auto sm:w-[400px] h-[300px] sm:h-[400px] relative"
+                  className="w-auto lg:w-[400px] h-[300px] sm:h-[400px] relative"
                 >
                   <pdbe-molstar
                     id="pdbeMolstarComponent"
