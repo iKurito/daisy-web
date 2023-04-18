@@ -1,4 +1,9 @@
-import { SearchIcon } from '../../icons';
+import {
+  LabelIcon,
+  ProteinStructureIcon,
+  RepeatedIcon,
+  SearchIcon,
+} from '../../icons';
 
 function SearchPage() {
   return (
@@ -43,18 +48,18 @@ function SearchPage() {
       <div>
         <ul className="flex flex-wrap test-sm font-semibold text-center gap-1">
           <li>
-            <span className="inline-block p-4 text-gray-900 bg-primary rounded-t-lg">
-              Protein structure
+            <span className="flex gap-2 items-center justify-center p-4 text-gray-900 bg-primary rounded-t-lg">
+              <ProteinStructureIcon /> Protein structure
             </span>
           </li>
           <li>
-            <span className="inline-block p-4 text-gray-100 bg-gray-500 rounded-t-lg">
-              Repeat classification
+            <span className="flex gap-2 items-center justify-center p-4 text-gray-100 bg-gray-500 rounded-t-lg">
+              <LabelIcon /> Repeat classification
             </span>
           </li>
           <li>
-            <span className="inline-block p-4 text-gray-100 bg-gray-500 rounded-t-lg">
-              Repeated units
+            <span className="flex gap-2 items-center justify-center p-4 text-gray-100 bg-gray-500 rounded-t-lg">
+              <RepeatedIcon /> Repeated units
             </span>
           </li>
         </ul>

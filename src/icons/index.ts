@@ -5,3 +5,6 @@ export { default as AboutIcon } from './about.icon';
 export { default as XIcon } from './x.icon';
 export { default as HamburgerIcon } from './hamburger.icon';
 export { default as MiniUploadIcon } from './mini-upload.icon';
+export { default as ProteinStructureIcon } from './protein-structure.icon';
+export { default as LabelIcon } from './label.icon';
+export { default as RepeatedIcon } from './repeated.icon';
