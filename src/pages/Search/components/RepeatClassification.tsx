@@ -45,7 +45,7 @@ function RepeatClassification() {
             <span className="text-[15px] sm:text-[18px]">
               Full class prediction results:
             </span>
-            <span className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center">
+            <span className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center font-bold">
               <MiniDownloadIcon />
               Download classifacion results
             </span>
