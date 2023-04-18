@@ -9,7 +9,7 @@ function ProteinStructure() {
           <div className="h-auto">
             <div
               id="myViewer"
-              className="w-auto lg:w-[400px] h-[300px] sm:h-[400px] relative"
+              className="w-auto lg:w-[400px] h-[300px] sm:h-[400px] relative z-[100]"
             >
               <pdbe-molstar
                 id="pdbeMolstarComponent"
