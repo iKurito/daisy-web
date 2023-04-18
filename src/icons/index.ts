@@ -8,3 +8,4 @@ export { default as MiniUploadIcon } from './mini-upload.icon';
 export { default as ProteinStructureIcon } from './protein-structure.icon';
 export { default as LabelIcon } from './label.icon';
 export { default as RepeatedIcon } from './repeated.icon';
+export { default as MiniDownloadIcon } from './mini-download.icon';
