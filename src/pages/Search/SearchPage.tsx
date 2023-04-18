@@ -7,7 +7,7 @@ import {
 
 function SearchPage() {
   return (
-    <div className="max-w-[1440px] mx-auto p-4 sm:p-6 flex flex-col gap-4">
+    <div className="max-w-[1440px] mx-auto p-4 sm:p-6 space-y-6">
       <section className="border shadow-lg bg-secondary rounded-lg">
         <div className="p-2 sm:px-6 sm:py-4 space-y-1">
           <h2 className="text-[18px] xs:text-[20px] sm:text-[25px] font-bold">
@@ -46,24 +46,42 @@ function SearchPage() {
         </div>
       </section>
       <div>
-        <ul className="flex flex-wrap test-sm font-semibold text-center gap-1">
+        <ul className="flex overflow-x-auto test-sm font-semibold text-center gap-1">
           <li>
-            <span className="flex gap-2 items-center justify-center p-4 text-gray-900 bg-primary rounded-t-lg">
-              <ProteinStructureIcon /> Protein structure
-            </span>
+            <button
+              type="button"
+              className="flex xs:gap-2 items-center justify-center px-2 py-4 sm:p-4 text-gray-900 bg-primary rounded-t-lg min-w-[150px]"
+            >
+              <div>
+                <ProteinStructureIcon />{' '}
+              </div>
+              Protein structure
+            </button>
           </li>
           <li>
-            <span className="flex gap-2 items-center justify-center p-4 text-gray-100 bg-gray-500 rounded-t-lg">
-              <LabelIcon /> Repeat classification
-            </span>
+            <button
+              type="button"
+              className="flex xs:gap-2 items-center justify-center px-2 py-4 sm:p-4 text-gray-100 bg-gray-500 rounded-t-lg min-w-[150px]"
+            >
+              <div>
+                <LabelIcon />{' '}
+              </div>
+              Repeat classification
+            </button>
           </li>
           <li>
-            <span className="flex gap-2 items-center justify-center p-4 text-gray-100 bg-gray-500 rounded-t-lg">
-              <RepeatedIcon /> Repeated units
-            </span>
+            <button
+              type="button"
+              className="flex xs:gap-2 items-center justify-center px-2 py-4 sm:p-4 text-gray-100 bg-gray-500 rounded-t-lg min-w-[150px]"
+            >
+              <div>
+                <RepeatedIcon />{' '}
+              </div>
+              Repeated units
+            </button>
           </li>
         </ul>
-        <section className=" shadow-lg bg-primary border-none rounded-b-lg rounded-tr-lg">
+        <section className=" shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
           <div className="p-2 sm:px-6 sm:py-4">
             <h2>Search</h2>
           </div>
