@@ -3,8 +3,8 @@ import { MiniUploadIcon } from '../../icons';
 function HomePage() {
   return (
     <section className="bg-[#4b505b]">
-      <div className="max-w-[1440px] mx-auto hero min-h-[calc(100vh_-_170px)] w-full">
-        <div className="cover min-h-[calc(100vh_-_170px)] w-full flex justify-between">
+      <div className="max-w-[1440px] mx-auto hero min-h-[calc(100vh_-_177px)] w-full">
+        <div className="cover min-h-[calc(100vh_-_177px)] w-full flex justify-between">
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-10 place-items-center p-4 sm:p-10">
             <div className="lg:mb-10">
               <h1 className="text-7xl xs:text-9xl sm:text-[150px] text-third tracking-widest">

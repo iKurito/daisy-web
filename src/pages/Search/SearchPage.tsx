@@ -82,8 +82,20 @@ function SearchPage() {
           </li>
         </ul>
         <section className=" shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
-          <div className="p-2 sm:px-6 sm:py-4">
+          <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20">
             <h2>Search</h2>
+            <div className="h-auto">
+              <div
+                id="myViewer"
+                className="w-auto sm:w-[400px] h-[300px] sm:h-[400px] relative"
+              >
+                <pdbe-molstar
+                  id="pdbeMolstarComponent"
+                  molecule-id="2nnu"
+                  hide-controls="false"
+                />
+              </div>
+            </div>
           </div>
         </section>
       </div>

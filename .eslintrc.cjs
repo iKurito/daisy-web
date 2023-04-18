@@ -26,6 +26,7 @@ module.exports = {
     eqeqeq: ['error', 'always'],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-namespace': 'off',
     'jsx-a11y/label-has-associated-control': [
       'error',
       {

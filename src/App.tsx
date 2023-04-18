@@ -3,6 +3,17 @@ import { BrowserRouter, Navigate, Route } from 'react-router-dom';
 import { PublicRoutes } from './data';
 import { Layout, RoutesWithNotFound } from './components';
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'pdbe-molstar': React.DetailedHTMLProps<
+        React.HTMLAttributes<HTMLElement>,
+        HTMLElement
+      >;
+    }
+  }
+}
+
 const HomePage = lazy(() => import('./pages/Home/HomePage'));
 const SearchPage = lazy(() => import('./pages/Search/SearchPage'));
 const HelpPage = lazy(() => import('./pages/Help/HelpPage'));
