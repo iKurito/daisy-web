@@ -5,7 +5,7 @@ function HomePage() {
     <section className="bg-[#4b505b]">
       <div className="max-w-[1440px] mx-auto hero min-h-[calc(100vh_-_170px)] w-full">
         <div className="cover min-h-[calc(100vh_-_170px)] w-full flex justify-between">
-          <div className="flex flex-col lg:flex-row gap-4 sm:gap-10 z-50 place-items-center p-4 sm:p-10">
+          <div className="flex flex-col lg:flex-row gap-4 sm:gap-10 place-items-center p-4 sm:p-10">
             <div className="lg:mb-10">
               <h1 className="text-7xl xs:text-9xl sm:text-[150px] text-third tracking-widest">
                 Daisy
@@ -60,7 +60,7 @@ function HomePage() {
                   <div className="items-start">
                     <button
                       type="button"
-                      className="rounded-lg bg-third px-16 py-2 hover:shadow-lg font-bold tracking-wide text-[20px] w-full sm:w-auto"
+                      className="rounded-lg bg-third px-16 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto"
                       onClick={() => {}}
                     >
                       Start

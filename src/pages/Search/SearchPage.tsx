@@ -33,7 +33,7 @@ function SearchPage() {
               />
               <button
                 type="button"
-                className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+                className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
                 onClick={() => {}}
               >
                 <div className="text-fourth">

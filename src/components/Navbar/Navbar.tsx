@@ -34,7 +34,7 @@ export function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="sm:hidden flex flex-1 justify-end items-center">
+        <div className="sm:hidden flex flex-1 justify-end items-center z-50">
           <button
             className="text-gray-500 hover:text-cyan-900"
             type="button"
