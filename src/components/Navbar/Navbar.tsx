@@ -8,7 +8,7 @@ export function Navbar() {
 
   return (
     <nav className="sticky top-0 z-50 shadow-lg bg-primary">
-      <div className="max-w-[1440px] mx-auto py-5 flex justify-between items-center">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 2xl:px-0 py-5 flex justify-between items-center">
         <ul className="flex">
           <li>
             <Link to={PublicRoutes.HOME} className="flex items-center gap-2">
@@ -46,7 +46,7 @@ export function Navbar() {
           <div
             className={`${
               toggle ? 'flex' : 'hidden'
-            } px-4 py-6 bg-cyan-200 absolute top-20 left-0 right-0 mx-4 my-2 rounded-xl shadow-lg sidebar`}
+            } px-4 py-6 bg-primary absolute top-24 left-0 right-0 mx-4 my-2 rounded-lg shadow-lg sidebar border`}
           >
             <ul className="flex flex-col gap-4">
               {navLinks.map((link) => (

@@ -3,8 +3,8 @@ import { MiniUploadIcon } from '../../icons';
 function HomePage() {
   return (
     <section className="bg-[#4b505b]">
-      <div className="max-w-[1440px] md:mx-auto hero min-h-[calc(100vh_-_100px)] w-full">
-        <div className="cover min-h-[calc(100vh_-_100px)] w-full flex justify-between">
+      <div className="max-w-[1440px] mx-auto hero min-h-[calc(100vh_-_170px)] w-full">
+        <div className="cover min-h-[calc(100vh_-_170px)] w-full flex justify-between">
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-10 z-50 place-items-center p-4 sm:p-10">
             <div className="lg:mb-10">
               <h1 className="text-7xl xs:text-9xl sm:text-[150px] text-third tracking-widest">
@@ -27,7 +27,7 @@ function HomePage() {
                   Protein structure, sequence or PDB ID{' '}
                   <span className="text-fourth">*</span>
                 </h4>
-                <textarea className="w-full border rounded-lg h-40 border-gray-500 outline-none px-3 py-2 resize-none" />
+                <textarea className="w-full border rounded-lg h-40 border-gray-300 outline-none px-3 py-2 resize-none focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth" />
                 <div className="flex flex-col xs:flex-row xs:inline-flex xs:items-center gap-1">
                   <span className="text-[15px] sm:text-[20px] text-black tracking-tight">
                     or
@@ -60,7 +60,8 @@ function HomePage() {
                   <div className="items-start">
                     <button
                       type="button"
-                      className="rounded-lg bg-third px-16 py-2 shadow-lg font-bold tracking-wide text-[20px] w-full sm:w-auto"
+                      className="rounded-lg bg-third px-16 py-2 hover:shadow-lg font-bold tracking-wide text-[20px] w-full sm:w-auto"
+                      onClick={() => {}}
                     >
                       Start
                     </button>

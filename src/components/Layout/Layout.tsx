@@ -7,7 +7,8 @@ export function Layout() {
     <div className="min-h-screen relative overflow-hidden">
       <Navbar />
       {/* <main className="px-4 md:px-8 py-4 bg-gray-100 dark:bg-dark-secondary justify-center min-h-[calc(100vh_-_100px)]"> */}
-      <main className="justify-center min-h-[calc(100vh_-_100px)]">
+      {/* <main className='justif-center min-h-[calc(100vh_-_100px)]'></main> */}
+      <main className="justify-center">
         <Outlet />
       </main>
       <Footer />
