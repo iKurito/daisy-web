@@ -56,7 +56,7 @@ export function alphaFunction() {
   // Set options (Checkout available options list in the documentation)
   const options = {
     customData: {
-      url: '/assets/test/AF-O95905-F1-predicted_aligned_error_v4.json',
+      url: 'https://alphafold.ebi.ac.uk/files/AF-O15552-F1-model_v1.cif',
       format: 'cif',
     },
     alphafoldView: true,
