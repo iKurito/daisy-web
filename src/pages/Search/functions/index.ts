@@ -56,7 +56,8 @@ export function alphaFunction() {
   // Set options (Checkout available options list in the documentation)
   const options = {
     customData: {
-      url: 'https://alphafold.ebi.ac.uk/files/AF-O15552-F1-model_v1.cif',
+      // url: '/assets/test/AF-O95905-F1-model_v4.cif',
+      url: '/assets/test/AF-O95905-F1-model_v4.cif',
       format: 'cif',
     },
     alphafoldView: true,
