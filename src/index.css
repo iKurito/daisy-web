@@ -71,3 +71,18 @@
 .pull-right {
   margin-left: 10px;
 }
+
+/* pro-sequence-viewer */
+.root {
+  display: inline-flex;
+  overflow-x: auto;
+  background-color: white;
+  border: 1px solid rgba(107, 114, 128, 1);
+  border-radius: 0.5em;
+  padding: 4px;
+  width: 100%;
+}
+
+.cnk {
+  padding-top: 4px;
+}
