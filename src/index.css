@@ -49,3 +49,25 @@
     transform: translateX(0);
   }
 }
+
+/* react-sequence-viewer */
+.badge {
+  padding: 5px !important;
+}
+
+.sequenceHeader {
+  font-weight: bold;
+}
+
+.form-control {
+  border-radius: 0.5rem;
+  padding: 2px 6px;
+  outline-color: #F79219;
+  border-color: #F79219;
+  border-width: 1.5px;
+  font-weight: normal;
+}
+
+.pull-right {
+  margin-left: 10px;
+}
