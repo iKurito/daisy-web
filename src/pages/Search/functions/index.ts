@@ -2,7 +2,8 @@
 // https://embed.plnkr.co/plunk/WlRx73uuGA9EJbpn
 
 declare let ProSeqViewer: any;
-declare let LiteMol: any;
+declare let PDBeMolstarPlugin: any;
+
 export function test() {
   const sequences = [
     {
@@ -48,16 +49,29 @@ export function test() {
   psv2.draw({ sequences, options });
 }
 
-export function liteMolFunction() {
-  const plugin = LiteMol.Plugin.create({ target: '#litemol' });
-  plugin.loadMolecule(
-    {
-      id: '1tqn',
-      url: 'https://www.ebi.ac.uk/pdbe/entry-files/download/pdb1tqn.ent',
-      format: 'pdb',
+export function alphaFunction() {
+  // Create plugin instance
+  const viewerInstance = new PDBeMolstarPlugin();
+
+  // Set options (Checkout available options list in the documentation)
+  const options = {
+    customData: {
+      url: 'https://alphafold.ebi.ac.uk/files/AF-O15552-F1-model_v1.cif',
+      format: 'cif',
     },
-    {
-      hideControls: true,
-    }
-  );
+    alphafoldView: true,
+    bgColor: { r: 0, g: 0, b: 0 },
+    hideCanvasControls: [
+      'selection',
+      'animation',
+      'controlToggle',
+      'controlInfo',
+    ],
+  };
+
+  // Get element from HTML/Template to place the viewer
+  const viewerContainer = document.getElementById('myViewer2');
+
+  // Call render method to display the 3D view
+  viewerInstance.render(viewerContainer, options);
 }

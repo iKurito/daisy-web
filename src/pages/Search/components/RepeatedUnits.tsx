@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import ReactSequenceViewer from 'react-sequence-viewer';
 import { useEffect } from 'react';
-import { test } from '../functions/index';
+import { test, alphaFunction } from '../functions/index';
 import { MiniDownloadIcon } from '../../../icons';
 
 function RepeatedUnits() {
@@ -19,7 +19,7 @@ function RepeatedUnits() {
 
   useEffect(() => {
     test();
-    // liteMolFunction();
+    alphaFunction();
   }, []);
 
   return (
@@ -160,6 +160,9 @@ function RepeatedUnits() {
                 />
               </div>
             </div>
+          </div>
+          <div className="w-auto h-[300px] sm:h-[400px] relative z-[80] mt-[100px]">
+            <div id="myViewer2" className="mt-[250px] bg-black" />
           </div>
         </div>
       </div>
