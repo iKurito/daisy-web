@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Navigate, Route } from 'react-router-dom';
 import { PublicRoutes } from './data';
 import { Layout, RoutesWithNotFound } from './components';
+import 'react-toastify/dist/ReactToastify.css';
 
 declare global {
   namespace JSX {
