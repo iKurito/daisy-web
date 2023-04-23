@@ -1,2 +1,2 @@
-export * from './daisy-response.model';
+export * from './daisy.model';
 export * from './navbar.model';

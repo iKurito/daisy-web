@@ -1,7 +1,9 @@
 import { Suspense, lazy } from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route } from 'react-router-dom';
-import { PublicRoutes } from './data';
 import { Layout, RoutesWithNotFound } from './components';
+import { PublicRoutes } from './data';
+import store from './redux/store';
 import 'react-toastify/dist/ReactToastify.css';
 
 declare global {
@@ -24,17 +26,19 @@ function App() {
   return (
     <div className="App">
       <Suspense fallback={<div>Loading...</div>}>
-        <BrowserRouter>
-          <RoutesWithNotFound>
-            <Route element={<Layout />}>
-              <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
-              <Route path={PublicRoutes.HOME} element={<HomePage />} />
-              <Route path={PublicRoutes.SEARCH} element={<SearchPage />} />
-              <Route path={PublicRoutes.HELP} element={<HelpPage />} />
-              <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />
-            </Route>
-          </RoutesWithNotFound>
-        </BrowserRouter>
+        <Provider store={store}>
+          <BrowserRouter>
+            <RoutesWithNotFound>
+              <Route element={<Layout />}>
+                <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
+                <Route path={PublicRoutes.HOME} element={<HomePage />} />
+                <Route path={PublicRoutes.SEARCH} element={<SearchPage />} />
+                <Route path={PublicRoutes.HELP} element={<HelpPage />} />
+                <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />
+              </Route>
+            </RoutesWithNotFound>
+          </BrowserRouter>
+        </Provider>
       </Suspense>
     </div>
   );

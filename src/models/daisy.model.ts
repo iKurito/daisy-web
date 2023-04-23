@@ -1,3 +1,7 @@
+export interface DaisyInfo {
+  response: DaisyResponse;
+}
+
 export interface DaisyResponse {
   isReady: boolean;
   proteinResult: ProteinResult;
@@ -5,7 +9,7 @@ export interface DaisyResponse {
   result: boolean;
 }
 
-export interface ProteinResult {
+interface ProteinResult {
   chains: Chain[];
   id: string;
   isProcessed: boolean;
@@ -13,14 +17,14 @@ export interface ProteinResult {
   type: string;
 }
 
-export interface Chain {
+interface Chain {
   classPrediction: { [key: string]: number };
   isRepeat: boolean;
   name: string;
   regions?: Region[];
 }
 
-export interface Region {
+interface Region {
   classRegionNumber: number;
   repeatClass: string;
   repeatSubclass: string;
