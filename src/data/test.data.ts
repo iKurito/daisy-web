@@ -1,4 +1,4 @@
-import { DaisyResponse } from '../models/daisy-response.model';
+import { DaisyResponse } from '../models';
 
 export const dataTest: DaisyResponse = {
   isReady: true,
