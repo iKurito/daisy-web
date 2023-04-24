@@ -1,14 +1,14 @@
 import { LabelIcon, ProteinStructureIcon, RepeatedIcon } from '../../../icons';
-import ProteinStructure from '../components/ProteinStructure';
 import RepeatClassification from '../components/RepeatClassification';
 import RepeatedUnits from '../components/RepeatedUnits';
+import Structure from '../components/Structure';
 
 export const tabs = [
   {
     id: 0,
     name: 'Protein structure',
     icon: <ProteinStructureIcon />,
-    component: <ProteinStructure />,
+    component: <Structure />,
   },
   {
     id: 1,

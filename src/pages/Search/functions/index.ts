@@ -52,15 +52,15 @@ export function test() {
   psv2.draw({ sequences, options });
 }
 
-export function alphaBuilder() {
-  // Create plugin instance
+export function alphaBuilder(
+  id: string,
+  alphaFoldContainer: React.MutableRefObject<null>
+) {
   const viewerInstance = new PDBeMolstarPlugin();
-
-  // Set options (Checkout available options list in the documentation)
   const options = {
     customData: {
       // url: '/assets/test/AF-O95905-F1-model_v4.cif',
-      url: '/assets/script/AF-O95905-F1-model_v4.cif',
+      url: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
       format: 'cif',
     },
     alphafoldView: true,
@@ -72,11 +72,7 @@ export function alphaBuilder() {
       'controlInfo',
     ],
   };
-
-  // Get element from HTML/Template to place the viewer
-  const viewerContainer = document.getElementById('myViewer2');
-
-  // Call render method to display the 3D view
+  const viewerContainer = alphaFoldContainer.current;
   viewerInstance.render(viewerContainer, options);
 }
 
@@ -105,11 +101,14 @@ export function msaBuilder() {
     dropImport: false,
     debug: false,
   };
-  const az = document.getElementById('fasta-file')?.innerText;
-  opts.seqs = msa.io.fasta.parse(az);
+  // const az = document.getElementById('fasta-file')?.innerText;
+  // opts.seqs = msa.io.fasta.parse(az);
 
   const m = new msa(opts);
   m.render();
   // const url =
   //   'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal';
+  m.u.file.importURL(
+    'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal'
+  );
 }

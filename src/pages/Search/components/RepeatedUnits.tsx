@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import ReactSequenceViewer from 'react-sequence-viewer';
 import { useEffect, useState } from 'react';
-import { alphaBuilder, msaBuilder } from '../functions/index';
+import { msaBuilder } from '../functions/index';
 import { MiniDownloadIcon } from '../../../icons';
 import { useSearchContext } from '../context/search.context';
 import { Region } from '../../../models';
@@ -34,9 +34,8 @@ function RepeatedUnits() {
   };
 
   useEffect(() => {
-    if (currentChain.isRepeat) {
-      alphaBuilder();
-    }
+    // if (currentChain.isRepeat) {
+    // }
     msaBuilder();
   }, [currentChain]);
 
@@ -244,9 +243,6 @@ function RepeatedUnits() {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="w-auto h-[300px] sm:h-[400px] relative z-[200] mt-[100px]">
-                <div id="myViewer2" className="mt-[250px] bg-black" />
               </div>
               <div className="space-x-2">
                 <button
