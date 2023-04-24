@@ -4,9 +4,9 @@ import { retrieveResponseService, requestResponseService } from '../services';
 import useFetchAndLoad from './useFecthAndLoad.hook';
 import { daisyApi } from '../api';
 import { DaisyRequest } from '../models';
+import { setDaisyResponse } from '../redux/states/daisy.state';
 
 const useSearch = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const dispatch = useDispatch();
 
   const { loading, callEndpoint } = useFetchAndLoad();
@@ -25,13 +25,17 @@ const useSearch = () => {
   const requestResponse = async (data: DaisyRequest): Promise<boolean> => {
     const result = await callEndpoint(requestResponseService(daisyApi, data));
     if (result.status !== 201) {
-      SnackBarUtilities.error(
-        'No se pudo crear el Workflow, vuelva a intentarlo'
-      );
+      SnackBarUtilities.error('Not obtained response, please try again later');
       return false;
     }
-    // dispatch(createValidation(result.data));
-    SnackBarUtilities.success('Workflow creado correctamente');
+    if (!result.data.isReady) {
+      SnackBarUtilities.success(
+        'Your request was received correctly, we will send you an email when it is ready'
+      );
+      return true;
+    }
+    dispatch(setDaisyResponse(result.data));
+    SnackBarUtilities.success('Response obtained correctly');
     return true;
   };
 

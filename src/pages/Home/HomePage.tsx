@@ -56,7 +56,7 @@ function HomePage() {
                   </label>
                   <input
                     id="pdbUnitprot"
-                    name="value"
+                    name="proteinID"
                     type="text"
                     value={values.proteinID}
                     className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"

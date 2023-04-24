@@ -3,7 +3,7 @@ export interface DaisyInfo {
 }
 
 export interface DaisyResponse {
-  isReady: boolean;
+  isReady?: boolean;
   proteinResult: ProteinResult;
   requestID: number;
   result: boolean;
