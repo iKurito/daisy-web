@@ -94,14 +94,14 @@ function RepeatClassification() {
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50 dark:bg-dark-third">
               <tr className="table-row align-middle outline-0 font-bold">
-                <th className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 dark:text-gray-100 tracking-wider cursor-pointer">
+                <th className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 tracking-wider cursor-pointer">
                   Chain ID
                 </th>
                 {predictions.map((prediction) => {
                   return (
                     <th
                       key={prediction}
-                      className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 dark:text-gray-100 tracking-wider cursor-pointer"
+                      className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 tracking-wider cursor-pointer"
                     >
                       {prediction.replace('_', '.')}
                     </th>
@@ -112,15 +112,21 @@ function RepeatClassification() {
             <tbody className="bg-white divide-y divide-gray-200 dark:bg-dark-primary dark:divide-gray-500">
               {chains.map((chain) => {
                 return (
-                  <tr key={chain.name} className="font-light">
-                    <td className="text-xs sm:stext-sm px-4 py-4 dark:text-gray-100 whitespace-pre-wrap">
+                  <tr key={chain.name} className="font-bold">
+                    <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
                       {chain.name}
                     </td>
                     {predictions.map((prediction) => {
+                      const ch =
+                        parseFloat(
+                          chain.classPrediction[prediction].toFixed(2)
+                        ) >= 1.0
+                          ? 'text-green-500'
+                          : 'text-red-500';
                       return (
                         <td
                           key={prediction}
-                          className="text-xs sm:stext-sm px-4 py-4 dark:text-gray-100 whitespace-pre-wrap"
+                          className={`${ch} text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap`}
                         >
                           {chain.classPrediction[prediction].toFixed(2)}
                         </td>
