@@ -1,14 +1,43 @@
 import { MiniDownloadIcon } from '../../../icons';
+import { useSearchContext } from '../context/search.context';
+
+const predictions = [
+  'III_1',
+  'III_2',
+  'III_3',
+  'III_4',
+  'III_5',
+  'III_6',
+  'IV_1',
+  'IV_2',
+  'IV_3',
+  'IV_4',
+  'IV_5',
+  'IV_6',
+  'IV_7',
+  'IV_8',
+  'IV_9',
+  'IV_10',
+  'V_1',
+  'V_2',
+  'V_3',
+  'V_4',
+  'V_5',
+];
 
 function RepeatClassification() {
+  const { response } = useSearchContext();
+
+  const { chains } = response.proteinResult;
+
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <div className="flex flex-col sm:flex-row">
           <div className="w-full">
-            <h2 className="text-[20px] sm:text-[25px] font-bold">
+            {/* <h2 className="text-[20px] sm:text-[25px] font-bold">
               Chain ID: <span className="text-fourth">A</span>
-            </h2>
+            </h2> */}
           </div>
           <div className="w-full flex justify-end">
             <h4 className="text-[18px] sm:text-[20px] font-bold">
@@ -60,6 +89,48 @@ function RepeatClassification() {
               alt="trnet-lite"
             />
           </div>
+        </div>
+        <div className="shadow-md overflow-x-auto relative border border-gray-200 rounded-lg">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50 dark:bg-dark-third">
+              <tr className="table-row align-middle outline-0 font-bold">
+                <th className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 dark:text-gray-100 tracking-wider cursor-pointer">
+                  Chain ID
+                </th>
+                {predictions.map((prediction) => {
+                  return (
+                    <th
+                      key={prediction}
+                      className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 dark:text-gray-100 tracking-wider cursor-pointer"
+                    >
+                      {prediction.replace('_', '.')}
+                    </th>
+                  );
+                })}
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200 dark:bg-dark-primary dark:divide-gray-500">
+              {chains.map((chain) => {
+                return (
+                  <tr key={chain.name} className="font-light">
+                    <td className="text-xs sm:stext-sm px-4 py-4 dark:text-gray-100 whitespace-pre-wrap">
+                      {chain.name}
+                    </td>
+                    {predictions.map((prediction) => {
+                      return (
+                        <td
+                          key={prediction}
+                          className="text-xs sm:stext-sm px-4 py-4 dark:text-gray-100 whitespace-pre-wrap"
+                        >
+                          {chain.classPrediction[prediction].toFixed(2)}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>

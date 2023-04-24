@@ -1,4 +1,10 @@
+import { useSearchContext } from '../context/search.context';
+
 function ProteinStructure() {
+  const { response } = useSearchContext();
+
+  const { id } = response.proteinResult;
+
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 flex flex-col lg:flex-row gap-6">
@@ -13,7 +19,7 @@ function ProteinStructure() {
             >
               <pdbe-molstar
                 id="pdbeMolstarComponent"
-                molecule-id="2nnu"
+                molecule-id={id.toLowerCase()}
                 hide-controls="false"
               />
             </div>
