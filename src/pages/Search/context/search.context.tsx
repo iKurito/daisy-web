@@ -1,14 +1,17 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useContext, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
+import { DaisyStore } from '../../../redux/store';
+import { DaisyResponse } from '../../../models';
 
 interface SearchContextProps {
   processId: string;
   activeTab: number;
+  response: DaisyResponse;
   setSearchParams: (params: Record<string, string>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetTab: (tab: number) => void;
-  updateProcessId: (value: string) => void;
 }
 
 const SearchContext = createContext<SearchContextProps>(
@@ -26,6 +29,9 @@ export function SearchProvider({ children }: Props) {
   );
   const [activeTab, setActiveTab] = useState(0);
 
+  const daisyState = useSelector((state: DaisyStore) => state.daisy);
+  const { response } = daisyState;
+
   const handleSetTab = (tab: number) => {
     setActiveTab(tab);
   };
@@ -35,19 +41,15 @@ export function SearchProvider({ children }: Props) {
     setSearchParams({ processID: e.target.value.trim() });
   };
 
-  const updateProcessId = (value: string) => {
-    setProcessId(value);
-  };
-
   return (
     <SearchContext.Provider
       value={{
         processId,
         activeTab,
+        response,
         setSearchParams,
         handleChange,
         handleSetTab,
-        updateProcessId,
       }}
     >
       {children}

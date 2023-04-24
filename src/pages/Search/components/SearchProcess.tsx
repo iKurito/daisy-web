@@ -6,8 +6,7 @@ import { SnackBarUtilities } from '../../../utilities';
 import { useSearchContext } from '../context/search.context';
 
 function SearchProcess() {
-  const { processId, setSearchParams, handleChange, updateProcessId } =
-    useSearchContext();
+  const { processId, setSearchParams, handleChange } = useSearchContext();
 
   const { loading, retrieveResponse } = useSearch();
 
@@ -22,7 +21,6 @@ function SearchProcess() {
   };
 
   useEffect(() => {
-    updateProcessId(processId);
     if (processId.length === 0) return;
     const service = async () => retrieveResponse(processId);
     service();
