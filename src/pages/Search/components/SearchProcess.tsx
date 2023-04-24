@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import useSearch from '../../../hooks/useSearch.hook';
 import { SearchIcon } from '../../../icons';
@@ -7,8 +6,8 @@ import { SnackBarUtilities } from '../../../utilities';
 import { useSearchContext } from '../context/search.context';
 
 function SearchProcess() {
-  const [searchParams] = useSearchParams();
-  const { processId, handleChange, updateProcessId } = useSearchContext();
+  const { processId, setSearchParams, handleChange, updateProcessId } =
+    useSearchContext();
 
   const { loading, retrieveResponse } = useSearch();
 
@@ -18,14 +17,14 @@ function SearchProcess() {
       SnackBarUtilities.error('Enter a Process ID');
       return;
     }
+    setSearchParams({ processID: processId });
     await retrieveResponse(processId);
   };
 
   useEffect(() => {
-    const requestID = searchParams.get('processID') ?? '';
-    updateProcessId(requestID);
-    if (requestID.length === 0) return;
-    const service = async () => retrieveResponse(requestID);
+    updateProcessId(processId);
+    if (processId.length === 0) return;
+    const service = async () => retrieveResponse(processId);
     service();
   }, []);
 
