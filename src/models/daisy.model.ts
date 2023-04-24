@@ -24,7 +24,7 @@ interface Chain {
   regions?: Region[];
 }
 
-interface Region {
+export interface Region {
   classRegionNumber: number;
   repeatClass: string;
   repeatSubclass: string;
