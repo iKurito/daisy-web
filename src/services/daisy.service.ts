@@ -2,10 +2,13 @@ import { AxiosInstance } from 'axios';
 import { loadAbort } from '../utilities';
 import { DaisyRequest } from '../models';
 
-export const retrieveResponseService = (api: AxiosInstance) => {
+export const retrieveResponseService = (
+  api: AxiosInstance,
+  processID: string
+) => {
   const controller = loadAbort();
   return {
-    call: api.get('/', {
+    call: api.get(`/${processID}`, {
       signal: controller.signal,
     }),
     controller,

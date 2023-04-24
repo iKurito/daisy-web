@@ -6,6 +6,7 @@ interface SearchContextProps {
   activeTab: number;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetTab: (tab: number) => void;
+  updateProcessId: (value: string) => void;
 }
 
 const SearchContext = createContext<SearchContextProps>(
@@ -28,6 +29,10 @@ export function SearchProvider({ children }: Props) {
     setProcessId(e.target.value.trim());
   };
 
+  const updateProcessId = (value: string) => {
+    setProcessId(value);
+  };
+
   return (
     <SearchContext.Provider
       value={{
@@ -35,6 +40,7 @@ export function SearchProvider({ children }: Props) {
         activeTab,
         handleChange,
         handleSetTab,
+        updateProcessId,
       }}
     >
       {children}

@@ -14,21 +14,23 @@ const useSearch = () => {
 
   const { loading, callEndpoint } = useFetchAndLoad();
 
-  const retrieveResponse = async (): Promise<boolean> => {
-    const result = await callEndpoint(retrieveResponseService(daisyApi));
+  const retrieveResponse = async (processID: string): Promise<boolean> => {
+    const result = await callEndpoint(
+      retrieveResponseService(daisyApi, processID)
+    );
     if (result.status !== 200) {
-      SnackBarUtilities.error('Not obtained response, please try again later');
+      SnackBarUtilities.error('Something went wrong, please try again later');
       return false;
     }
-    // dispatch(createValidation(result.data));
-    SnackBarUtilities.success('Response obtained correctly');
+    dispatch(setDaisyResponse(result.data));
+    SnackBarUtilities.success('Your search was found successfully');
     return true;
   };
 
   const requestResponse = async (data: DaisyRequest): Promise<boolean> => {
     const result = await callEndpoint(requestResponseService(daisyApi, data));
     if (result.status !== 201) {
-      SnackBarUtilities.error('Not obtained response, please try again later');
+      SnackBarUtilities.error('Something went wrong, please try again later');
       return false;
     }
     if (!result.data.isReady) {

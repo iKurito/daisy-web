@@ -1,26 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import useSearch from '../../../hooks/useSearch.hook';
 import { SearchIcon } from '../../../icons';
 import { SnackBarUtilities } from '../../../utilities';
 import { useSearchContext } from '../context/search.context';
 
 function SearchProcess() {
-  const { processId, handleChange } = useSearchContext();
+  const [searchParams] = useSearchParams();
+  const { processId, handleChange, updateProcessId } = useSearchContext();
 
-  const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
+  const { loading, retrieveResponse } = useSearch();
+
+  const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const pdbRegex = /^[0-9][a-zA-Z_0-9]{3}$/;
-    const unitprotRegex =
-      /^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$/;
-    // Validate processId
     if (processId.length === 0) {
       SnackBarUtilities.error('Enter a Process ID');
       return;
     }
-    if (!pdbRegex.test(processId) && !unitprotRegex.test(processId)) {
-      SnackBarUtilities.error('Invalid Process ID');
-      return;
-    }
-    SnackBarUtilities.success('Perfect');
+    await retrieveResponse(processId);
   };
+
+  useEffect(() => {
+    updateProcessId(searchParams.get('processID') ?? '');
+  }, []);
 
   return (
     <section className="border shadow-lg bg-secondary rounded-lg">
@@ -50,8 +53,10 @@ function SearchProcess() {
             />
             <button
               type="submit"
-              className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
-              // onClick={handleClick}
+              className={`${
+                loading ? 'opacity-50 cursor-not-allowed' : ''
+              } rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center`}
+              disabled={loading}
             >
               <div className="text-fourth">
                 <SearchIcon />
