@@ -1,12 +1,15 @@
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { SnackBarUtilities } from '../utilities';
 import { retrieveResponseService, requestResponseService } from '../services';
 import useFetchAndLoad from './useFecthAndLoad.hook';
 import { daisyApi } from '../api';
 import { DaisyRequest } from '../models';
 import { setDaisyResponse } from '../redux/states/daisy.state';
+import { PublicRoutes } from '../data';
 
 const useSearch = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { loading, callEndpoint } = useFetchAndLoad();
@@ -35,7 +38,10 @@ const useSearch = () => {
       return true;
     }
     dispatch(setDaisyResponse(result.data));
-    SnackBarUtilities.success('Response obtained correctly');
+    navigate(`/${PublicRoutes.SEARCH}?processID=${result.data.requestID}`);
+    SnackBarUtilities.success(
+      'You have been redirected to the search page, you can see the results there'
+    );
     return true;
   };
 

@@ -32,7 +32,10 @@ function App() {
               <Route element={<Layout />}>
                 <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
                 <Route path={PublicRoutes.HOME} element={<HomePage />} />
-                <Route path={PublicRoutes.SEARCH} element={<SearchPage />} />
+                <Route
+                  path={`${PublicRoutes.SEARCH}/*`}
+                  element={<SearchPage />}
+                />
                 <Route path={PublicRoutes.HELP} element={<HelpPage />} />
                 <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />
               </Route>
