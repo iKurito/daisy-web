@@ -12,7 +12,7 @@ export const daisySlice = createSlice({
     setDaisyResponse: (state, action) => {
       return {
         ...state,
-        daisyResponse: action.payload,
+        response: action.payload,
       };
     },
     clearDaisy: () => EmptyDaisyState,

@@ -19,7 +19,7 @@ const useSearch = () => {
       retrieveResponseService(daisyApi, processID)
     );
     if (result.status !== 200) {
-      SnackBarUtilities.error('Something went wrong, please try again later');
+      SnackBarUtilities.error('Your search was not found');
       return false;
     }
     dispatch(setDaisyResponse(result.data));
@@ -41,9 +41,9 @@ const useSearch = () => {
     }
     dispatch(setDaisyResponse(result.data));
     navigate(`/${PublicRoutes.SEARCH}?processID=${result.data.requestID}`);
-    SnackBarUtilities.success(
-      'You have been redirected to the search page, you can see the results there'
-    );
+    // SnackBarUtilities.success(
+    //   'You have been redirected to the search page, you can see the results there'
+    // );
     return true;
   };
 

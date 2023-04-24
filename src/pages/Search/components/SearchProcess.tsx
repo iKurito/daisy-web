@@ -12,8 +12,8 @@ function SearchProcess() {
 
   const { loading, retrieveResponse } = useSearch();
 
-  const handleClick = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleClick = async (e?: React.FormEvent<HTMLFormElement>) => {
+    e?.preventDefault();
     if (processId.length === 0) {
       SnackBarUtilities.error('Enter a Process ID');
       return;
@@ -22,7 +22,11 @@ function SearchProcess() {
   };
 
   useEffect(() => {
-    updateProcessId(searchParams.get('processID') ?? '');
+    const requestID = searchParams.get('processID') ?? '';
+    updateProcessId(requestID);
+    if (requestID.length === 0) return;
+    const service = async () => retrieveResponse(requestID);
+    service();
   }, []);
 
   return (
