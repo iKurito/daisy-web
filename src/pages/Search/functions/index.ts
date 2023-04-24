@@ -1,8 +1,10 @@
+/* eslint-disable new-cap */
 // https://biocomputingup.github.io/ProSeqViewer-documentation/doc
 // https://embed.plnkr.co/plunk/WlRx73uuGA9EJbpn
 
 declare let ProSeqViewer: any;
 declare let PDBeMolstarPlugin: any;
+declare let msa: any;
 
 export function test() {
   const sequences = [
@@ -32,7 +34,8 @@ export function test() {
   // Options and configuration
   const options = {
     chunkSize: 0,
-    sequenceColor: 'clustal',
+    sequenceColor: 'turn',
+    lateralIndexes: false,
     indexesLocation: 'lateral',
     wrapLine: true,
     lineSeparation: '10px',
@@ -49,7 +52,7 @@ export function test() {
   psv2.draw({ sequences, options });
 }
 
-export function alphaFunction() {
+export function alphaBuilder() {
   // Create plugin instance
   const viewerInstance = new PDBeMolstarPlugin();
 
@@ -57,7 +60,7 @@ export function alphaFunction() {
   const options = {
     customData: {
       // url: '/assets/test/AF-O95905-F1-model_v4.cif',
-      url: '/assets/test/AF-O95905-F1-model_v4.cif',
+      url: '/assets/script/AF-O95905-F1-model_v4.cif',
       format: 'cif',
     },
     alphafoldView: true,
@@ -75,4 +78,38 @@ export function alphaFunction() {
 
   // Call render method to display the 3D view
   viewerInstance.render(viewerContainer, options);
+}
+
+export function msaBuilder() {
+  const opts = {} as any;
+
+  opts.el = document.getElementById('yourDiv');
+  opts.vis = {
+    conserv: false,
+    overviewbox: false,
+    seqlogo: false,
+  };
+  opts.conf = {
+    dropImport: true,
+  };
+  opts.zoomer = {
+    menuFontsize: '12px',
+    autoResize: true,
+  };
+  opts.conf = {
+    registerMouseHover: false,
+    registerMouseClicks: true,
+    importProxy: 'https://cors-anywhere.herokuapp.com/',
+    eventBus: true,
+    alphabetSize: 20,
+    dropImport: false,
+    debug: false,
+  };
+  const az = document.getElementById('fasta-file')?.innerText;
+  opts.seqs = msa.io.fasta.parse(az);
+
+  const m = new msa(opts);
+  m.render();
+  // const url =
+  //   'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal';
 }

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import ReactSequenceViewer from 'react-sequence-viewer';
 import { useEffect, useState } from 'react';
-import { test, alphaFunction } from '../functions/index';
+import { alphaBuilder, msaBuilder } from '../functions/index';
 import { MiniDownloadIcon } from '../../../icons';
 import { useSearchContext } from '../context/search.context';
 import { Region } from '../../../models';
@@ -35,9 +35,9 @@ function RepeatedUnits() {
 
   useEffect(() => {
     if (currentChain.isRepeat) {
-      alphaFunction();
-      test();
+      alphaBuilder();
     }
+    msaBuilder();
   }, [currentChain]);
 
   const handleChangeUp = () => {
@@ -71,6 +71,8 @@ function RepeatedUnits() {
       }
     }
   };
+
+  const azucar = `>seq1\nACTG\n>seq2\nACGG`;
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
@@ -153,17 +155,22 @@ function RepeatedUnits() {
           {currentChain.isRepeat && currentChain.regions && (
             <>
               <div className="flex flex-col sm:flex-row">
-                <div className="w-full">
-                  <h2 className="text-[20px] sm:text-[25px] font-bold">
-                    Region number:{' '}
-                    <span className="text-fourth">{currentChainIndex}</span>
-                  </h2>
-                </div>
+                <h2 className="text-[20px] sm:text-[25px] font-bold flex w-full gap-2 items-center">
+                  <span>Region number:</span>
+                  <span className="text-fourth">
+                    {currentRegion.repeatClass}.{currentRegion.repeatSubclass} -
+                    {currentChainIndex}
+                  </span>
+                </h2>
                 <div className="w-full flex justify-end" />
               </div>
               <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-between">
                 <div className="flex flex-col xs:flex-row w-auto xs:w-[400px] items-center justify-center">
-                  <img src="/assets/img/protein_test.webp" alt="protein" />
+                  <img
+                    src="http://old.protein.bio.unipd.it/repeatsdb-lite/img/class/III.1.big.png"
+                    alt="protein"
+                    className="w-48"
+                  />
                   <div className="flex items-center justify-center text-gray-900 font-bold gap-2">
                     <span className="text-[20px] sm:text-[25px]">
                       Classification:
@@ -262,6 +269,14 @@ function RepeatedUnits() {
               </div>
             </>
           )}
+        </div>
+        <div className="overflow-x-auto">
+          <div id="yourDiv" />
+        </div>
+        <div>
+          <pre className="hidden" id="fasta-file">
+            {azucar}
+          </pre>
         </div>
       </div>
     </section>
