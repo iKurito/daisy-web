@@ -29,3 +29,8 @@ interface Region {
   repeatClass: string;
   repeatSubclass: string;
 }
+
+export interface DaisyRequest {
+  proteinID: string;
+  email: string;
+}

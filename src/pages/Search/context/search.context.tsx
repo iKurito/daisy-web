@@ -2,9 +2,9 @@
 import { createContext, useContext, useState } from 'react';
 
 interface SearchContextProps {
-  search: string;
+  processId: string;
   activeTab: number;
-  setSearch: (search: string) => void;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetTab: (tab: number) => void;
 }
 
@@ -17,19 +17,23 @@ interface Props {
 }
 
 export function SearchProvider({ children }: Props) {
-  const [search, setSearch] = useState('');
+  const [processId, setProcessId] = useState('');
   const [activeTab, setActiveTab] = useState(0);
 
   const handleSetTab = (tab: number) => {
     setActiveTab(tab);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setProcessId(e.target.value.trim());
+  };
+
   return (
     <SearchContext.Provider
       value={{
-        search,
+        processId,
         activeTab,
-        setSearch,
+        handleChange,
         handleSetTab,
       }}
     >

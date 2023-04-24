@@ -1,13 +1,9 @@
-import { useState } from 'react';
 import { SearchIcon } from '../../../icons';
 import { SnackBarUtilities } from '../../../utilities';
+import { useSearchContext } from '../context/search.context';
 
 function SearchProcess() {
-  const [processId, setProcessId] = useState<string>('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProcessId(e.target.value.trim());
-  };
+  const { processId, handleChange } = useSearchContext();
 
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
