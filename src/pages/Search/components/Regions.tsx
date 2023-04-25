@@ -4,18 +4,27 @@ import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
 import { Dropdown } from '../../../components';
 import { downloadRegionOptions } from '../../../data';
+import { getEnvEnvariables } from '../../../utilities';
+import { useSearchContext } from '../context/search.context';
 
 interface Props {
   currentChain: Chain;
 }
 
 function Regions({ currentChain }: Props) {
+  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
+
+  const { response } = useSearchContext();
+  const { id, type } = response.proteinResult;
+
   const [currentRegion, setCurrentRegion] = useState<Region>(
     currentChain.regions !== undefined
       ? currentChain.regions[0]
       : ({} as Region)
   );
   const [currentRegionIndex, setCurrentRegionIndex] = useState(1);
+
+  const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
 
   const handleChangeUpRegion = () => {
     if (currentChain.regions !== undefined) {
@@ -82,13 +91,12 @@ function Regions({ currentChain }: Props) {
           >
             <pdbe-molstar
               id="pdbeMolstarComponent"
-              custom-data-url="https://www.ebi.ac.uk/pdbe/model-server/v1/1cbs/full"
-              custom-data-format="cif"
-              // molecule-id="https://files.rcsb.org/download/4nnu.pdb"
+              custom-data-url={`${baseUrl}/pdb`}
+              custom-data-format="pdb"
               hide-controls="false"
             />
           </div>
-          <AlignedUnits />
+          <AlignedUnits baseUrl={baseUrl} />
         </div>
       )}
     </div>

@@ -86,3 +86,12 @@
 .cnk {
   padding-top: 4px;
 }
+
+/* msa-viewer */
+.biojs_msa_headers {
+  width: 250px !important;
+}
+
+.biojs_msa_labels {
+  width: 250px !important;
+}

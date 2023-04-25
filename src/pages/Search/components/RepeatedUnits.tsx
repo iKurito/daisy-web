@@ -59,7 +59,7 @@ function RepeatedUnits() {
                 <Dropdown items={downloadChainOptions} />
               </div>
             </div>
-            <Chains />
+            <Chains currentChain={currentChain} />
           </div>
           <Regions currentChain={currentChain} />
         </div>
