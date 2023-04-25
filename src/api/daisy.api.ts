@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { getEnvEnvariables } from '../utilities';
 
-const { VITE_SECUENS_API_URL } = getEnvEnvariables();
+const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
 
 const secuensApi = axios.create({
-  baseURL: VITE_SECUENS_API_URL,
+  baseURL: VITE_DAISY_SERVICE_URL,
 });
 
 secuensApi.interceptors.response.use(

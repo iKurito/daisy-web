@@ -28,17 +28,17 @@ export const downloadChainOptions: DownloadOptions[] = [
   {
     id: 0,
     name: 'PDB Chain file',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
   },
   {
     id: 1,
     name: 'Identified unit DB file',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
   },
   {
     id: 2,
     name: 'Mapping file',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
   },
 ];
 

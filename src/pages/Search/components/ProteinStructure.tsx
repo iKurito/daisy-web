@@ -1,11 +1,17 @@
+import { useEffect } from 'react';
 import { Dropdown } from '../../../components';
 import { downloadPdbStructureOptions } from '../../../data';
 import { useSearchContext } from '../context/search.context';
+import { readFile } from '../functions';
 
 function ProteinStructure() {
   const { response } = useSearchContext();
 
   const { id } = response.proteinResult;
+
+  useEffect(() => {
+    readFile();
+  }, []);
 
   return (
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
@@ -39,9 +45,13 @@ function ProteinStructure() {
             <h4 className="text-[18px] sm:text-[20px] font-semibold">
               Requested protein structure:
             </h4>
-            <iframe
+            {/* <iframe
               title="protein-structure"
-              src="/assets/script/AF-O95905-F1-model_v4.cif"
+              src="https://s3.us-east-1.amazonaws.com/codnas.inf.pucp.edu.pe/releases/2021-03/NEWS.md"
+              className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto"
+            /> */}
+            <textarea
+              id="text-area-file"
               className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto"
             />
           </div>

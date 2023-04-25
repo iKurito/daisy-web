@@ -6,6 +6,8 @@ import { curationProcessForm } from '../../schemas';
 import { DaisyRequest } from '../../models';
 import useSearch from '../../hooks/useSearch.hook';
 import { clearDaisy } from '../../redux/states/daisy.state';
+import { getEnvEnvariables } from '../../utilities';
+
 
 function HomePage() {
   const { loading, requestResponse } = useSearch();
@@ -29,7 +31,10 @@ function HomePage() {
 
   const dispatch = useDispatch();
 
+  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
+
   useEffect(() => {
+    console.log('VITE_DAISY_SERVICE_URL', VITE_DAISY_SERVICE_URL);
     dispatch(clearDaisy());
   }, []);
 

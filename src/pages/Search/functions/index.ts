@@ -114,3 +114,44 @@ export function msaBuilder(reference: React.MutableRefObject<null>) {
   // const url = 'https://www.rcsb.org/fasta/entry/1A0B';
   m.u.file.importURL(url);
 }
+
+export function readFile() {
+  const textArea = document.getElementById('text-area-file');
+  const xhr = new XMLHttpRequest();
+  // xhr.open(
+  //   'GET',
+  //   'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal',
+  //   true
+  // );
+  // xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+  // xhr.setRequestHeader(
+  //   'Access-Control-Allow-Methods',
+  //   'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+  // );
+  // xhr.setRequestHeader(
+  //   'Access-Control-Headers',
+  //   'Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization'
+  // );
+  // xhr.onload = function l() {
+  //   if (this.status === 200) {
+  //     if (textArea) textArea.innerHTML += this.responseText;
+  //   } else {
+  //     console.log('Error');
+  //   }
+  // };
+  xhr.open(
+    'GET',
+    'https://s3.us-east-1.amazonaws.com/codnas.inf.pucp.edu.pe/releases/2021-03/NEWS.md',
+    true
+  );
+  xhr.onreadystatechange = function l() {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        if (textArea) textArea.innerHTML += this.responseText;
+      } else {
+        throw new Error("can't load data");
+      }
+    }
+  };
+  xhr.send();
+}

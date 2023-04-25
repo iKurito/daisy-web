@@ -9,7 +9,9 @@ function Structure() {
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
-      {type === 'PDB' ? <ProteinStructure /> : <AlphafoldStructure />}
+      {type === 'PDB' && <ProteinStructure />}
+      {type === 'AlphaFold' && <AlphafoldStructure />}
+      {type === 'ERROR' && <div>Not Found</div>}
     </section>
   );
 }

@@ -1,0 +1,15 @@
+# Define services
+services:
+  # Frontend service
+  daisy-web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        VITE_DAISY_SERVICE_URL: http://127.0.0.1:3000
+    image: rtunque/daisy:web-1.0.0
+    environment:
+      VITE_DAISY_SERVICE_URL: http://127.0.0.0:8080/
+    ports:
+      - "80:80"
+    restart: always
