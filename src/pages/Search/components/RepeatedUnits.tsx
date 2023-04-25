@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
-import { MiniDownloadIcon } from '../../../icons';
 import { useSearchContext } from '../context/search.context';
 import Pagination from './Pagination';
 import Chains from './Chains';
 import Regions from './Regions';
+import { downloadChainOptions } from '../../../data';
+import { Dropdown } from '../../../components';
 
 function RepeatedUnits() {
   const { response } = useSearchContext();
@@ -55,16 +56,7 @@ function RepeatedUnits() {
                 handleChangeUp={handleChangeUp}
               />
               <div className="flex justify-end w-full">
-                <button
-                  type="button"
-                  className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
-                  onClick={() => {}}
-                >
-                  <div className="text-fourth">
-                    <MiniDownloadIcon />
-                  </div>
-                  <span>Download</span>
-                </button>
+                <Dropdown items={downloadChainOptions} />
               </div>
             </div>
             <Chains />

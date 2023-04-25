@@ -9,5 +9,6 @@ export { default as ProteinStructureIcon } from './protein-structure.icon';
 export { default as LabelIcon } from './label.icon';
 export { default as RepeatedIcon } from './repeated.icon';
 export { default as MiniDownloadIcon } from './mini-download.icon';
-export { default as ChevronLeft } from './chevron-left.icon';
-export { default as ChevronRight } from './chevron-right.icon';
+export { default as ChevronLeftIcon } from './chevron-left.icon';
+export { default as ChevronRightIcon } from './chevron-right.icon';
+export { default as MiniChevronDownIcon } from './mini-chevron-down.icon';

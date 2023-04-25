@@ -106,9 +106,11 @@ export function msaBuilder(reference: React.MutableRefObject<null>) {
 
   const m = new msa(opts);
   m.render();
-  // const url =
-  //   'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal';
-  m.u.file.importURL(
-    'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal'
-  );
+  const url =
+    'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal';
+  // m.u.file.importURL(
+  //   'https://raw.githubusercontent.com/wilzbach/msa/master/snippets/data/fer1.clustal'
+  // );
+  // const url = 'https://www.rcsb.org/fasta/entry/1A0B';
+  m.u.file.importURL(url);
 }

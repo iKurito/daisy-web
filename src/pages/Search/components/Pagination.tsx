@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from '../../../icons';
+import { ChevronLeftIcon, ChevronRightIcon } from '../../../icons';
 
 interface Props {
   size: number;
@@ -20,7 +20,7 @@ function Pagination({
         className="sm:flex hidden hover:rounded-lg hover:bg-third px-4 py-2 hover:shadow-lg font-bold"
         onClick={handleChangeDown}
       >
-        <ChevronLeft />
+        <ChevronLeftIcon />
       </button>
       <button
         type="button"
@@ -44,7 +44,7 @@ function Pagination({
         className="hidden sm:flex hover:rounded-lg hover:bg-third px-4 py-2 hover:shadow-lg font-bold"
         onClick={handleChangeUp}
       >
-        <ChevronRight />
+        <ChevronRightIcon />
       </button>
     </div>
   );

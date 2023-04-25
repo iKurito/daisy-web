@@ -1,4 +1,4 @@
-function ChevronRight() {
+function ChevronRightIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -17,4 +17,4 @@ function ChevronRight() {
   );
 }
 
-export default ChevronRight;
+export default ChevronRightIcon;

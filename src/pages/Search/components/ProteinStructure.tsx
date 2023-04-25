@@ -1,4 +1,5 @@
-import { MiniDownloadIcon } from '../../../icons';
+import { Dropdown } from '../../../components';
+import { downloadChainOptions } from '../../../data';
 import { useSearchContext } from '../context/search.context';
 
 function ProteinStructure() {
@@ -16,16 +17,7 @@ function ProteinStructure() {
               Completed
             </span>
           </h4>
-          <button
-            type="button"
-            className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
-            onClick={() => {}}
-          >
-            <div className="text-fourth">
-              <MiniDownloadIcon />
-            </div>
-            <span>Download</span>
-          </button>
+          <Dropdown items={downloadChainOptions} />
         </div>
         <div className="flex flex-col-reverse lg:flex-row gap-5">
           <div className="space-y-2 flex-1">

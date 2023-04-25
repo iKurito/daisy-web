@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { MiniDownloadIcon } from '../../../icons';
 import { Chain, Region } from '../../../models';
 import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
+import { Dropdown } from '../../../components';
+import { downloadChainOptions } from '../../../data';
 
 interface Props {
   currentChain: Chain;
@@ -54,16 +55,7 @@ function Regions({ currentChain }: Props) {
                 handleChangeUp={handleChangeUpRegion}
               />
               <div className="flex justify-end w-full">
-                <button
-                  type="button"
-                  className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
-                  onClick={() => {}}
-                >
-                  <div className="text-fourth">
-                    <MiniDownloadIcon />
-                  </div>
-                  <span>Download</span>
-                </button>
+                <Dropdown items={downloadChainOptions} />
               </div>
             </div>
           </div>
@@ -83,60 +75,18 @@ function Regions({ currentChain }: Props) {
                 </span>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center sm:text-right gap-2">
-              <span className="text-[18px] sm:text-[20px] text-third inline-flex items-center justify-center font-bold gap-2 underline">
-                Structural similarity matrix:
-                <MiniDownloadIcon />
-              </span>
-              <span className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center font-bold gap-2 underline">
-                Structural similarity summary
-                <MiniDownloadIcon />
-              </span>
-            </div>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <div className="space-y-2">
-              <div className="flex flex-col justify-start items-start">
-                <p className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center font-bold gap-2 underline">
-                  <MiniDownloadIcon />
-                  Units PDBs files
-                </p>
-                <p className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center font-bold gap-2 underline">
-                  <MiniDownloadIcon />
-                  Aligned units PDB file
-                </p>
-              </div>
-              <div
-                id="myViewer"
-                className="w-auto h-[300px] sm:h-[400px] relative z-[100]"
-              >
-                <pdbe-molstar
-                  id="pdbeMolstarComponent"
-                  molecule-id="2nnu"
-                  hide-controls="false"
-                />
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <span className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center font-bold gap-2 underline">
-                  <MiniDownloadIcon />
-                  Aligned units Fasta file
-                </span>
-                <div className="overflow-x-auto">
-                  <div id="psv1" />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <span className="text-[15px] sm:text-[18px] text-fourth inline-flex items-center justify-center font-bold gap-2 underline">
-                  <MiniDownloadIcon />
-                  Aligned units DSSP file
-                </span>
-                <div className="overflow-x-auto">
-                  <div id="psv2" />
-                </div>
-              </div>
-            </div>
+          <div
+            id="regionViewer"
+            className="w-auto h-[300px] sm:h-[400px] relative z-[99]"
+          >
+            <pdbe-molstar
+              id="pdbeMolstarComponent"
+              custom-data-url="https://www.ebi.ac.uk/pdbe/model-server/v1/1cbs/full"
+              custom-data-format="cif"
+              // molecule-id="https://files.rcsb.org/download/4nnu.pdb"
+              hide-controls="false"
+            />
           </div>
           <AlignedUnits />
         </div>

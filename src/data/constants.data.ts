@@ -1,3 +1,5 @@
+import { DownloadOptions } from '../models';
+
 export const predictionsHeader = [
   'III_1',
   'III_2',
@@ -20,4 +22,22 @@ export const predictionsHeader = [
   'V_3',
   'V_4',
   'V_5',
+];
+
+export const downloadChainOptions: DownloadOptions[] = [
+  {
+    id: 0,
+    name: 'PDB Chain file',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+  },
+  {
+    id: 1,
+    name: 'Identified unit DB file',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+  },
+  {
+    id: 2,
+    name: 'Mapping file',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+  },
 ];
