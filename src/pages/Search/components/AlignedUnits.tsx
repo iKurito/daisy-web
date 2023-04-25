@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from 'react';
 import { msaBuilder } from '../functions';
 
@@ -13,7 +12,7 @@ function AlignedUnits({ baseUrl }: Props) {
   useEffect(() => {
     msaBuilder(fastaRef, `${baseUrl}/afasta`);
     msaBuilder(dsspRef, `${baseUrl}/dssp`);
-  }, []);
+  }, [baseUrl]);
 
   return (
     <div className="space-y-4 mt-4">

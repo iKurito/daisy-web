@@ -52,11 +52,6 @@ function ProteinStructure() {
             <h4 className="text-[18px] sm:text-[20px] font-semibold">
               Requested protein structure:
             </h4>
-            {/* <iframe
-              title="protein-structure"
-              src="https://s3.us-east-1.amazonaws.com/codnas.inf.pucp.edu.pe/releases/2021-03/NEWS.md"
-              className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto"
-            /> */}
             <textarea
               id="text-area-file"
               className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"

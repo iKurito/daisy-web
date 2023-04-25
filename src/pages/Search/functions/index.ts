@@ -60,6 +60,7 @@ export function msaBuilder(
   const m = new msa(opts);
   m.render();
   m.u.file.importURL(url);
+  m.render();
 }
 
 export function readFile() {

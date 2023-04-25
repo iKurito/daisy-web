@@ -10,6 +10,7 @@ import { Dropdown } from '../../../components';
 function RepeatedUnits() {
   const { response } = useSearchContext();
   const { chains } = response.proteinResult;
+
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
 
   const [currentChain, setCurrentChain] = useState(chainsWithRegions[0]);
@@ -17,7 +18,7 @@ function RepeatedUnits() {
   const [currentChainIndex, setCurrentChainIndex] = useState(1);
 
   const handleChangeUp = () => {
-    if (currentChainIndex < chains.length) {
+    if (currentChainIndex < chainsWithRegions.length) {
       setCurrentChain(chains[currentChainIndex]);
       setCurrentChainIndex(currentChainIndex + 1);
     }
@@ -25,7 +26,7 @@ function RepeatedUnits() {
 
   const handleChangeDown = () => {
     if (currentChainIndex > 1) {
-      setCurrentChain(chains[currentChainIndex - 2]);
+      setCurrentChain(chainsWithRegions[currentChainIndex - 2]);
       setCurrentChainIndex(currentChainIndex - 1);
     }
   };
