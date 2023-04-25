@@ -6,7 +6,6 @@ import { curationProcessForm } from '../../schemas';
 import { DaisyRequest } from '../../models';
 import useSearch from '../../hooks/useSearch.hook';
 import { clearDaisy } from '../../redux/states/daisy.state';
-import { getEnvEnvariables } from '../../utilities';
 
 function HomePage() {
   const { loading, requestResponse } = useSearch();
@@ -30,10 +29,7 @@ function HomePage() {
 
   const dispatch = useDispatch();
 
-  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
-
   useEffect(() => {
-    console.log('VITE_DAISY_SERVICE_URL', VITE_DAISY_SERVICE_URL);
     dispatch(clearDaisy());
   }, []);
 
@@ -64,8 +60,6 @@ function HomePage() {
                     htmlFor="pdbUnitprot"
                     className="text-[18px] xs:text-[20px] sm:text-[25px] text-black tracking-tight font-semibold"
                   >
-                    {/* Protein structure, sequence or PDB ID{' '}
-                  <span className="text-fourth">*</span> */}
                     PDB ID or UnitProt
                   </label>
                   <input
@@ -102,36 +96,9 @@ function HomePage() {
                     </span>
                   )}
                 </div>
-                {/* <textarea className="w-full border rounded-lg h-40 border-gray-300 outline-none px-3 py-2 resize-none focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth" /> */}
-                {/* <div className="flex flex-col xs:flex-row xs:inline-flex xs:items-center gap-1">
-                  <span className="text-[15px] sm:text-[20px] text-black tracking-tight">
-                    or
-                  </span>
-                  <button
-                    className="text-[15px] sm:text-[20px] tracking-tight inline-flex items-center gap-1 text-fourth font-bold"
-                    type="button"
-                  >
-                    <MiniUploadIcon /> upload a fasta, pdb or text file
-                  </button>
-                </div> */}
+
                 <div className="flex flex-col gap-4 sm:flex-row justify-between">
-                  <div className="flex flex-col">
-                    {/* <span className="text-[12px] sm:text-[15px] font-bold">
-                      Do you want to try Daisy?
-                    </span>
-                    <span className="text-[12px] sm:text-[15px]">
-                      Try using{' '}
-                      <span className="text-fourth underline">
-                        this repeat protein <strong>sequence</strong>
-                      </span>
-                    </span>
-                    <span className="text-[12px] sm:text-[15px]">
-                      Try using{' '}
-                      <span className="text-fourth underline">
-                        this repeat protein <strong>structure</strong>
-                      </span>
-                    </span> */}
-                  </div>
+                  <div className="flex flex-col" />
                   <div className="items-start">
                     <button
                       type="submit"

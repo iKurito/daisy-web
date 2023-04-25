@@ -39,11 +39,7 @@ const useSearch = () => {
       );
       return true;
     }
-    // dispatch(setDaisyResponse(result.data));
     navigate(`/${PublicRoutes.SEARCH}?processID=${result.data.requestID}`);
-    // SnackBarUtilities.success(
-    //   'You have been redirected to the search page, you can see the results there'
-    // );
     return true;
   };
 

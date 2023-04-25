@@ -1,8 +1,7 @@
 import { NavLink } from '../models';
 import { PublicRoutes } from './routes.data';
 import HomeIcon from '../icons/home.icon';
-import { AboutIcon, SearchIcon } from '../icons';
-import HelpIcon from '../icons/help.icon';
+import { SearchIcon } from '../icons';
 
 export const navLinks: NavLink[] = [
   {
@@ -15,14 +14,14 @@ export const navLinks: NavLink[] = [
     route: PublicRoutes.SEARCH,
     icon: <SearchIcon />,
   },
-  {
-    label: 'Help',
-    route: PublicRoutes.HELP,
-    icon: <HelpIcon />,
-  },
-  {
-    label: 'About',
-    route: PublicRoutes.ABOUT,
-    icon: <AboutIcon />,
-  },
+  // {
+  //   label: 'Help',
+  //   route: PublicRoutes.HELP,
+  //   icon: <HelpIcon />,
+  // },
+  // {
+  //   label: 'About',
+  //   route: PublicRoutes.ABOUT,
+  //   icon: <AboutIcon />,
+  // },
 ];
