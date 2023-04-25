@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Chain, Region } from '../../../models';
 import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
@@ -13,6 +13,8 @@ interface Props {
 
 function Regions({ currentChain }: Props) {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
+
+  const [loading, setLoading] = useState(true);
 
   const { response } = useSearchContext();
   const { id, type } = response.proteinResult;
@@ -44,6 +46,13 @@ function Regions({ currentChain }: Props) {
     }
   };
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [baseUrl]);
+
   return (
     <div>
       {currentChain.isRepeat && currentChain.regions && (
@@ -68,35 +77,43 @@ function Regions({ currentChain }: Props) {
               </div>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-between">
-            <div className="flex flex-col xs:flex-row w-auto xs:w-[400px] items-center justify-center">
-              <img
-                src={`http://old.protein.bio.unipd.it/repeatsdb-lite/img/class/${currentRegion.repeatClass}.${currentRegion.repeatSubclass}.big.png`}
-                alt="protein"
-                className="w-48"
-              />
-              <div className="flex items-center justify-center text-gray-900 font-bold gap-2">
-                <span className="text-[20px] sm:text-[25px]">
-                  Classification:
-                </span>
-                <span className="text-[60px] text-fourth">
-                  {currentRegion.repeatClass}.{currentRegion.repeatSubclass}
-                </span>
-              </div>
+          {loading ? (
+            <div className="flex items-center justify-center w-full py-10">
+              <div className="custom-loader" />
             </div>
-          </div>
-          <div
-            id="regionViewer"
-            className="w-auto h-[300px] sm:h-[400px] relative z-[99]"
-          >
-            <pdbe-molstar
-              id="pdbeMolstarComponent"
-              custom-data-url={`${baseUrl}/pdb`}
-              custom-data-format="pdb"
-              hide-controls="false"
-            />
-          </div>
-          <AlignedUnits baseUrl={baseUrl} />
+          ) : (
+            <>
+              <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-between">
+                <div className="flex flex-col xs:flex-row w-auto xs:w-[400px] items-center justify-center">
+                  <img
+                    src={`http://old.protein.bio.unipd.it/repeatsdb-lite/img/class/${currentRegion.repeatClass}.${currentRegion.repeatSubclass}.big.png`}
+                    alt="protein"
+                    className="w-48"
+                  />
+                  <div className="flex items-center justify-center text-gray-900 font-bold gap-2">
+                    <span className="text-[20px] sm:text-[25px]">
+                      Classification:
+                    </span>
+                    <span className="text-[60px] text-fourth">
+                      {currentRegion.repeatClass}.{currentRegion.repeatSubclass}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="regionViewer"
+                className="w-auto h-[300px] sm:h-[400px] relative z-[99]"
+              >
+                <pdbe-molstar
+                  id="pdbeMolstarComponent"
+                  custom-data-url={`${baseUrl}/pdb`}
+                  custom-data-format="pdb"
+                  hide-controls="false"
+                />
+              </div>
+              <AlignedUnits baseUrl={baseUrl} />
+            </>
+          )}
         </div>
       )}
     </div>
