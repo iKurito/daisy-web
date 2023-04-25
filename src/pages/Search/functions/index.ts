@@ -59,8 +59,7 @@ export function alphaBuilder(
   const viewerInstance = new PDBeMolstarPlugin();
   const options = {
     customData: {
-      // url: '/assets/test/AF-O95905-F1-model_v4.cif',
-      url: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
+      url: `https://alphafold.ebi.ac.uk/files/AF-${id}-F1-model_v4.cif`,
       format: 'cif',
     },
     alphafoldView: true,
@@ -139,11 +138,7 @@ export function readFile() {
   //     console.log('Error');
   //   }
   // };
-  xhr.open(
-    'GET',
-    'https://s3.us-east-1.amazonaws.com/codnas.inf.pucp.edu.pe/releases/2021-03/NEWS.md',
-    true
-  );
+  xhr.open('GET', 'https://files.rcsb.org/download/4uug.pdb', true);
   xhr.onreadystatechange = function l() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {

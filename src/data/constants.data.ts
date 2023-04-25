@@ -87,6 +87,6 @@ export const downloadAlphaFoldStructureOptions: DownloadOptions[] = [
   {
     id: 0,
     name: 'Download Alphafold',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-UNIPROT-F1-model_v4.cif',
   },
 ];

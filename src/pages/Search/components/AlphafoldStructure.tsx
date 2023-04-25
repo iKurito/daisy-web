@@ -10,6 +10,13 @@ function AlphafoldStructure() {
 
   const alphaFoldContainer = useRef(null);
 
+  const options = downloadAlphaFoldStructureOptions.map((option) => {
+    return {
+      ...option,
+      href: option.href.replace('UNIPROT', id),
+    };
+  });
+
   useEffect(() => {
     alphaBuilder(id, alphaFoldContainer);
   }, [id]);
@@ -24,7 +31,7 @@ function AlphafoldStructure() {
               Completed
             </span>
           </h4>
-          <Dropdown items={downloadAlphaFoldStructureOptions} />
+          <Dropdown items={options} />
         </div>
         <h5 className="text-[15px] sm:text-[18px] font-semibold">3D Viewer</h5>
         <div className="w-auto h-[300px] sm:h-[400px] z-[120] relative mt-[100px]">

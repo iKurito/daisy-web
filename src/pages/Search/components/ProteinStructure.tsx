@@ -9,6 +9,13 @@ function ProteinStructure() {
 
   const { id } = response.proteinResult;
 
+  const options = downloadPdbStructureOptions.map((option) => {
+    return {
+      ...option,
+      href: `${option.href}${id}.pdb`,
+    };
+  });
+
   useEffect(() => {
     readFile();
   }, []);
@@ -23,7 +30,7 @@ function ProteinStructure() {
               Completed
             </span>
           </h4>
-          <Dropdown items={downloadPdbStructureOptions} />
+          <Dropdown items={options} />
         </div>
         <div className="flex flex-col-reverse lg:flex-row gap-5">
           <div className="space-y-2 flex-1">

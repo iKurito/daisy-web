@@ -8,7 +8,7 @@ export const retrieveResponseService = (
 ) => {
   const controller = loadAbort();
   return {
-    call: api.get(`/${processID}`, {
+    call: api.get(`/request/${processID}`, {
       signal: controller.signal,
     }),
     controller,
@@ -21,7 +21,7 @@ export const requestResponseService = (
 ) => {
   const controller = loadAbort();
   return {
-    call: api.post('/', data, {
+    call: api.post('/request', data, {
       signal: controller.signal,
     }),
     controller,
