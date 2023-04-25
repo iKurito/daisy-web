@@ -1,7 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FormikHelpers, useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { curationProcessForm } from '../../schemas';
 import { DaisyRequest } from '../../models';
 import useSearch from '../../hooks/useSearch.hook';
+import { clearDaisy } from '../../redux/states/daisy.state';
 
 function HomePage() {
   const { loading, requestResponse } = useSearch();
@@ -22,6 +26,12 @@ function HomePage() {
       }
     },
   });
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearDaisy());
+  }, []);
 
   return (
     <section className="bg-[#4b505b]">

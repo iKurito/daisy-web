@@ -2,9 +2,7 @@ import { useSearchContext } from '../context/search.context';
 import { tabs } from '../data';
 
 function ProcessResult() {
-  const { activeTab, handleSetTab } = useSearchContext();
-
-  const { response } = useSearchContext();
+  const { response, activeTab, handleSetTab } = useSearchContext();
 
   const size = Object.entries(response).length;
 

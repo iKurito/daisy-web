@@ -10,10 +10,10 @@ function RepeatClassification() {
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <div className="flex flex-col sm:flex-row">
-          <div className="w-full flex justify-end">
+          <div className="w-full flex justify-between">
             <h4 className="text-[18px] sm:text-[20px] font-bold">
               Processing Status:{' '}
-              <span className="text-third text-[20px] sm:text-[25px]">
+              <span className="text-fourth text-[20px] sm:text-[25px]">
                 Completed
               </span>
             </h4>

@@ -8,8 +8,8 @@ function ProteinStructure() {
 
   return (
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
-      <div className="flex flex-col gap-1">
-        <div className="w-full flex items-center justify-between">
+      <div className="flex flex-col gap-2">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
           <h4 className="text-[18px] sm:text-[20px] font-bold">
             Processing Status:{' '}
             <span className="text-fourth text-[20px] sm:text-[25px]">
@@ -17,8 +17,9 @@ function ProteinStructure() {
             </span>
           </h4>
           <button
-            type="submit"
+            type="button"
             className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+            onClick={() => {}}
           >
             <div className="text-fourth">
               <MiniDownloadIcon />
@@ -33,7 +34,7 @@ function ProteinStructure() {
             </h5>
             <div
               id="myViewer"
-              className="w-auto lg:w-[500px] xl:w-[800px] h-[300px] sm:h-[500px] relative z-[100]"
+              className="w-auto lg:w-[600px] h-[300px] sm:h-[500px] relative z-[100]"
             >
               <pdbe-molstar
                 id="pdbeMolstarComponent"
@@ -46,10 +47,10 @@ function ProteinStructure() {
             <h4 className="text-[18px] sm:text-[20px] font-semibold">
               Requested protein structure:
             </h4>
-            <textarea
-              className="w-full border rounded-lg h-40 border-gray-400 outline-none px-3 py-2 resize-none focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth leading-5 bg-gray-300 text-[12px] sm:text-[15px]"
-              value=">tr|E5AT83|E5AT83_MYCRK Transposase OS=Mycetohabitans rhizoxinica (strain DSM 19002 / CIP 109453 / HKI 454) OX=882378 GN=RBRH_01347 PE=4 SV=1 MAGNSGGAQALKAVLEHGPTLRQRDLSLIDIVEIASNGRRPGVESIAMYACGMSMREIQG FLLERYGIEVSPNFISTVTDEVRAW"
-              disabled
+            <iframe
+              title="protein-structure"
+              src="/assets/script/AF-O95905-F1-model_v4.cif"
+              className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto"
             />
           </div>
         </div>

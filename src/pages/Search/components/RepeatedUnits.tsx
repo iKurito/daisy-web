@@ -2,7 +2,7 @@
 import ReactSequenceViewer from 'react-sequence-viewer';
 import { useEffect, useState } from 'react';
 import { msaBuilder } from '../functions/index';
-import { MiniDownloadIcon } from '../../../icons';
+import { ChevronLeft, ChevronRight, MiniDownloadIcon } from '../../../icons';
 import { useSearchContext } from '../context/search.context';
 import { Region } from '../../../models';
 
@@ -76,41 +76,69 @@ function RepeatedUnits() {
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
-        <div className="flex flex-col sm:flex-row">
-          <div className="w-full" />
-          <div className="w-full flex justify-end">
-            <h4 className="text-[18px] sm:text-[20px] font-bold">
-              Processing Status:{' '}
-              <span className="text-third text-[20px] sm:text-[25px]">
-                Completed
-              </span>
-            </h4>
-          </div>
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+          <h4 className="text-[18px] sm:text-[20px] font-bold">
+            Processing Status:{' '}
+            <span className="text-fourth text-[20px] sm:text-[25px]">
+              Completed
+            </span>
+          </h4>
         </div>
         <div className="flex flex-col gap-5">
-          <div className="space-x-2">
-            <button
-              type="button"
-              className="bg-red-500 p-4 rounded-lg text-white"
-              onClick={handleChangeDown}
-            >
-              Bajar
-            </button>
-            <span>
-              {currentChainIndex} of {chains.length}
-            </span>
-            <button
-              type="button"
-              className="bg-red-500 p-4 rounded-lg text-white"
-              onClick={handleChangeUp}
-            >
-              Subir
-            </button>
-          </div>
           <div className="space-y-2">
-            <h2 className="text-[20px] sm:text-[25px] font-bold">
-              Chain ID: <span className="text-fourth">A</span>
-            </h2>
+            <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+              <h4 className="text-[18px] sm:text-[20px] font-bold w-full">
+                Chain ID:{' '}
+                <span className="text-fourth text-[20px] sm:text-[25px]">
+                  {currentChain.name}
+                </span>
+              </h4>
+              <div className="flex items-center gap-2 w-full justify-center">
+                <button
+                  type="button"
+                  className="sm:flex hidden hover:rounded-lg hover:bg-third px-4 py-2 hover:shadow-lg font-bold"
+                  onClick={handleChangeDown}
+                >
+                  <ChevronLeft />
+                </button>
+                <button
+                  type="button"
+                  className="sm:hidden rounded-lg border border-gray-100 bg-gray-200 hover:bg-third px-4 py-2 hover:shadow-lg tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+                  onClick={handleChangeDown}
+                >
+                  Bajar
+                </button>
+                <p className="w-40 sm:w-auto flex items-center justify-center">
+                  {currentChainIndex} of {chains.length}
+                </p>
+                <button
+                  type="button"
+                  className="sm:hidden rounded-lg border border-gray-100 bg-gray-200 hover:bg-third px-4 py-2 hover:shadow-lg tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+                  onClick={handleChangeUp}
+                >
+                  Subir
+                </button>
+                <button
+                  type="button"
+                  className="hidden sm:flex hover:rounded-lg hover:bg-third px-4 py-2 hover:shadow-lg font-bold"
+                  onClick={handleChangeDown}
+                >
+                  <ChevronRight />
+                </button>
+              </div>
+              <div className="flex justify-end w-full">
+                <button
+                  type="button"
+                  className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+                  onClick={() => {}}
+                >
+                  <div className="text-fourth">
+                    <MiniDownloadIcon />
+                  </div>
+                  <span>Download</span>
+                </button>
+              </div>
+            </div>
             <div className="flex flex-col md:flex-row items-center overflow-x-auto gap-10">
               <div>
                 <div className="flex flex-col gap-2">
@@ -153,20 +181,29 @@ function RepeatedUnits() {
           </div>
           {currentChain.isRepeat && currentChain.regions && (
             <>
-              <div className="flex flex-col sm:flex-row">
-                <h2 className="text-[20px] sm:text-[25px] font-bold flex w-full gap-2 items-center">
-                  <span>Region number:</span>
-                  <span className="text-fourth">
+              <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+                <h4 className="text-[18px] sm:text-[20px] font-bold">
+                  Region number:{' '}
+                  <span className="text-fourth text-[20px] sm:text-[25px]">
                     {currentRegion.repeatClass}.{currentRegion.repeatSubclass} -
                     {currentChainIndex}
                   </span>
-                </h2>
-                <div className="w-full flex justify-end" />
+                </h4>
+                <button
+                  type="button"
+                  className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+                  onClick={() => {}}
+                >
+                  <div className="text-fourth">
+                    <MiniDownloadIcon />
+                  </div>
+                  <span>Download</span>
+                </button>
               </div>
               <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-between">
                 <div className="flex flex-col xs:flex-row w-auto xs:w-[400px] items-center justify-center">
                   <img
-                    src="http://old.protein.bio.unipd.it/repeatsdb-lite/img/class/III.1.big.png"
+                    src={`http://old.protein.bio.unipd.it/repeatsdb-lite/img/class/${currentRegion.repeatClass}.${currentRegion.repeatSubclass}.big.png`}
                     alt="protein"
                     className="w-48"
                   />
