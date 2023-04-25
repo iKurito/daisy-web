@@ -17,7 +17,7 @@ interface ProteinResult {
   type: string;
 }
 
-interface Chain {
+export interface Chain {
   classPrediction: { [key: string]: number };
   isRepeat: boolean;
   name: string;

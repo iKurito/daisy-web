@@ -76,10 +76,10 @@ export function alphaBuilder(
   viewerInstance.render(viewerContainer, options);
 }
 
-export function msaBuilder() {
+export function msaBuilder(reference: React.MutableRefObject<null>) {
   const opts = {} as any;
 
-  opts.el = document.getElementById('yourDiv');
+  opts.el = reference.current;
   opts.vis = {
     conserv: false,
     overviewbox: false,
