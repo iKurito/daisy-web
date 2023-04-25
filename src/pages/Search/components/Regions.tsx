@@ -3,7 +3,7 @@ import { Chain, Region } from '../../../models';
 import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
 import { Dropdown } from '../../../components';
-import { downloadChainOptions, downloadRegionOptions } from '../../../data';
+import { downloadRegionOptions } from '../../../data';
 
 interface Props {
   currentChain: Chain;
