@@ -1,5 +1,5 @@
 import { Dropdown } from '../../../components';
-import { downloadChainOptions } from '../../../data';
+import { downloadPdbStructureOptions } from '../../../data';
 import { useSearchContext } from '../context/search.context';
 
 function ProteinStructure() {
@@ -17,7 +17,7 @@ function ProteinStructure() {
               Completed
             </span>
           </h4>
-          <Dropdown items={downloadChainOptions} />
+          <Dropdown items={downloadPdbStructureOptions} />
         </div>
         <div className="flex flex-col-reverse lg:flex-row gap-5">
           <div className="space-y-2 flex-1">

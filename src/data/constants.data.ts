@@ -41,3 +41,52 @@ export const downloadChainOptions: DownloadOptions[] = [
     href: 'https://alphafold.ebi.ac.uk/files/AF-Q5VSL9-F1-model_v4.cif',
   },
 ];
+
+export const downloadRegionOptions: DownloadOptions[] = [
+  {
+    id: 0,
+    name: 'Unit PDBs files',
+    href: '',
+  },
+  {
+    id: 1,
+    name: 'Aligned units PDB file',
+    href: '',
+  },
+  {
+    id: 2,
+    name: 'Structural similarity matrix',
+    href: '',
+  },
+  {
+    id: 3,
+    name: 'Structural similarity summary',
+    href: '',
+  },
+  {
+    id: 4,
+    name: 'Aligned units Fasta File',
+    href: '',
+  },
+  {
+    id: 5,
+    name: 'Aligned units DSSP File',
+    href: '',
+  },
+];
+
+export const downloadPdbStructureOptions: DownloadOptions[] = [
+  {
+    id: 0,
+    name: 'Download PDB',
+    href: 'https://files.rcsb.org/download/',
+  },
+];
+
+export const downloadAlphaFoldStructureOptions: DownloadOptions[] = [
+  {
+    id: 0,
+    name: 'Download Alphafold',
+    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
+  },
+];

@@ -3,7 +3,7 @@ import { Chain, Region } from '../../../models';
 import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
 import { Dropdown } from '../../../components';
-import { downloadChainOptions } from '../../../data';
+import { downloadChainOptions, downloadRegionOptions } from '../../../data';
 
 interface Props {
   currentChain: Chain;
@@ -55,7 +55,7 @@ function Regions({ currentChain }: Props) {
                 handleChangeUp={handleChangeUpRegion}
               />
               <div className="flex justify-end w-full">
-                <Dropdown items={downloadChainOptions} />
+                <Dropdown items={downloadRegionOptions} />
               </div>
             </div>
           </div>
