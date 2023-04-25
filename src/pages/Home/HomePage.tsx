@@ -8,7 +8,6 @@ import useSearch from '../../hooks/useSearch.hook';
 import { clearDaisy } from '../../redux/states/daisy.state';
 import { getEnvEnvariables } from '../../utilities';
 
-
 function HomePage() {
   const { loading, requestResponse } = useSearch();
 
