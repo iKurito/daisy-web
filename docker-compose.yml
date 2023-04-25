@@ -6,10 +6,10 @@ services:
       context: ./
       dockerfile: Dockerfile
       args:
-        VITE_DAISY_SERVICE_URL: http://127.0.0.1:3000
+        VITE_DAISY_SERVICE_URL: http://ec2-34-227-228-41.compute-1.amazonaws.com
     image: rtunque/daisy:web-1.0.0
     environment:
-      VITE_DAISY_SERVICE_URL: http://127.0.0.0:8080/
+      DAISY_SERVICE_URL: http://127.0.0.0:8080/
     ports:
       - "80:80"
     restart: always

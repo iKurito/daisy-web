@@ -4,9 +4,9 @@
 export DNS_SERVER=$(cat /etc/resolv.conf |grep -i '^nameserver'|head -n1|cut -d ' ' -f2)
 echo "Using DNS_SERVER=${DNS_SERVER}"
 
-echo "Using VITE_DAISY_SERVICE_URL=${VITE_DAISY_SERVICE_URL}"
+echo "Using DAISY_SERVICE_URL=${DAISY_SERVICE_URL}"
 
-envsubst '${DNS_SERVER} ${VITE_DAISY_SERVICE_URL}' < /default.conf.template > /etc/nginx/conf.d/default.conf
+envsubst '${DNS_SERVER} ${DAISY_SERVICE_URL}' < /default.conf.template > /etc/nginx/conf.d/default.conf
 
 echo ">>> Final Configuration being used: "
 cat /etc/nginx/conf.d/default.conf

@@ -59,7 +59,7 @@ function ProteinStructure() {
             /> */}
             <textarea
               id="text-area-file"
-              className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto"
+              className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"
             />
           </div>
         </div>

@@ -8,7 +8,7 @@ server {
         resolver ${DNS_SERVER};
         resolver_timeout 1s;
         access_log  /var/log/nginx/host.access.log  main;
-        proxy_pass  ${VITE_DAISY_SERVICE_URL}$1;
+        proxy_pass  ${DAISY_SERVICE_URL}$1;
     }
 
 
