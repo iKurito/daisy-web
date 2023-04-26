@@ -10,22 +10,23 @@ import { clearDaisy } from '../../redux/states/daisy.state';
 function HomePage() {
   const { loading, requestResponse } = useSearch();
 
-  const { values, touched, errors, handleChange, handleSubmit } = useFormik({
-    initialValues: {
-      proteinID: '',
-      email: '',
-    },
-    validationSchema: curationProcessForm,
-    onSubmit: async (
-      data: DaisyRequest,
-      actions: FormikHelpers<DaisyRequest>
-    ) => {
-      const wasSuccessful = await requestResponse(data);
-      if (wasSuccessful) {
-        actions.resetForm();
-      }
-    },
-  });
+  const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
+    useFormik({
+      initialValues: {
+        proteinID: '',
+        email: '',
+      },
+      validationSchema: curationProcessForm,
+      onSubmit: async (
+        data: DaisyRequest,
+        actions: FormikHelpers<DaisyRequest>
+      ) => {
+        const wasSuccessful = await requestResponse(data);
+        if (wasSuccessful) {
+          actions.resetForm();
+        }
+      },
+    });
 
   const dispatch = useDispatch();
 
@@ -75,6 +76,23 @@ function HomePage() {
                       {errors.proteinID}
                     </span>
                   )}
+                </div>
+                <div className="flex gap-2">
+                  <em className="text-xs sm:text-sm font-bold">Examples: </em>
+                  <button
+                    type="button"
+                    className="text-xs sm:text-sm underline text-blue-500 font-bold cursor-pointer"
+                    onClick={() => setFieldValue('proteinID', '4GG4')}
+                  >
+                    <em>4GG4 (PDB ID)</em>
+                  </button>
+                  <button
+                    type="button"
+                    className="text-xs sm:text-sm underline text-blue-500 font-bold"
+                    onClick={() => setFieldValue('proteinID', 'A0A026W182')}
+                  >
+                    <em>A0A026W182 (UniProt ID)</em>
+                  </button>
                 </div>
                 <div className="flex flex-col space-y-1">
                   <label

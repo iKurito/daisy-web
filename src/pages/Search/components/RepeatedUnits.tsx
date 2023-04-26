@@ -85,7 +85,7 @@ function RepeatedUnits() {
             </div>
             <Chains baseUrl={baseUrl} />
           </div>
-          <hr className="text-primary bg-gray-900 border-2 border-gay-900" />
+          <hr />
           <Regions currentChain={currentChain} />
         </div>
       </div>
