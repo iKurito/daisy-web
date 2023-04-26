@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { msaBuilder } from '../functions';
 
 interface Props {
@@ -16,15 +17,26 @@ function AlignedUnits({ baseUrl }: Props) {
 
   return (
     <div className="space-y-4 mt-4">
-      <h1 className="text-[18px] sm:text-[20px] font-bold text-center">
+      <h2 className="text-[18px] sm:text-[20px] text-center">
+        If you are not able to visualice the following outputs, please request a
+        CORS demo{' '}
+        <Link
+          to="https://cors-anywhere.herokuapp.com/"
+          className="underline text-blue-600"
+          target="_blank"
+        >
+          here
+        </Link>
+      </h2>
+      <h2 className="text-[18px] sm:text-[20px] font-bold text-center">
         Sequence viewer (aligned units)
-      </h1>
+      </h2>
       <div className="overflow-x-auto flex items-center lg:justify-center">
         <div ref={fastaRef} />
       </div>
-      <h1 className="text-[18px] sm:text-[20px] font-bold text-center">
+      <h2 className="text-[18px] sm:text-[20px] font-bold text-center">
         Secondary structure viewer (DSSP, aligned units)
-      </h1>
+      </h2>
       <div className="overflow-x-auto flex items-center lg:justify-center">
         <div ref={dsspRef} />
       </div>
