@@ -1,4 +1,4 @@
-import { DownloadOptions } from '../models';
+import { DownloadOptions, SubjectManager } from '../models';
 
 export const predictionsHeader = [
   'III_1',
@@ -85,3 +85,5 @@ export const downloadAlphaFoldStructureOptions: DownloadOptions[] = [
     href: 'https://alphafold.ebi.ac.uk/files/AF-UNIPROT-F1-model_v4.cif',
   },
 ];
+
+export const openDialogSubject$ = new SubjectManager<boolean>();
