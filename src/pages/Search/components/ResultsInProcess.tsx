@@ -6,7 +6,8 @@ function ResultsInProcess() {
           The results are still processing
         </h2>
         <p className="text-[15px] sm:text-[18px]">
-          Your request is not ready yet, please save the current url to retrieve your results at any time.
+          Your request is not ready yet, please save the current url to retrieve
+          your results at any time.
         </p>
         <div className="flex items-center justify-center">
           <img

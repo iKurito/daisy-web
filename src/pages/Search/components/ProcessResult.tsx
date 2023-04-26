@@ -13,7 +13,9 @@ function ProcessResult() {
   const items =
     size === 0 || !response.isReady
       ? []
-      : response.proteinResult.type === 'ERROR' ? [] : response.proteinResult.isRepeat
+      : response.proteinResult.type === 'ERROR'
+      ? []
+      : response.proteinResult.isRepeat
       ? tabs
       : tabs.filter((tab) => tab.id !== 2);
 

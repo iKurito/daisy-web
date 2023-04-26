@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { PublicRoutes, openDialogSubject$ } from '../../../data';
 import { useModal } from '../../../hooks';
 import { XIcon } from '../../../icons';
 import { DaisyStore } from '../../../redux/store';
 import { clearDaisy } from '../../../redux/states/daisy.state';
-import { useNavigate } from 'react-router-dom';
 
 export function RequestModal() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export function RequestModal() {
     dispatch(clearDaisy());
     navigate(`/${PublicRoutes.SEARCH}?processID=${id}`);
     openDialogSubject$.setSubject = false;
-  }
+  };
 
   if (open) {
     return (
