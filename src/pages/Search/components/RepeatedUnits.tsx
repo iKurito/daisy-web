@@ -67,12 +67,12 @@ function RepeatedUnits() {
         <div className="flex flex-col gap-5">
           <div className="space-y-2">
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-              <h4 className="text-[18px] sm:text-[20px] font-bold w-full">
+              <h2 className="text-[18px] xs:text-[20px] sm:text-[25px] font-bold w-full">
                 Chain ID:{' '}
                 <span className="text-fourth text-[20px] sm:text-[25px]">
                   {currentChain?.name}
                 </span>
-              </h4>
+              </h2>
               <Pagination
                 size={chainsWithRegions.length}
                 currentIndex={currentChainIndex}

@@ -66,13 +66,13 @@ function Regions({ currentChain }: Props) {
         <div>
           <div className="space-y-2">
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-              <h4 className="text-[18px] sm:text-[20px] font-bold w-full">
+              <h2 className="text-[18px] xs:text-[20px] sm:text-[25px] font-bold w-full">
                 Region number:{' '}
                 <span className="text-fourth text-[20px] sm:text-[25px]">
                   {currentRegion.repeatClass}.{currentRegion.repeatSubclass} -
                   {currentRegion.classRegionNumber}
                 </span>
-              </h4>
+              </h2>
               <Pagination
                 size={currentChain?.regions.length}
                 currentIndex={currentRegionIndex}
