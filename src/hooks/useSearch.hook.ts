@@ -6,7 +6,7 @@ import useFetchAndLoad from './useFecthAndLoad.hook';
 import { daisyApi } from '../api';
 import { DaisyRequest } from '../models';
 import { setDaisyResponse } from '../redux/states/daisy.state';
-import { PublicRoutes } from '../data';
+import { PublicRoutes, openDialogSubject$ } from '../data';
 
 const useSearch = () => {
   const navigate = useNavigate();
@@ -35,9 +35,8 @@ const useSearch = () => {
       return false;
     }
     if (!result.data.isReady) {
-      SnackBarUtilities.success(
-        'Your request was received correctly, we will send you an email when it is ready'
-      );
+      dispatch(setDaisyResponse(result.data));
+      openDialogSubject$.setSubject = true;
       return true;
     }
     navigate(`/${PublicRoutes.SEARCH}?processID=${result.data.requestID}`);
