@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route } from 'react-router-dom';
-import { Layout, Loading, RoutesWithNotFound } from './components';
+import { Loading, RoutesWithNotFound } from './components';
 import { PublicRoutes } from './data';
 import store from './redux/store';
 import 'react-toastify/dist/ReactToastify.css';
@@ -29,16 +29,14 @@ function App() {
         <Provider store={store}>
           <BrowserRouter>
             <RoutesWithNotFound>
-              <Route element={<Layout />}>
-                <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
-                <Route path={PublicRoutes.HOME} element={<HomePage />} />
-                <Route
-                  path={`${PublicRoutes.SEARCH}/*`}
-                  element={<SearchPage />}
-                />
-                <Route path={PublicRoutes.HELP} element={<HelpPage />} />
-                <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />
-              </Route>
+              <Route path="/" element={<Navigate to={PublicRoutes.HOME} />} />
+              <Route path={PublicRoutes.HOME} element={<HomePage />} />
+              <Route
+                path={`${PublicRoutes.SEARCH}/*`}
+                element={<SearchPage />}
+              />
+              <Route path={PublicRoutes.HELP} element={<HelpPage />} />
+              <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />
             </RoutesWithNotFound>
           </BrowserRouter>
         </Provider>
