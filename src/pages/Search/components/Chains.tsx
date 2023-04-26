@@ -1,20 +1,8 @@
-import { Chain } from '../../../models';
-import { getEnvEnvariables } from '../../../utilities';
-import { useSearchContext } from '../context/search.context';
-
 interface Props {
-  currentChain: Chain;
+  baseUrl: string;
 }
 
-function Chains({ currentChain }: Props) {
-  const { response } = useSearchContext();
-  const { id, type } = response.proteinResult;
-  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
-
-  const { name, regions } = currentChain;
-
-  const { repeatClass, repeatSubclass } = regions![0];
-
+function Chains({ baseUrl }: Props) {
   return (
     <div
       id="chainViewer"
@@ -22,7 +10,7 @@ function Chains({ currentChain }: Props) {
     >
       <pdbe-molstar
         id="pdbeMolstarComponent"
-        custom-data-url={`${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${name}/${repeatClass}/${repeatSubclass}/pdb`}
+        custom-data-url={`${baseUrl}/pdb`}
         custom-data-format="pdb"
         hide-controls="false"
       />

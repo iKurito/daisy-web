@@ -28,6 +28,13 @@ function Regions({ currentChain }: Props) {
 
   const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
 
+  const options = downloadRegionOptions.map((option) => {
+    return {
+      ...option,
+      href: option.href.replace('BASE_URL', baseUrl),
+    };
+  });
+
   const handleChangeUpRegion = () => {
     if (currentChain.regions !== undefined) {
       if (currentRegionIndex < currentChain.regions.length) {
@@ -73,7 +80,7 @@ function Regions({ currentChain }: Props) {
                 handleChangeUp={handleChangeUpRegion}
               />
               <div className="flex justify-end w-full">
-                <Dropdown items={downloadRegionOptions} />
+                <Dropdown items={options} />
               </div>
             </div>
           </div>

@@ -28,17 +28,17 @@ export const downloadChainOptions: DownloadOptions[] = [
   {
     id: 0,
     name: 'PDB Chain file',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
+    href: 'BASE_URL/pdb',
   },
   {
     id: 1,
     name: 'Identified unit DB file',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
+    href: 'BASE_URL/db',
   },
   {
     id: 2,
     name: 'Mapping file',
-    href: 'https://alphafold.ebi.ac.uk/files/AF-MMCIF-F1-model_VERSION.cif',
+    href: 'BASE_URL/mapping',
   },
 ];
 
@@ -46,32 +46,27 @@ export const downloadRegionOptions: DownloadOptions[] = [
   {
     id: 0,
     name: 'Unit PDBs files',
-    href: '',
+    href: 'BASE_URL/units',
   },
   {
     id: 1,
     name: 'Aligned units PDB file',
-    href: '',
+    href: 'BASE_URL/pdb',
   },
   {
     id: 2,
     name: 'Structural similarity matrix',
-    href: '',
+    href: 'BASE_URL/matrix',
   },
   {
     id: 3,
-    name: 'Structural similarity summary',
-    href: '',
+    name: 'Aligned units Fasta File',
+    href: 'BASE_URL/afasta',
   },
   {
     id: 4,
-    name: 'Aligned units Fasta File',
-    href: '',
-  },
-  {
-    id: 5,
     name: 'Aligned units DSSP File',
-    href: '',
+    href: 'BASE_URL/dssp',
   },
 ];
 

@@ -6,8 +6,10 @@ import Chains from './Chains';
 import Regions from './Regions';
 import { downloadChainOptions } from '../../../data';
 import { Dropdown } from '../../../components';
+import { getEnvEnvariables } from '../../../utilities';
 
 function RepeatedUnits() {
+  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
   const { response } = useSearchContext();
   const { chains } = response.proteinResult;
 
@@ -30,6 +32,19 @@ function RepeatedUnits() {
       setCurrentChainIndex(currentChainIndex - 1);
     }
   };
+
+  const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${
+    response.proteinResult.id
+  }/${response.proteinResult.type}/${currentChain.name}/${
+    currentChain.regions![0].repeatClass
+  }/${currentChain.regions![0].repeatSubclass}`;
+
+  const options = downloadChainOptions.map((option) => {
+    return {
+      ...option,
+      href: option.href.replace('BASE_URL', baseUrl),
+    };
+  });
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
@@ -58,10 +73,10 @@ function RepeatedUnits() {
                 handleChangeUp={handleChangeUp}
               />
               <div className="flex justify-end w-full">
-                <Dropdown items={downloadChainOptions} />
+                <Dropdown items={options} />
               </div>
             </div>
-            <Chains currentChain={currentChain} />
+            <Chains baseUrl={baseUrl} />
           </div>
           <Regions currentChain={currentChain} />
         </div>
