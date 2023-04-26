@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { openDialogSubject$ } from '../../../data';
+import { PublicRoutes, openDialogSubject$ } from '../../../data';
 import { useModal } from '../../../hooks';
 import { XIcon } from '../../../icons';
 import { DaisyStore } from '../../../redux/store';
 import { clearDaisy } from '../../../redux/states/daisy.state';
+import { useNavigate } from 'react-router-dom';
 
 export function RequestModal() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { open } = useModal(openDialogSubject$);
 
@@ -17,6 +19,13 @@ export function RequestModal() {
     openDialogSubject$.setSubject = false;
   };
 
+  const handleClick = () => {
+    const id = requestID;
+    dispatch(clearDaisy());
+    navigate(`/${PublicRoutes.SEARCH}?processID=${id}`);
+    openDialogSubject$.setSubject = false;
+  }
+
   if (open) {
     return (
       <div className="p-4 md:p-8 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-[90] outline-none focus:outline-none transition-all duration-300">
@@ -27,7 +36,7 @@ export function RequestModal() {
             <div className="flex justify-end p-5 border-b border-solid border-slate-200 dark:border-dark-third rounded-t items-center">
               <button
                 type="button"
-                className="cursor-pointer dark:text-gray-100"
+                className="cursor-pointer dark:text-gray-500"
                 onClick={handleExit}
               >
                 <XIcon />
@@ -53,18 +62,11 @@ export function RequestModal() {
             <div className="border-t border-solid border-slate-200 dark:border-dark-third" />
             <div className="flex self-center sm:self-end items-center justify-end p-6 rounded-b">
               <button
-                className="text-sm md:text-base text-red-500 background-transparent font-bold px-6 py-2 outline-none focus:outline-none ease-linear transition-all duration-150"
-                type="button"
-                onClick={handleExit}
-              >
-                Cerrar
-              </button>
-              <button
                 className="text-sm md:text-base bg-third text-gray-500 active:bg-third font-bold px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
                 type="button"
-                onClick={handleExit}
+                onClick={handleClick}
               >
-                Aceptar
+                Ok
               </button>
             </div>
           </div>

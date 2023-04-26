@@ -23,7 +23,10 @@ function HomePage() {
         data: DaisyRequest,
         actions: FormikHelpers<DaisyRequest>
       ) => {
-        const wasSuccessful = await requestResponse(data);
+        const wasSuccessful = await requestResponse({
+          ...data,
+          proteinID: data.proteinID.toUpperCase(),
+        });
         if (wasSuccessful) {
           actions.resetForm();
         }

@@ -50,7 +50,7 @@ function AlphafoldStructure() {
             {info}
           </p>
         </div>
-        <div className="flex flex-col-reverse xl:flex-row gap-5">
+        <div className="flex flex-col xl:flex-row gap-5">
           <div className="space-y-2 flex-1">
             <h5 className="text-[15px] sm:text-[18px] font-semibold">Legend</h5>
             <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4">
@@ -86,7 +86,7 @@ function AlphafoldStructure() {
             <h5 className="text-[15px] sm:text-[18px] font-semibold">
               3D Viewer - {id} (UniProt ID)
             </h5>
-            <div className="w-auto xl:w-[600px] h-[300px] sm:h-[500px] relative z-[100]">
+            <div className="w-auto xl:w-[800px] h-[300px] sm:h-[500px] relative z-[100]">
               <div className="mt-[100px]" ref={alphaFoldContainer} />
             </div>
             <div className="flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-6 pt-2">
@@ -96,7 +96,7 @@ function AlphafoldStructure() {
               <img
                 src="assets/img/deep-mind_logo.webp"
                 className="w-60"
-                alt="trnet-lite"
+                alt="deep-mind"
               />
             </div>
           </div>
@@ -106,7 +106,8 @@ function AlphafoldStructure() {
             </h4>
             <textarea
               id="text-area-file"
-              className="w-full h-[300px] sm:h-[740px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"
+              className="w-full h-[300px] sm:h-[740px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm resize-none"
+              disabled
             />
           </div>
         </div>

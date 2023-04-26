@@ -44,7 +44,7 @@ function ProteinStructure() {
             {info}
           </p>
         </div>
-        <div className="flex flex-col-reverse lg:flex-row gap-5">
+        <div className="flex flex-col lg:flex-row gap-5">
           <div className="space-y-2 flex-1">
             <h5 className="text-[15px] sm:text-[18px] font-semibold">
               3D Viewer - {id} (PDB ID)
