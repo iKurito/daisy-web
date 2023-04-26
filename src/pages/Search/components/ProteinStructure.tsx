@@ -56,6 +56,16 @@ function ProteinStructure() {
                 hide-controls="false"
               />
             </div>
+            <div className="flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-6 pt-2">
+              <span className="text-[15px] sm:text-[18px] font-bold">
+                Powered by
+              </span>
+              <img
+                src="assets/img/rcsb-pdb_logo.webp"
+                className="w-60"
+                alt="trnet-lite"
+              />
+            </div>
           </div>
           <div className="space-y-2 w-full">
             <h4 className="text-[18px] sm:text-[20px] font-semibold">
@@ -63,7 +73,7 @@ function ProteinStructure() {
             </h4>
             <textarea
               id="text-area-file"
-              className="w-full h-[300px] sm:h-[500px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"
+              className="w-full h-[300px] sm:h-[580px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"
             />
           </div>
         </div>
