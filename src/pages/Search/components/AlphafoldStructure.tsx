@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from 'react';
 import { useSearchContext } from '../context/search.context';
 import { alphaBuilder, readFile } from '../functions';
@@ -21,7 +22,7 @@ function AlphafoldStructure() {
 
   useEffect(() => {
     alphaBuilder(id, alphaFoldContainer);
-  }, [id]);
+  }, []);
 
   useEffect(() => {
     readFile(url);
