@@ -4,7 +4,7 @@ import { useSearchContext } from '../context/search.context';
 function RepeatClassification() {
   const { response } = useSearchContext();
 
-  const { chains } = response.proteinResult;
+  const { chains, id, type } = response.proteinResult;
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
@@ -19,6 +19,9 @@ function RepeatClassification() {
             </h4>
           </div>
         </div>
+        <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
+          {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
+        </h2>
         <div className="flex items-center justify-start">
           <p className="text-[18px] sm:text-[20px] leading-5 text-center">
             Tandem repeat classes with a prediction probability higher than 50%

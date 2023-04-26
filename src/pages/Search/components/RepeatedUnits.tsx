@@ -11,7 +11,7 @@ import { getEnvEnvariables } from '../../../utilities';
 function RepeatedUnits() {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
   const { response } = useSearchContext();
-  const { chains } = response.proteinResult;
+  const { chains, id, type } = response.proteinResult;
 
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
 
@@ -66,6 +66,9 @@ function RepeatedUnits() {
             </span>
           </h4>
         </div>
+        <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
+          {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
+        </h2>
         <div className="flex items-center justify-start">
           <p className="text-[18px] sm:text-[20px] leading-5 text-left">
             The following tandem repeat protein chains have been identified by

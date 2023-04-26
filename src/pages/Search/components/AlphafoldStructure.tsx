@@ -7,7 +7,9 @@ import { downloadAlphaFoldStructureOptions } from '../../../data';
 
 function AlphafoldStructure() {
   const { response } = useSearchContext();
-  const { id } = response.proteinResult;
+  const { id, type, isRepeat } = response.proteinResult;
+
+  const info = `Tandem Repeats: ${isRepeat ? 'Identified' : 'Not identified'} `;
 
   const alphaFoldContainer = useRef(null);
 
@@ -39,6 +41,14 @@ function AlphafoldStructure() {
             </span>
           </h4>
           <Dropdown items={options} />
+        </div>
+        <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
+          {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
+        </h2>
+        <div className="flex items-center justify-start">
+          <p className="text-[18px] sm:text-[20px] leading-5 text-center">
+            {info}
+          </p>
         </div>
         <div className="flex flex-col-reverse xl:flex-row gap-5">
           <div className="space-y-2 flex-1">
