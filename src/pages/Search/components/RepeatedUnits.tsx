@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchContext } from '../context/search.context';
 import Pagination from './Pagination';
 import Chains from './Chains';
@@ -21,7 +21,7 @@ function RepeatedUnits() {
 
   const handleChangeUp = () => {
     if (currentChainIndex < chainsWithRegions.length) {
-      setCurrentChain(chains[currentChainIndex]);
+      setCurrentChain(chainsWithRegions[currentChainIndex]);
       setCurrentChainIndex(currentChainIndex + 1);
     }
   };
@@ -45,6 +45,15 @@ function RepeatedUnits() {
       href: option.href.replace('BASE_URL', baseUrl),
     };
   });
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [currentChainIndex]);
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
@@ -83,10 +92,18 @@ function RepeatedUnits() {
                 <Dropdown items={options} />
               </div>
             </div>
-            <Chains baseUrl={baseUrl} />
           </div>
-          <hr />
-          <Regions currentChain={currentChain} />
+          {loading ? (
+            <div className="flex items-center justify-center w-full py-10">
+              <div className="custom-loader" />
+            </div>
+          ) : (
+            <>
+              <Chains baseUrl={baseUrl} />
+              <hr />
+              <Regions currentChain={currentChain} />
+            </>
+          )}
         </div>
       </div>
     </section>
