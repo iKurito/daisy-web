@@ -1,10 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { PublicRoutes, navLinks } from '../../data';
 import { HamburgerIcon, XIcon } from '../../icons';
 
 export function Navbar() {
   const [toggle, setToggle] = useState<boolean>(false);
+
+  const location = useLocation();
 
   return (
     <nav className="sticky top-0 z-50 shadow-lg bg-primary">
@@ -17,7 +19,7 @@ export function Navbar() {
                 alt="Daisy"
                 className="h-12"
               />
-              <span className="text-gray-500 text-base sm:text-lg">Daisy</span>
+              <span className="text-gray-500 text-lg sm:text-4xl">Daisy</span>
             </Link>
           </li>
         </ul>
@@ -26,10 +28,14 @@ export function Navbar() {
             <li key={link.label}>
               <Link
                 to={link.route}
-                className="flex items-center gap-1 text-gray-500 hover:text-cyan-900"
+                className={`${
+                  location.pathname === `/${link.label.toLowerCase()}`
+                    ? 'text-cyan-900'
+                    : ''
+                } flex items-center gap-1 text-gray-500 hover:text-cyan-900`}
               >
                 {link.icon}
-                <span className="text-base sm:text-lg">{link.label}</span>
+                <span className="text-lg sm:text-4xl">{link.label}</span>
               </Link>
             </li>
           ))}

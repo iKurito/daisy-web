@@ -18,9 +18,9 @@ export function Footer() {
             Bioinformatica.org
           </span>
         </Link>
-        {/* <Link to="https://www.pucp.edu.pe" target="_blank">
+        <Link to="https://www.pucp.edu.pe" target="_blank">
           <img src="/assets/img/pucp_logo.webp" alt="PUCP" className="h-12" />
-        </Link> */}
+        </Link>
       </div>
     </footer>
   );
