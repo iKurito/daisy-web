@@ -7,7 +7,9 @@ import { readFile } from '../functions';
 function ProteinStructure() {
   const { response } = useSearchContext();
 
-  const { id } = response.proteinResult;
+  const { id, isRepeat } = response.proteinResult;
+
+  const info = `Tandem Repeats: ${isRepeat ? 'Identified' : 'Not identified'} `;
 
   const options = downloadPdbStructureOptions.map((option) => {
     return {
@@ -16,9 +18,11 @@ function ProteinStructure() {
     };
   });
 
+  const url = `https://files.rcsb.org/download/${id.toLowerCase()}.pdb`;
+
   useEffect(() => {
-    readFile();
-  }, []);
+    readFile(url);
+  }, [url]);
 
   return (
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
@@ -32,10 +36,15 @@ function ProteinStructure() {
           </h4>
           <Dropdown items={options} />
         </div>
+        <div className="flex items-center justify-start">
+          <p className="text-[18px] sm:text-[20px] leading-5 text-center">
+            {info}
+          </p>
+        </div>
         <div className="flex flex-col-reverse lg:flex-row gap-5">
           <div className="space-y-2 flex-1">
             <h5 className="text-[15px] sm:text-[18px] font-semibold">
-              3D Viewer
+              3D Viewer - {id} (PDB ID)
             </h5>
             <div
               id="myViewer"

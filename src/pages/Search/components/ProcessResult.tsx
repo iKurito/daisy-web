@@ -6,7 +6,7 @@ function ProcessResult() {
   const { response, activeTab, handleSetTab } = useSearchContext();
   const size = Object.entries(response).length;
   const items =
-    size === 0
+    size === 0 || !response.isReady
       ? []
       : response.proteinResult.isRepeat
       ? tabs

@@ -21,8 +21,8 @@ function RepeatClassification() {
         </div>
         <div className="flex items-center justify-start">
           <p className="text-[18px] sm:text-[20px] leading-5 text-center">
-            The following class and subclass are the most probable
-            classification of the processed protein structure
+            Tandem repeat classes with a prediction probability higher than 50%
+            are considered for ReUPred processing.
           </p>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4">

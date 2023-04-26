@@ -57,6 +57,13 @@ function RepeatedUnits() {
             </span>
           </h4>
         </div>
+        <div className="flex items-center justify-start">
+          <p className="text-[18px] sm:text-[20px] leading-5 text-left">
+            The following tandem repeat protein chains have been identified by
+            RepeatsDBLite 2.0. For each chain, you can visualise and download
+            the output files for each region.
+          </p>
+        </div>
         <div className="flex flex-col gap-5">
           <div className="space-y-2">
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -78,6 +85,7 @@ function RepeatedUnits() {
             </div>
             <Chains baseUrl={baseUrl} />
           </div>
+          <hr className="text-primary bg-gray-900 border-2 border-gay-900" />
           <Regions currentChain={currentChain} />
         </div>
       </div>

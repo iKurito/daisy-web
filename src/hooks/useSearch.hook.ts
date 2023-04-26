@@ -29,7 +29,7 @@ const useSearch = () => {
 
   const requestResponse = async (data: DaisyRequest): Promise<boolean> => {
     const result = await callEndpoint(requestResponseService(daisyApi, data));
-    if (result.status !== 201) {
+    if (result.status !== 200) {
       SnackBarUtilities.error('Something went wrong, please try again later');
       return false;
     }

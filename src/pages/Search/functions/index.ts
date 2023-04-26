@@ -63,10 +63,10 @@ export function msaBuilder(
   m.render();
 }
 
-export function readFile() {
+export function readFile(url: string) {
   const textArea = document.getElementById('text-area-file');
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://files.rcsb.org/download/4uug.pdb', true);
+  xhr.open('GET', url, true);
   xhr.onreadystatechange = function l() {
     if (xhr.readyState === 4) {
       if (xhr.status === 200) {

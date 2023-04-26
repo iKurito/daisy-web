@@ -27,17 +27,17 @@ export const predictionsHeader = [
 export const downloadChainOptions: DownloadOptions[] = [
   {
     id: 0,
-    name: 'PDB Chain file',
+    name: 'Chain structure file (.pdb)',
     href: 'BASE_URL/pdb',
   },
   {
     id: 1,
-    name: 'Identified unit DB file',
+    name: 'ReUPred identified units file (.db)',
     href: 'BASE_URL/db',
   },
   {
     id: 2,
-    name: 'Mapping file',
+    name: 'Mapping file (.mapping)',
     href: 'BASE_URL/mapping',
   },
 ];
@@ -45,12 +45,12 @@ export const downloadChainOptions: DownloadOptions[] = [
 export const downloadRegionOptions: DownloadOptions[] = [
   {
     id: 0,
-    name: 'Unit PDBs files',
+    name: 'Units .pdb structure files (.zip)',
     href: 'BASE_URL/units',
   },
   {
     id: 1,
-    name: 'Aligned units PDB file',
+    name: 'Aligned units structure file (.pdb)',
     href: 'BASE_URL/pdb',
   },
   {
@@ -60,12 +60,12 @@ export const downloadRegionOptions: DownloadOptions[] = [
   },
   {
     id: 3,
-    name: 'Aligned units Fasta File',
+    name: 'Aligned units Fasta File (.afasta)',
     href: 'BASE_URL/afasta',
   },
   {
     id: 4,
-    name: 'Aligned units DSSP File',
+    name: 'Aligned units DSSP File (.dssp)',
     href: 'BASE_URL/dssp',
   },
 ];
@@ -73,7 +73,7 @@ export const downloadRegionOptions: DownloadOptions[] = [
 export const downloadPdbStructureOptions: DownloadOptions[] = [
   {
     id: 0,
-    name: 'Download PDB',
+    name: 'Download structure file (.pdb)',
     href: 'https://files.rcsb.org/download/',
   },
 ];
@@ -81,7 +81,7 @@ export const downloadPdbStructureOptions: DownloadOptions[] = [
 export const downloadAlphaFoldStructureOptions: DownloadOptions[] = [
   {
     id: 0,
-    name: 'Download Alphafold',
+    name: 'Download structure file (.cif)',
     href: 'https://alphafold.ebi.ac.uk/files/AF-UNIPROT-F1-model_v4.cif',
   },
 ];

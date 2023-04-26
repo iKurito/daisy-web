@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useSearchContext } from '../context/search.context';
-import { alphaBuilder } from '../functions';
+import { alphaBuilder, readFile } from '../functions';
 import { Dropdown } from '../../../components';
 import { downloadAlphaFoldStructureOptions } from '../../../data';
 
@@ -17,9 +17,15 @@ function AlphafoldStructure() {
     };
   });
 
+  const url = `https://files.rcsb.org/download/${id.toLowerCase()}.pdb`;
+
   useEffect(() => {
     alphaBuilder(id, alphaFoldContainer);
   }, [id]);
+
+  useEffect(() => {
+    readFile(url);
+  }, [url]);
 
   return (
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
@@ -33,9 +39,24 @@ function AlphafoldStructure() {
           </h4>
           <Dropdown items={options} />
         </div>
-        <h5 className="text-[15px] sm:text-[18px] font-semibold">3D Viewer</h5>
-        <div className="w-auto h-[300px] sm:h-[400px] z-[120] relative mt-[100px]">
-          <div className="mt-[100px]" ref={alphaFoldContainer} />
+        <div className="flex flex-col-reverse lg:flex-row gap-5">
+          <div className="space-y-2 flex-1">
+            <h5 className="text-[15px] sm:text-[18px] font-semibold">
+              3D Viewer - {id} (UniProt ID)
+            </h5>
+            <div className="w-auto lg:w-[600px] h-[300px] sm:h-[500px] relative z-[100]">
+              <div className="mt-[100px]" ref={alphaFoldContainer} />
+            </div>
+          </div>
+          <div className="space-y-2 w-full">
+            <h4 className="text-[18px] sm:text-[20px] font-semibold">
+              Requested protein structure:
+            </h4>
+            <textarea
+              id="text-area-file"
+              className="w-full h-[300px] sm:h-[590px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"
+            />
+          </div>
         </div>
       </div>
     </div>

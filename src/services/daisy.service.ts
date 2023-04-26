@@ -23,6 +23,9 @@ export const requestResponseService = (
   return {
     call: api.post('/request', data, {
       signal: controller.signal,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     }),
     controller,
   };

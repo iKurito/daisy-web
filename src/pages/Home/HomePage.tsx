@@ -60,7 +60,7 @@ function HomePage() {
                     htmlFor="pdbUnitprot"
                     className="text-[18px] xs:text-[20px] sm:text-[25px] text-black tracking-tight font-semibold"
                   >
-                    PDB ID or UnitProt
+                    PDB ID or UniProt ID
                   </label>
                   <input
                     id="pdbUnitprot"
