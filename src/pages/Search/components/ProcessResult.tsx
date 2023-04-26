@@ -1,10 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
+import { useEffect } from 'react';
 import { useSearchContext } from '../context/search.context';
 import { tabs } from '../data';
 import ResultsNotFound from './ResultsNotFound';
 
 function ProcessResult() {
-  const { response, activeTab, handleSetTab } = useSearchContext();
+  const { response, activeTab, handleSetTab, loading, handleLoading } =
+    useSearchContext();
   const size = Object.entries(response).length;
   const items =
     size === 0 || !response.isReady
@@ -13,7 +16,22 @@ function ProcessResult() {
       ? tabs
       : tabs.filter((tab) => tab.id !== 2);
 
+  useEffect(() => {
+    handleLoading(true);
+    handleSetTab(0);
+    setTimeout(() => {
+      handleLoading(false);
+    }, 1000);
+  }, [response]);
+
   if (size === 0) return null;
+
+  if (loading)
+    return (
+      <div className="flex items-center justify-center w-full py-10">
+        <div className="custom-loader" />
+      </div>
+    );
 
   if (!response.valid) return <ResultsNotFound />;
 

@@ -20,13 +20,13 @@ function Regions({ currentChain }: Props) {
   const { id, type } = response.proteinResult;
 
   const [currentRegion, setCurrentRegion] = useState<Region>(
-    currentChain.regions !== undefined
+    currentChain?.regions !== undefined
       ? currentChain.regions[0]
       : ({} as Region)
   );
   const [currentRegionIndex, setCurrentRegionIndex] = useState(1);
 
-  const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
+  const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
 
   const options = downloadRegionOptions.map((option) => {
     return {
@@ -62,7 +62,7 @@ function Regions({ currentChain }: Props) {
 
   return (
     <div>
-      {currentChain.isRepeat && currentChain.regions && (
+      {currentChain?.isRepeat && currentChain?.regions && (
         <div>
           <div className="space-y-2">
             <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
@@ -74,7 +74,7 @@ function Regions({ currentChain }: Props) {
                 </span>
               </h4>
               <Pagination
-                size={currentChain.regions.length}
+                size={currentChain?.regions.length}
                 currentIndex={currentRegionIndex}
                 handleChangeDown={handleChangeDownRegion}
                 handleChangeUp={handleChangeUpRegion}

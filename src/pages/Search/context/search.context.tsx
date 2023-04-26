@@ -9,6 +9,8 @@ interface SearchContextProps {
   processId: string;
   activeTab: number;
   response: DaisyResponse;
+  loading: boolean;
+  handleLoading: (value: boolean) => void;
   setSearchParams: (params: Record<string, string>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleSetTab: (tab: number) => void;
@@ -29,8 +31,14 @@ export function SearchProvider({ children }: Props) {
   );
   const [activeTab, setActiveTab] = useState(0);
 
+  const [loading, setLoading] = useState(false);
+
   const daisyState = useSelector((state: DaisyStore) => state.daisy);
   const { response } = daisyState;
+
+  const handleLoading = (value: boolean) => {
+    setLoading(value);
+  };
 
   const handleSetTab = (tab: number) => {
     setActiveTab(tab);
@@ -47,6 +55,8 @@ export function SearchProvider({ children }: Props) {
         processId,
         activeTab,
         response,
+        loading,
+        handleLoading,
         setSearchParams,
         handleChange,
         handleSetTab,

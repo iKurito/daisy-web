@@ -35,9 +35,9 @@ function RepeatedUnits() {
 
   const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${
     response.proteinResult.id
-  }/${response.proteinResult.type}/${currentChain.name}/${
-    currentChain.regions![0].repeatClass
-  }/${currentChain.regions![0].repeatSubclass}`;
+  }/${response.proteinResult.type}/${currentChain?.name}/${
+    currentChain?.regions![0].repeatClass
+  }/${currentChain?.regions![0].repeatSubclass}`;
 
   const options = downloadChainOptions.map((option) => {
     return {
@@ -70,7 +70,7 @@ function RepeatedUnits() {
               <h4 className="text-[18px] sm:text-[20px] font-bold w-full">
                 Chain ID:{' '}
                 <span className="text-fourth text-[20px] sm:text-[25px]">
-                  {currentChain.name}
+                  {currentChain?.name}
                 </span>
               </h4>
               <Pagination
