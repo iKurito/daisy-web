@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route } from 'react-router-dom';
-import { Layout, RoutesWithNotFound } from './components';
+import { Layout, Loading, RoutesWithNotFound } from './components';
 import { PublicRoutes } from './data';
 import store from './redux/store';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,7 +25,7 @@ const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 function App() {
   return (
     <div className="App">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Provider store={store}>
           <BrowserRouter>
             <RoutesWithNotFound>
