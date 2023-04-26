@@ -96,9 +96,9 @@ function HomePage() {
                     <button
                       type="button"
                       className="text-xs sm:text-sm underline text-blue-500 font-bold"
-                      onClick={() => setFieldValue('proteinID', 'A0A026W182')}
+                      onClick={() => setFieldValue('proteinID', 'A0A0B1SDP6')}
                     >
-                      <em>A0A026W182 (UniProt ID)</em>
+                      <em>A0A0B1SDP6 (UniProt ID)</em>
                     </button>
                   </div>
                   <div className="flex flex-col space-y-1">
