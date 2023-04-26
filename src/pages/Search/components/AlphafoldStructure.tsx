@@ -17,7 +17,7 @@ function AlphafoldStructure() {
     };
   });
 
-  const url = `https://files.rcsb.org/download/${id.toLowerCase()}.pdb`;
+  const url = `https://alphafold.ebi.ac.uk/files/AF-${id}-F1-model_v4.cif`;
 
   useEffect(() => {
     alphaBuilder(id, alphaFoldContainer);
