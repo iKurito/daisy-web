@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 3000",
     "lint": "eslint \"*/**/*.{js,ts,tsx} \" --quiet --fix",
     "prepare": "husky install",
     "test": "vitest"
