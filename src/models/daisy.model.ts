@@ -7,6 +7,7 @@ export interface DaisyResponse {
   proteinResult: ProteinResult;
   requestID: number;
   result: boolean;
+  valid: boolean;
 }
 
 interface ProteinResult {

@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { useSearchContext } from '../context/search.context';
 import { tabs } from '../data';
+import ResultsNotFound from './ResultsNotFound';
 
 function ProcessResult() {
   const { response, activeTab, handleSetTab } = useSearchContext();
@@ -13,6 +14,8 @@ function ProcessResult() {
       : tabs.filter((tab) => tab.id !== 2);
 
   if (size === 0) return null;
+
+  if (!response.valid) return <ResultsNotFound />;
 
   return (
     <div>

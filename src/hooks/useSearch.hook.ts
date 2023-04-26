@@ -23,7 +23,8 @@ const useSearch = () => {
       return false;
     }
     dispatch(setDaisyResponse(result.data));
-    SnackBarUtilities.success('Your search was found successfully');
+    if (result.data.valid)
+      SnackBarUtilities.success('Your search was found successfully');
     return true;
   };
 
