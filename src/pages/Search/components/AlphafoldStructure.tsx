@@ -9,8 +9,6 @@ function AlphafoldStructure() {
   const { response } = useSearchContext();
   const { id, type, isRepeat } = response.proteinResult;
 
-  const info = `Tandem Repeats: ${isRepeat ? 'Identified' : 'Not identified'} `;
-
   const alphaFoldContainer = useRef(null);
 
   const options = downloadAlphaFoldStructureOptions.map((option) => {
@@ -32,7 +30,7 @@ function AlphafoldStructure() {
 
   return (
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-2">
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
           <h4 className="text-[18px] sm:text-[20px] font-bold">
             Processing Status:{' '}
@@ -46,8 +44,13 @@ function AlphafoldStructure() {
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
         </h2>
         <div className="flex items-center justify-start">
-          <p className="text-[18px] sm:text-[20px] leading-5 text-center">
-            {info}
+          <p className="text-[20px] sm:text-[25px] leading-5 text-center font-bold">
+            Tandem Repeats{' '}
+            {isRepeat ? (
+              <span className="text-fourth">Identified</span>
+            ) : (
+              <span className="text-red-600">Not Identified</span>
+            )}
           </p>
         </div>
         <div className="flex flex-col xl:flex-row gap-5">

@@ -18,8 +18,8 @@ function AlignedUnits({ baseUrl }: Props) {
   return (
     <div className="space-y-4 mt-4">
       <h2 className="text-[18px] sm:text-[20px] text-center">
-        If you are not able to visualice the following outputs, please request a
-        CORS demo{' '}
+        If you are not able to visualize the following outputs, please request a
+        cross-origin demo{' '}
         <Link
           to="https://cors-anywhere.herokuapp.com/"
           className="underline text-blue-600"

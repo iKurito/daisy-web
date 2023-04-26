@@ -9,8 +9,6 @@ function ProteinStructure() {
 
   const { id, type, isRepeat } = response.proteinResult;
 
-  const info = `Tandem Repeats: ${isRepeat ? 'Identified' : 'Not identified'} `;
-
   const options = downloadPdbStructureOptions.map((option) => {
     return {
       ...option,
@@ -40,8 +38,13 @@ function ProteinStructure() {
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
         </h2>
         <div className="flex items-center justify-start">
-          <p className="text-[18px] sm:text-[20px] leading-5 text-center">
-            {info}
+          <p className="text-[20px] sm:text-[25px] leading-5 text-center font-bold">
+            Tandem Repeats{' '}
+            {isRepeat ? (
+              <span className="text-fourth">Identified</span>
+            ) : (
+              <span className="text-red-600">Not Identified</span>
+            )}
           </p>
         </div>
         <div className="flex flex-col lg:flex-row gap-5">
@@ -76,7 +79,8 @@ function ProteinStructure() {
             </h4>
             <textarea
               id="text-area-file"
-              className="w-full h-[300px] sm:h-[580px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm"
+              className="w-full h-[300px] sm:h-[580px] border rounded-lg border-gray-400 outline-none px-2 py-1 leading-5 bg-gray-300 overflow-auto text-xs sm:text-sm resize-none"
+              disabled
             />
           </div>
         </div>
