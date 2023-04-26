@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useSearchContext } from '../context/search.context';
 import { tabs } from '../data';
 import ResultsNotFound from './ResultsNotFound';
+import ResultsInProcess from './ResultsInProcess';
 
 function ProcessResult() {
   const { response, activeTab, handleSetTab, loading, handleLoading } =
@@ -38,9 +39,7 @@ function ProcessResult() {
   return (
     <div>
       {size > 0 && !response.isReady ? (
-        <div>
-          <h1>Your process is not ready yet, please try again later</h1>
-        </div>
+        <ResultsInProcess />
       ) : (
         <>
           <ul className="flex overflow-x-auto test-sm font-semibold text-center gap-1">
