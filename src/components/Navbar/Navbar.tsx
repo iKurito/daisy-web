@@ -32,10 +32,10 @@ export function Navbar() {
                   location.pathname === `/${link.label.toLowerCase()}`
                     ? 'text-cyan-900'
                     : ''
-                } flex items-center gap-1 text-gray-500 hover:text-cyan-900`}
+                } flex items-center gap-1 text-gray-500 hover:text-cyan-900 justify-center`}
               >
                 {link.icon}
-                <span className="text-lg sm:text-4xl">{link.label}</span>
+                <span className="text-lg sm:text-2xl">{link.label}</span>
               </Link>
             </li>
           ))}
