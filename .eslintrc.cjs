@@ -20,6 +20,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
+    'prettier/prettier': ['off', { singleQuote: true }], // Added to avoid conflict with prettier (Windows vs Linux)
     'react/react-in-jsx-scope': 0,
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
