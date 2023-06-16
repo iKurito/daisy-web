@@ -31,14 +31,14 @@ function ProcessResult({ loading }: Props) {
     // }, 1000);
   }, [response]);
 
-  if (size === 0) return null;
-
   if (loading)
     return (
       <div className="flex items-center justify-center w-full py-10">
         <div className="custom-loader" />
       </div>
     );
+
+  if (size === 0) return null;
 
   if (!response.valid) return <ResultsNotFound />;
 
