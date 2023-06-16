@@ -7,7 +7,7 @@ import { readFile } from '../functions';
 function ProteinStructure() {
   const { response } = useSearchContext();
 
-  const { id, type, isRepeat } = response.proteinResult;
+  const { id, type, isRepeat } = response.proteinResult!;
 
   const options = downloadPdbStructureOptions.map((option) => {
     return {

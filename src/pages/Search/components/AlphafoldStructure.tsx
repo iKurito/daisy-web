@@ -7,7 +7,7 @@ import { downloadAlphaFoldStructureOptions } from '../../../data';
 
 function AlphafoldStructure() {
   const { response } = useSearchContext();
-  const { id, type, isRepeat } = response.proteinResult;
+  const { id, type, isRepeat } = response.proteinResult!;
 
   const alphaFoldContainer = useRef(null);
 

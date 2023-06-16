@@ -4,7 +4,7 @@ import { useSearchContext } from '../context/search.context';
 function RepeatClassification() {
   const { response } = useSearchContext();
 
-  const { chains, id, type } = response.proteinResult;
+  const { chains, id, type } = response.proteinResult!;
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">

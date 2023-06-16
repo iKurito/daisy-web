@@ -17,7 +17,7 @@ function Regions({ currentChain }: Props) {
   const [loading, setLoading] = useState(true);
 
   const { response } = useSearchContext();
-  const { id, type } = response.proteinResult;
+  const { id, type } = response.proteinResult!;
 
   const [currentRegion, setCurrentRegion] = useState<Region>(
     currentChain?.regions !== undefined

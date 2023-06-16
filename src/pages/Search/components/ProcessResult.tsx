@@ -5,26 +5,30 @@ import { useSearchContext } from '../context/search.context';
 import { tabs } from '../data';
 import ResultsNotFound from './ResultsNotFound';
 import ResultsInProcess from './ResultsInProcess';
+import ProcessTable from './ProcessTable';
 
-function ProcessResult() {
-  const { response, activeTab, handleSetTab, loading, handleLoading } =
-    useSearchContext();
+interface Props {
+  loading: boolean;
+}
+
+function ProcessResult({ loading }: Props) {
+  const { response, activeTab, handleSetTab } = useSearchContext();
   const size = Object.entries(response).length;
   const items =
     size === 0 || !response.isReady
       ? []
-      : response.proteinResult.type === 'ERROR'
+      : response.proteinResult?.type === 'ERROR'
       ? []
-      : response.proteinResult.isRepeat
+      : response.proteinResult?.isRepeat
       ? tabs
       : tabs.filter((tab) => tab.id !== 2);
 
   useEffect(() => {
-    handleLoading(true);
+    // handleLoading(true);
     handleSetTab(0);
-    setTimeout(() => {
-      handleLoading(false);
-    }, 1000);
+    // setTimeout(() => {
+    //   handleLoading(false);
+    // }, 1000);
   }, [response]);
 
   if (size === 0) return null;
@@ -37,6 +41,8 @@ function ProcessResult() {
     );
 
   if (!response.valid) return <ResultsNotFound />;
+
+  if (response.type === 'PROTEOME') return <ProcessTable />;
 
   return (
     <div>

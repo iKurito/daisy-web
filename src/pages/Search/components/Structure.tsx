@@ -6,7 +6,7 @@ import ResultsNotFound from './ResultsNotFound';
 function Structure() {
   const { response } = useSearchContext();
 
-  const { type } = response.proteinResult;
+  const { type } = response.proteinResult!;
 
   return (
     <>

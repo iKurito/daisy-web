@@ -11,7 +11,7 @@ import { getEnvEnvariables } from '../../../utilities';
 function RepeatedUnits() {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
   const { response } = useSearchContext();
-  const { chains, id, type } = response.proteinResult;
+  const { chains, id, type } = response.proteinResult!;
 
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
 
@@ -34,8 +34,8 @@ function RepeatedUnits() {
   };
 
   const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${
-    response.proteinResult.id
-  }/${response.proteinResult.type}/${currentChain?.name}/${
+    response.proteinResult!.id
+  }/${response.proteinResult!.type}/${currentChain?.name}/${
     currentChain?.regions![0].repeatClass
   }/${currentChain?.regions![0].repeatSubclass}`;
 

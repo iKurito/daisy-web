@@ -1,28 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
-import useSearch from '../../../hooks/useSearch.hook';
 import { SearchIcon } from '../../../icons';
 import { SnackBarUtilities } from '../../../utilities';
 import { useSearchContext } from '../context/search.context';
 
-function SearchProcess() {
+interface Props {
+  loading: boolean;
+  retrieveResponse: (processId: string) => void;
+}
+
+function SearchProcess({ loading, retrieveResponse }: Props) {
   const { processId, setSearchParams, handleChange } = useSearchContext();
 
-  const { loading, retrieveResponse } = useSearch();
-
-  const handleClick = async (e?: React.FormEvent<HTMLFormElement>) => {
+  const handleClick = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
     if (processId.length === 0) {
       SnackBarUtilities.error('Enter a Process ID');
       return;
     }
     setSearchParams({ processID: processId });
-    await retrieveResponse(processId);
+    retrieveResponse(processId);
   };
 
   useEffect(() => {
     if (processId.length === 0) return;
-    const service = async () => retrieveResponse(processId);
+    const service = () => retrieveResponse(processId);
     service();
   }, []);
 

@@ -12,3 +12,7 @@ export { default as MiniDownloadIcon } from './mini-download.icon';
 export { default as ChevronLeftIcon } from './chevron-left.icon';
 export { default as ChevronRightIcon } from './chevron-right.icon';
 export { default as MiniChevronDownIcon } from './mini-chevron-down.icon';
+export { default as MiniChevronDoubleLeftIcon } from './mini-chevron-double-left.icon';
+export { default as MiniChevronDoubleRightIcon } from './mini-chevron-double-right.icon';
+export { default as MiniChevronLeftIcon } from './mini-chevron-left.icon';
+export { default as MiniChevronRightIcon } from './mini-chevron-right.icon';
