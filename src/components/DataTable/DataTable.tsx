@@ -93,6 +93,7 @@ function DataTable({
                         key={header.id}
                         colSpan={header.colSpan}
                         className="group px-6 py-3 text-left text-xs sm:stext-sm text-gray-500 uppercase tracking-wider cursor-pointer"
+                        style={{ width: header.getSize() }}
                       >
                         {header.isPlaceholder ? null : (
                           <div>

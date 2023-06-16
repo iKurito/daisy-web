@@ -1,6 +1,6 @@
 import { ColumnDef, Row } from '@tanstack/react-table';
 import { useMemo } from 'react';
-import { dataColumns } from '../data/column';
+import { dataColumns } from '../data';
 import DataTable from '../../../components/DataTable/DataTable';
 import { useSearchContext } from '../context/search.context';
 import { Component } from '../../../models';
@@ -18,13 +18,25 @@ function ProcessTable() {
 
   const data = response.proteomeResult?.components ?? [];
 
+  const formattedData = data
+    .map((d) => {
+      const b = d.structures.map((s) => {
+        return {
+          ...s,
+          name: d.name,
+        };
+      });
+      return b;
+    })
+    .flat();
+
   const columns = useMemo<ColumnDef<Component>[]>(() => dataColumns, []);
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <DataTable
-          data={data}
+          data={formattedData}
           columns={columns}
           messageNotFound="No data to display"
           renderSubComponent={renderSubComponent}
