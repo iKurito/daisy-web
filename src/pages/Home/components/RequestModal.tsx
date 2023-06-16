@@ -12,7 +12,7 @@ export function RequestModal() {
   const { open } = useModal(openDialogSubject$);
 
   const daisyState = useSelector((state: DaisyStore) => state.daisy);
-  const { requestID } = daisyState.response;
+  const { requestID } = daisyState.response!;
 
   const handleExit = () => {
     dispatch(clearDaisy());

@@ -4,6 +4,7 @@ export interface DaisyInfo {
 
 export interface DaisyResponse {
   isReady?: boolean;
+  requestID?: string;
   proteinResult?: ProteinResult;
   proteomeResult?: ProteomeResult;
   type: string;
