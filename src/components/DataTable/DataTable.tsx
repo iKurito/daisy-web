@@ -74,9 +74,9 @@ function DataTable({
   });
 
   return (
-    <>
+    <div className="mb-24">
       {isFilter && <FilterTable table={table} />}
-      <section className="px-4 py-6 border rounded-lg bg-white dark:bg-dark-primary dark:border-dark-primary shadow-lg space-y-4 select-none">
+      <section className="px-4 py-6 border rounded-lg bg-primary shadow-lg space-y-4 select-none">
         <TopTable
           table={table}
           globalFilter={globalFilter}
@@ -150,7 +150,7 @@ function DataTable({
           <PaginationTable table={table} />
         )}
       </section>
-    </>
+    </div>
   );
 }
 

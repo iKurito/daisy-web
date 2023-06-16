@@ -33,18 +33,16 @@ function ProcessTable() {
   const columns = useMemo<ColumnDef<Component>[]>(() => dataColumns, []);
 
   return (
-    <section className="shadow-lg bg-primary border-none rounded-lg">
-      <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
-        <DataTable
-          data={formattedData}
-          columns={columns}
-          messageNotFound="No data to display"
-          renderSubComponent={renderSubComponent}
-          getRowCanExpand={() => true}
-          isFilter={false}
-        />
-      </div>
-    </section>
+    <div>
+      <DataTable
+        data={formattedData}
+        columns={columns}
+        messageNotFound="No data to display"
+        renderSubComponent={renderSubComponent}
+        getRowCanExpand={() => true}
+        isFilter={false}
+      />
+    </div>
   );
 }
 
