@@ -8,9 +8,12 @@ import useSearch from '../../hooks/useSearch.hook';
 import { clearDaisy } from '../../redux/states/daisy.state';
 import { RequestModal } from './components/RequestModal';
 import { openDialogSubject$ } from '../../data';
+import useFetchAndLoad from '../../hooks/useFecthAndLoad.hook';
 
 function HomePage() {
-  const { loading, requestResponse } = useSearch();
+  const { loading, callEndpoint } = useFetchAndLoad();
+
+  const { requestResponse } = useSearch(callEndpoint);
 
   const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     useFormik({
