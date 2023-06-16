@@ -28,7 +28,7 @@ function TopTable({ table, globalFilter, setGlobalFilter }: Props) {
         >
           {showList.map((pageSize) => (
             <option key={pageSize} value={pageSize}>
-              Mostrar {pageSize}
+              Show {pageSize}
             </option>
           ))}
         </select>
@@ -38,7 +38,7 @@ function TopTable({ table, globalFilter, setGlobalFilter }: Props) {
           value={globalFilter ?? ''}
           onChange={handleChange}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 bg-white text-gray-500"
-          placeholder="Buscar..."
+          placeholder="Search..."
         />
       </div>
     </div>
