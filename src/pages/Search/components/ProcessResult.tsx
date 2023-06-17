@@ -2,10 +2,15 @@
 /* eslint-disable no-nested-ternary */
 import { useEffect } from 'react';
 import { useSearchContext } from '../context/search.context';
-import { tabs } from '../data';
-import ResultsNotFound from './ResultsNotFound';
 import ResultsInProcess from './ResultsInProcess';
 import ProcessTable from './ProcessTable';
+import {
+  RepeatClassification,
+  RepeatedUnits,
+  Structure,
+} from '../../../components';
+import ResultsNotFound from '../../../components/ResultsNotFound/ResultsNotFound';
+import { tabs } from '../../../data';
 
 interface Props {
   loading: boolean;
@@ -24,11 +29,7 @@ function ProcessResult({ loading }: Props) {
       : tabs.filter((tab) => tab.id !== 2);
 
   useEffect(() => {
-    // handleLoading(true);
     handleSetTab(0);
-    // setTimeout(() => {
-    //   handleLoading(false);
-    // }, 1000);
   }, [response]);
 
   if (loading)
@@ -40,7 +41,15 @@ function ProcessResult({ loading }: Props) {
 
   if (size === 0) return null;
 
-  if (!response.valid) return <ResultsNotFound />;
+  if (!response.valid)
+    return (
+      <ResultsNotFound
+        message=" We're sorry, but we were not able to process your request. Please
+  check if you are using a valid accesion ID (PDB/Uniprot). If you are
+  using an Uniprot acession ID, please verify that it has an AlphaFold
+  entry."
+      />
+    );
 
   if (response.type === 'PROTEOME') return <ProcessTable />;
 
@@ -70,7 +79,15 @@ function ProcessResult({ loading }: Props) {
               );
             })}
           </ul>
-          {tabs.find((tab) => tab.id === activeTab)?.component}
+          {activeTab === 0 && (
+            <Structure proteinResult={response.proteinResult!} />
+          )}
+          {activeTab === 1 && (
+            <RepeatClassification proteinResult={response.proteinResult!} />
+          )}
+          {activeTab === 2 && (
+            <RepeatedUnits proteinResult={response.proteinResult!} />
+          )}
         </>
       )}
     </div>
