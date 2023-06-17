@@ -1,17 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useNavigate } from 'react-router-dom';
 import { FormikHelpers, useFormik } from 'formik';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
+  PublicRoutes,
   classAndSubclassFive,
   classAndSubclassFour,
   classAndSubclassThree,
   openAdvancedRequestSubject$,
 } from '../../../data';
-import { useModal } from '../../../hooks';
+import { useModal, useSearch } from '../../../hooks';
 import { XIcon } from '../../../icons';
-import { DaisyRequestv2 } from '../../../models';
+import { DaisyRequestAdvanced } from '../../../models';
 import { curationProcessAdvancedForm } from '../../../schemas';
 import { ClassAndSubclassOptions } from './ClassAndSubclassOptions';
+import useFetchAndLoad from '../../../hooks/useFecthAndLoad.hook';
+import { DaisyStore } from '../../../redux/store';
+import { clearDaisy } from '../../../redux/states/daisy.state';
 
 interface Props {
   proteinID: string;
@@ -20,7 +26,18 @@ interface Props {
 
 export function AdvancedRequestModal({ proteinID, email }: Props) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [selected, setSelected] = useState<string>('threshold');
+
   const { open } = useModal(openAdvancedRequestSubject$);
+
+  const daisyState = useSelector((state: DaisyStore) => state.daisy);
+  const { requestID } = daisyState.response!;
+
+  const { loading, callEndpoint } = useFetchAndLoad();
+
+  const { requestAdvanced } = useSearch(callEndpoint);
 
   const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
     useFormik({
@@ -28,19 +45,57 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
         proteinID,
         email,
         threshold: 50,
-      },
+        selectedClasses: {
+          III_1: false,
+          III_2: false,
+          III_3: false,
+          III_4: false,
+          III_5: false,
+          III_6: false,
+          IV_1: false,
+          IV_2: false,
+          IV_3: false,
+          IV_4: false,
+          IV_5: false,
+          IV_6: false,
+          IV_7: false,
+          IV_8: false,
+          IV_9: false,
+          IV_10: false,
+          V_1: false,
+          V_2: false,
+          V_3: false,
+          V_4: false,
+          V_5: false,
+        },
+      } as DaisyRequestAdvanced,
       validationSchema: curationProcessAdvancedForm,
       onSubmit: async (
-        data: DaisyRequestv2,
-        actions: FormikHelpers<DaisyRequestv2>
+        data: DaisyRequestAdvanced,
+        actions: FormikHelpers<DaisyRequestAdvanced>
       ) => {
-        console.log(data);
-        // const wasSuccessful = await requestResponse({
-        //   ...data,
-        //   proteinID: data.proteinID.toUpperCase(),
-        // });
+        let formData;
+        if (selected === 'threshold') {
+          formData = {
+            ...data,
+            proteinID: data.proteinID.toUpperCase(),
+            selectedClasses: {},
+          };
+        } else {
+          formData = {
+            ...data,
+            proteinID: data.proteinID.toUpperCase(),
+            threshold: -1,
+          };
+        }
+        console.log(formData);
+        const wasSuccessful = await requestAdvanced(formData);
         // if (wasSuccessful) {
+        //   const id = requestID;
         //   actions.resetForm();
+        //   dispatch(clearDaisy());
+        //   navigate(`/${PublicRoutes.SEARCH}?processID=${id}`);
+        //   openAdvancedRequestSubject$.setSubject = false;
         // }
       },
     });
@@ -52,7 +107,8 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
   useEffect(() => {
     setFieldValue('proteinID', proteinID);
     setFieldValue('email', email);
-  }, [email, proteinID, setFieldValue]);
+    setSelected('threshold');
+  }, [open]);
 
   if (open)
     return (
@@ -72,6 +128,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                 type="button"
                 className="cursor-pointer"
                 onClick={handleExit}
+                disabled={loading}
               >
                 <XIcon />
               </button>
@@ -121,45 +178,54 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
               </div>
               <div className="flex flex-col space-y-1">
                 <label
-                  htmlFor="threshold"
+                  htmlFor="select"
                   className="text-[14px] xs:text-[16px] sm:text-[18px] text-black tracking-tight"
                 >
-                  Threshold
+                  Select by Threshold or Subclasses
                 </label>
-                <div className="flex items-center justify-center space-x-2">
-                  <input
-                    id="threshold"
-                    type="range"
-                    max={50}
-                    min={0}
-                    value={values.threshold}
-                    onChange={handleChange}
-                    className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary hover:accent-primary"
-                  />
-                  <div className="relative inline-block after:absolute after:top-2 after:right-[0.5em] after:content-['%'] after:hover:right-[2em] after:focus-within:right-[2em]">
+                <select
+                  className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
+                  onChange={(e) => setSelected(e.target.value)}
+                >
+                  <option value="threshold">Threshold</option>
+                  <option value="subclasses">Subclasses</option>
+                </select>
+              </div>
+              {selected === 'threshold' ? (
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center justify-center space-x-2">
                     <input
-                      name="threshold"
-                      type="number"
-                      className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth w-20 text-center hover:text-left focus-within:text-left"
+                      id="threshold"
+                      type="range"
                       max={50}
                       min={0}
                       value={values.threshold}
                       onChange={handleChange}
-                      content="%"
+                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary hover:accent-primary"
                     />
+                    <div className="relative inline-block after:absolute after:top-2 after:right-[0.5em] after:content-['%'] after:hover:right-[2em] after:focus-within:right-[2em]">
+                      <input
+                        name="threshold"
+                        type="number"
+                        className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth w-20 text-center hover:text-left focus-within:text-left"
+                        max={50}
+                        min={0}
+                        value={values.threshold}
+                        onChange={handleChange}
+                        content="%"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="flex flex-col space-y-1">
-                <span className="text-[14px] xs:text-[16px] sm:text-[18px] text-black tracking-tight">
-                  Class and Subclass
-                </span>
-                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                  <ClassAndSubclassOptions options={classAndSubclassThree} />
-                  <ClassAndSubclassOptions options={classAndSubclassFour} />
-                  <ClassAndSubclassOptions options={classAndSubclassFive} />
+              ) : (
+                <div className="flex flex-col space-y-1">
+                  <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                    <ClassAndSubclassOptions options={classAndSubclassThree} />
+                    <ClassAndSubclassOptions options={classAndSubclassFour} />
+                    <ClassAndSubclassOptions options={classAndSubclassFive} />
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
             {/* footer */}
             <div className="border-t border-solid border-slate-200" />
@@ -168,12 +234,16 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                 className="text-sm md:text-base text-red-500 hover:text-red-600 font-bold px-4 py-2 outline-none focus:outline-none ease-linear transition-all duration-150"
                 type="button"
                 onClick={handleExit}
+                disabled={loading}
               >
                 Cancel
               </button>
               <button
-                className="text-sm md:text-base bg-third active:bg-third font-bold px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150"
+                className={`${
+                  loading ? 'opacity-50 cursor-not-allowed' : ''
+                } text-sm md:text-base bg-third active:bg-third font-bold px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none ease-linear transition-all duration-150`}
                 type="submit"
+                disabled={loading}
               >
                 Start
               </button>

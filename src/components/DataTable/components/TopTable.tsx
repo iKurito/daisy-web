@@ -20,7 +20,7 @@ function TopTable({ table, globalFilter, setGlobalFilter }: Props) {
       <label>
         <span className="sr-only">Items Per Page</span>
         <select
-          className="cursor-pointer appearance-none bg-white w-full px-2 py-2 border border-gray-300 rounded-lg focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600 text-gray-500"
+          className="w-full md:w-32 rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
           value={table.getState().pagination.pageSize}
           onChange={(e) => {
             table.setPageSize(Number(e.target.value));

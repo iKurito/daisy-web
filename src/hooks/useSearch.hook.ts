@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { SnackBarUtilities } from '../utilities';
-import { retrieveResponseService, requestResponseService, retrieveProteinService } from '../services';
+import { retrieveResponseService, requestResponseService, retrieveProteinService, requestAdvancedService } from '../services';
 import { daisyApi } from '../api';
-import { DaisyRequest } from '../models';
+import { DaisyRequestAdvanced, DaisyRequest } from '../models';
 import { setDaisyResponse, setProteinResponse } from '../redux/states/daisy.state';
 import { PublicRoutes, openDialogSubject$ } from '../data';
 
@@ -55,10 +55,26 @@ const useSearch = (callEndpoint: any) => {
     return true;
   };
 
+  const requestAdvanced = async (data: DaisyRequestAdvanced): Promise<boolean> => {
+    const result = await callEndpoint(requestAdvancedService(daisyApi, data));
+    if (result.status !== 200) {
+      SnackBarUtilities.error('Something went wrong, please try again later');
+      return false;
+    }
+    if (!result.data.isReady) {
+      dispatch(setDaisyResponse(result.data));
+      openDialogSubject$.setSubject = true;
+      return true;
+    }
+    navigate(`/${PublicRoutes.SEARCH}?processID=${result.data.requestID}`);
+    return true;
+  };
+
   return {
     retrieveResponse,
     requestResponse,
     retrieveProteinResponse,
+    requestAdvanced,
   };
 };
 

@@ -25,8 +25,34 @@ export const curationProcessAdvancedForm = yup.object().shape({
     )
     .required('Is required'),
   email: yup
-      
     .string()
     .email('Please enter a valid email address')
     .required('Is required'),
+  threshold: yup
+    .number()
+    .min(0, 'Please enter a number between 0 and 50')
+    .max(50, 'Please enter a number between 0 and 50'),
+  selectedClasses: yup.object().shape({
+    'III_1': yup.boolean(),
+    'III_2': yup.boolean(),
+    'III_3': yup.boolean(),
+    'III_4': yup.boolean(),
+    'III_5': yup.boolean(),
+    'III_6': yup.boolean(),
+    'IV_1': yup.boolean(),
+    'IV_2': yup.boolean(),
+    'IV_3': yup.boolean(),
+    'IV_4': yup.boolean(),
+    'IV_5': yup.boolean(),
+    'IV_6': yup.boolean(),
+    'IV_7': yup.boolean(),
+    'IV_0': yup.boolean(),
+    'IV_9': yup.boolean(),
+    'IV_10': yup.boolean(),
+    'V_1': yup.boolean(),
+    'V_2': yup.boolean(),
+    'V_3': yup.boolean(),
+    'V_4': yup.boolean(),
+    'V_5': yup.boolean(),
+  }),
 });

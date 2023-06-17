@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { loadAbort } from '../utilities';
-import { DaisyRequest } from '../models';
+import { DaisyRequestAdvanced, DaisyRequest } from '../models';
 
 export const retrieveResponseService = (
   api: AxiosInstance,
@@ -39,6 +39,22 @@ export const retrieveProteinService = (
   return {
     call: api.get(`/protein/${proteinID}`, {
       signal: controller.signal,
+    }),
+    controller,
+  };
+}
+
+export const requestAdvancedService = (
+  api: AxiosInstance,
+  data: DaisyRequestAdvanced
+) => {
+  const controller = loadAbort();
+  return {
+    call: api.post('/request/advance', data, {
+      signal: controller.signal,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
     }),
     controller,
   };

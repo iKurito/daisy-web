@@ -64,7 +64,7 @@ export function Filter({ column, table }: Props) {
     </div>
   ) : (
     <select
-      className="font-light cursor-pointer appearance-none bg-white w-full px-2 py-2 border border-gray-300 rounded-lg focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600"
+      className="w-full rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
       value={(columnFilterValue ?? '') as string}
       onChange={(e) => column.setFilterValue(e.target.value)}
       placeholder="Filter"

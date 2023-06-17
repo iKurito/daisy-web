@@ -35,7 +35,10 @@ export function ClassAndSubclassOptions({ options }: Props) {
                 // onChange={handleChangePermissions}
                 disabled={item.id !== 0}
               />
-              <div className="w-9 h-5 bg-gray-200 rounded-full peer peer-focus:ring-2 peer-focus:ring-primary peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary" />
+              <input
+                type="checkbox"
+                className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+              />
             </label>
           </div>
         );

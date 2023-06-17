@@ -72,8 +72,9 @@ export interface DaisyRequest {
   email: string;
 }
 
-export interface DaisyRequestv2 {
+export interface DaisyRequestAdvanced {
   proteinID: string;
   email: string;
   threshold: number;
+  selectedClasses: { [key: string]: boolean };
 }
