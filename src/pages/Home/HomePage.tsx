@@ -7,8 +7,9 @@ import { DaisyRequest } from '../../models';
 import useSearch from '../../hooks/useSearch.hook';
 import { clearDaisy } from '../../redux/states/daisy.state';
 import { RequestModal } from './components/RequestModal';
-import { openDialogSubject$ } from '../../data';
+import { openAdvancedRequestSubject$, openDialogSubject$ } from '../../data';
 import useFetchAndLoad from '../../hooks/useFecthAndLoad.hook';
+import AdvancedRequestModal from './components/AdvancedRequestModal';
 
 function HomePage() {
   const { loading, callEndpoint } = useFetchAndLoad();
@@ -42,6 +43,10 @@ function HomePage() {
   useEffect(() => {
     dispatch(clearDaisy());
   }, []);
+
+  const handleOpenAdvancedRequestModal = () => {
+    openAdvancedRequestSubject$.setSubject = true;
+  };
 
   return (
     <>
@@ -87,7 +92,7 @@ function HomePage() {
                       </span>
                     )}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col xs:flex-row gap-2">
                     <em className="text-xs sm:text-sm font-bold">Examples: </em>
                     <button
                       type="button"
@@ -96,7 +101,6 @@ function HomePage() {
                     >
                       <em>4GG4 (PDB ID)</em>
                     </button>
-                    <em className="text-blue-700">|</em>
                     <button
                       type="button"
                       className="text-xs sm:text-sm underline text-blue-500 font-bold"
@@ -104,7 +108,6 @@ function HomePage() {
                     >
                       <em>A0A0B1SDP6 (Alphafold ID)</em>
                     </button>
-                    <em className="text-blue-700">|</em>
                     <button
                       type="button"
                       className="text-xs sm:text-sm underline text-blue-500 font-bold"
@@ -134,8 +137,17 @@ function HomePage() {
                     )}
                   </div>
 
-                  <div className="flex flex-col gap-4 sm:flex-row justify-between">
-                    <div className="flex flex-col" />
+                  <div className="flex flex-col gap-4 sm:flex-row justify-between items-center">
+                    <div className="flex flex-col">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenAdvancedRequestModal()}
+                      >
+                        <em className="underline text-[15px] sm:text-[18px]">
+                          Advanced Request
+                        </em>
+                      </button>
+                    </div>
                     <div className="items-start">
                       <button
                         type="submit"
@@ -155,6 +167,7 @@ function HomePage() {
         </div>
       </section>
       <RequestModal />
+      <AdvancedRequestModal proteinID={values.proteinID} email={values.email} />
     </>
   );
 }

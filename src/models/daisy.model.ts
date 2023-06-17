@@ -71,3 +71,9 @@ export interface DaisyRequest {
   proteinID: string;
   email: string;
 }
+
+export interface DaisyRequestv2 {
+  proteinID: string;
+  email: string;
+  threshold: number;
+}

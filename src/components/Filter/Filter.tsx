@@ -69,7 +69,7 @@ export function Filter({ column, table }: Props) {
       onChange={(e) => column.setFilterValue(e.target.value)}
       placeholder="Filter"
     >
-      <option value="">Todos</option>
+      <option value="">All</option>
       {sortedUniqueValues.map((value: string | number) => {
         return (
           <option key={value} value={value}>

@@ -87,3 +87,111 @@ export const downloadAlphaFoldStructureOptions: DownloadOptions[] = [
 ];
 
 export const openDialogSubject$ = new SubjectManager<boolean>();
+
+export const openAdvancedRequestSubject$ = new SubjectManager<boolean>();
+
+export const classAndSubclassThree = [
+  {
+    id: 0,
+    name: 'Class III',
+  },
+  {
+    id: 1,
+    name: 'III_1',
+
+  },
+  {
+    id: 2,
+    name: 'III_2',
+  },
+  {
+    id: 3,
+    name: 'III_3',
+  },
+  {
+    id: 4,
+    name: 'III_4',
+  },
+  {
+    id: 5,
+    name: 'III_5',
+  },
+  {
+    id: 6,
+    name: 'III_6',
+  },
+];
+
+export const classAndSubclassFour = [
+  {
+    id: 0,
+    name: 'Class IV',
+  },
+  {
+    id: 1,
+    name: 'IV_1',
+  },
+  {
+    id: 2,
+    name: 'IV_2',
+  },
+  {
+    id: 3,
+    name: 'IV_3',
+  },
+  {
+    id: 4,
+    name: 'IV_4',
+  },
+  {
+    id: 5,
+    name: 'IV_5',
+  },
+  {
+    id: 6,
+    name: 'IV_6',
+  },
+  {
+    id: 7,
+    name: 'IV_7',
+  },
+  {
+    id: 8,
+    name: 'IV_8',
+  },
+  {
+    id: 9,
+    name: 'IV_9',
+  },
+  {
+    id: 10,
+    name: 'IV_10',
+  },
+];
+
+export const classAndSubclassFive = [
+  {
+    id: 0,
+    name: 'Class V',
+  },
+  {
+    id: 1,
+    name: 'V_1',
+  },
+  {
+    id: 2,
+    name: 'V_2',
+  },
+  {
+    id: 3,
+    name: 'V_3',
+  },
+  {
+    id: 4,
+    name: 'V_4',
+  },
+  {
+    id: 5,
+    name: 'V_5',
+  },
+];
