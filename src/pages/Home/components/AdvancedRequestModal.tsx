@@ -182,4 +182,6 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
         </div>
       </div>
     );
+
+  return null;
 }
