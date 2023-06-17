@@ -67,7 +67,7 @@ export function Filter({ column, table }: Props) {
       className="font-light cursor-pointer appearance-none bg-white w-full px-2 py-2 border border-gray-300 rounded-lg focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary-600"
       value={(columnFilterValue ?? '') as string}
       onChange={(e) => column.setFilterValue(e.target.value)}
-      placeholder="Filtrar"
+      placeholder="Filter"
     >
       <option value="">Todos</option>
       {sortedUniqueValues.map((value: string | number) => {
