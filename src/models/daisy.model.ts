@@ -12,7 +12,7 @@ export interface DaisyResponse {
   valid: boolean;
 }
 
-interface ProteinResult {
+export interface ProteinResult {
   chains: Chain[];
   id: string;
   isProcessed: boolean;
@@ -64,7 +64,7 @@ export interface Structure {
 
 export interface ProteinResponse {
   proteinResult: ProteinResult;
-  resullt: boolean;
+  result: boolean;
 }
 
 export interface DaisyRequest {
