@@ -19,6 +19,7 @@ declare global {
 
 const HomePage = lazy(() => import('./pages/Home/HomePage'));
 const SearchPage = lazy(() => import('./pages/Search/SearchPage'));
+const ProteinPage = lazy(() => import('./pages/Protein/ProteinPage'));
 const HelpPage = lazy(() => import('./pages/Help/HelpPage'));
 const AboutPage = lazy(() => import('./pages/About/AboutPage'));
 
@@ -34,6 +35,10 @@ function App() {
               <Route
                 path={`${PublicRoutes.SEARCH}/*`}
                 element={<SearchPage />}
+              />
+              <Route
+                path={`${PublicRoutes.PROTEIN}/:proteinId`}
+                element={<ProteinPage />}
               />
               <Route path={PublicRoutes.HELP} element={<HelpPage />} />
               <Route path={PublicRoutes.ABOUT} element={<AboutPage />} />

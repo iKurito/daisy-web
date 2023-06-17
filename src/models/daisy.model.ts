@@ -1,5 +1,6 @@
 export interface DaisyInfo {
   response: DaisyResponse;
+  protein: ProteinResponse;
 }
 
 export interface DaisyResponse {
@@ -59,6 +60,11 @@ export interface Structure {
   isRepeat: boolean;
   time: number;
   type: string;
+}
+
+export interface ProteinResponse {
+  proteinResult: ProteinResult;
+  resullt: boolean;
 }
 
 export interface DaisyRequest {

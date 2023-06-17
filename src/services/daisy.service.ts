@@ -30,3 +30,16 @@ export const requestResponseService = (
     controller,
   };
 };
+
+export const retrieveProteinService = (
+  api: AxiosInstance,
+  proteinID: string
+) => {
+  const controller = loadAbort();
+  return {
+    call: api.get(`/protein/${proteinID}`, {
+      signal: controller.signal,
+    }),
+    controller,
+  };
+}

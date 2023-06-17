@@ -1,10 +1,10 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { SnackBarUtilities } from '../utilities';
-import { retrieveResponseService, requestResponseService } from '../services';
+import { retrieveResponseService, requestResponseService, retrieveProteinService } from '../services';
 import { daisyApi } from '../api';
 import { DaisyRequest } from '../models';
-import { setDaisyResponse } from '../redux/states/daisy.state';
+import { setDaisyResponse, setProteinResponse } from '../redux/states/daisy.state';
 import { PublicRoutes, openDialogSubject$ } from '../data';
 
 
@@ -41,9 +41,24 @@ const useSearch = (callEndpoint: any) => {
     return true;
   };
 
+  const retrieveProteinResponse = async (proteinId: string): Promise<boolean> => {
+    const result = await callEndpoint(
+      retrieveProteinService(daisyApi, proteinId)
+    );
+    if (result.status !== 200) {
+      SnackBarUtilities.error('Your protein result was not found');
+      return false;
+    }
+    dispatch(setProteinResponse(result.data));
+    if (result.data.valid)
+      SnackBarUtilities.success('Your protein result was found successfully');
+    return true;
+  };
+
   return {
     retrieveResponse,
     requestResponse,
+    retrieveProteinResponse,
   };
 };
 

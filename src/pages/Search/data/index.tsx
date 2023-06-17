@@ -37,7 +37,19 @@ export const dataColumns: ColumnDef<Component>[] = [
   {
     accessorKey: 'id',
     header: 'Protein Structure',
-    cell: (info) => info.getValue(),
+    cell: (info) => {
+      const value = info.getValue() as string;
+      return (
+        <a
+          href={`/protein/${value}`}
+          className="underline"
+          target="_blank"
+          rel="noreferrer"
+        >
+          {value}
+        </a>
+      );
+    },
     enableColumnFilter: false,
     enableSorting: true,
   },

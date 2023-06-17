@@ -77,7 +77,7 @@ function DataTable({
   return (
     <div className="mb-24 space-y-6">
       {isFilter && <FilterTable table={table} />}
-      <section className="px-4 py-6 border rounded-lg bg-primary shadow-lg space-y-4 select-none">
+      <section className="px-4 py-6 border rounded-lg bg-primary shadow-lg space-y-4">
         <TopTable
           table={table}
           globalFilter={globalFilter}

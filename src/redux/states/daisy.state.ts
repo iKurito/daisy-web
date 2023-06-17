@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { DaisyInfo, DaisyResponse } from '../../models';
+import { DaisyInfo, DaisyResponse, ProteinResponse } from '../../models';
 
 export const EmptyDaisyState: DaisyInfo = {
   response: {} as DaisyResponse,
+  protein: {} as ProteinResponse,
 };
 
 export const daisySlice = createSlice({
@@ -15,10 +16,16 @@ export const daisySlice = createSlice({
         response: action.payload,
       };
     },
+    setProteinResponse: (state, action) => {
+      return {
+        ...state,
+        protein: action.payload,
+      };
+    },
     clearDaisy: () => EmptyDaisyState,
   },
 });
 
-export const { setDaisyResponse, clearDaisy } = daisySlice.actions;
+export const { setDaisyResponse, setProteinResponse, clearDaisy } = daisySlice.actions;
 
 export default daisySlice.reducer;
