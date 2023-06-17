@@ -1,9 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-import {
-  LabelIcon,
-  ProteinStructureIcon,
-  RepeatedIcon,
-} from '../../../icons';
+import { LabelIcon, ProteinStructureIcon, RepeatedIcon } from '../../../icons';
 import RepeatClassification from '../components/RepeatClassification';
 import RepeatedUnits from '../components/RepeatedUnits';
 import Structure from '../components/Structure';
@@ -35,7 +31,7 @@ export const dataColumns: ColumnDef<Component>[] = [
     accessorKey: 'name',
     header: 'Proteome Component',
     cell: (info) => info.getValue(),
-    enableColumnFilter: false,
+    enableColumnFilter: true,
     enableSorting: true,
   },
   {
@@ -55,9 +51,7 @@ export const dataColumns: ColumnDef<Component>[] = [
   {
     accessorKey: 'isRepeat',
     header: 'Tandem Repeat',
-    cell: (info) => {
-      return info.getValue() ? 'Yes' : 'No';
-    },
+    cell: (info) => info.getValue(),
     enableColumnFilter: true,
     enableSorting: true,
   },

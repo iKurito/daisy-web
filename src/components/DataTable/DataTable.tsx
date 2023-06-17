@@ -75,7 +75,7 @@ function DataTable({
   });
 
   return (
-    <div className="mb-24">
+    <div className="mb-24 space-y-6">
       {isFilter && <FilterTable table={table} />}
       <section className="px-4 py-6 border rounded-lg bg-primary shadow-lg space-y-4 select-none">
         <TopTable
@@ -97,25 +97,25 @@ function DataTable({
                       >
                         {header.isPlaceholder ? null : (
                           <button
-                          type="button"
-                          {...{
-                            className: header.column.getCanSort()
-                              ? 'flex items-center justify-between text-left w-full'
-                              : '',
-                            onClick: header.column.getToggleSortingHandler(),
-                          }}
-                        >
-                          {flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                          {
+                            type="button"
+                            {...{
+                              className: header.column.getCanSort()
+                                ? 'flex items-center justify-between text-left w-full'
+                                : '',
+                              onClick: header.column.getToggleSortingHandler(),
+                            }}
+                          >
+                            {flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
                             {
-                              asc: <MiniChevronUpIcon />,
-                              desc: <MiniChevronDownIcon />,
-                            }[(header.column.getIsSorted() as string) ?? null]
-                          }
-                        </button>
+                              {
+                                asc: <MiniChevronUpIcon />,
+                                desc: <MiniChevronDownIcon />,
+                              }[(header.column.getIsSorted() as string) ?? null]
+                            }
+                          </button>
                         )}
                       </th>
                     );

@@ -23,6 +23,7 @@ function ProcessTable() {
       const value = datum.structures.map((s) => {
         return {
           ...s,
+          isRepeat: s.isRepeat ? 'Yes' : 'No',
           name: datum.name,
         };
       });
