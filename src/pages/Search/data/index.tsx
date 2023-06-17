@@ -1,8 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import {
   LabelIcon,
-  MiniChevronDownIcon,
-  MiniChevronRightIcon,
   ProteinStructureIcon,
   RepeatedIcon,
 } from '../../../icons';
@@ -34,61 +32,44 @@ export const tabs = [
 
 export const dataColumns: ColumnDef<Component>[] = [
   {
-    id: 'expander',
-    header: () => null,
-    cell: ({ row }) => (
-      <button
-        type="button"
-        className="hover:bg-gray-100 rounded-full p-1"
-        {...{
-          onClick: row.getToggleExpandedHandler(),
-          style: { cursor: 'pointer' },
-        }}
-      >
-        {row.getIsExpanded() ? (
-          <MiniChevronDownIcon />
-        ) : (
-          <MiniChevronRightIcon />
-        )}
-      </button>
-    ),
-    enableColumnFilter: false,
-    size: 20,
-  },
-  {
     accessorKey: 'name',
-    header: 'Name',
+    header: 'Proteome Component',
     cell: (info) => info.getValue(),
     enableColumnFilter: false,
+    enableSorting: true,
   },
   {
     accessorKey: 'id',
-    header: 'Id',
+    header: 'Protein Structure',
     cell: (info) => info.getValue(),
     enableColumnFilter: false,
+    enableSorting: true,
+  },
+  {
+    accessorKey: 'type',
+    header: 'Structure Database',
+    cell: (info) => info.getValue(),
+    enableColumnFilter: true,
+    enableSorting: true,
   },
   {
     accessorKey: 'isRepeat',
-    header: 'Is repeat',
+    header: 'Tandem Repeat',
     cell: (info) => {
       return info.getValue() ? 'Yes' : 'No';
     },
-    enableColumnFilter: false,
+    enableColumnFilter: true,
+    enableSorting: true,
   },
   {
     accessorKey: 'time',
-    header: 'Time',
+    header: 'Processing Time',
     cell: (info) => {
       return new Date((info.getValue() as number) * 1000)
         .toISOString()
         .slice(11, 19);
     },
     enableColumnFilter: false,
-  },
-  {
-    accessorKey: 'type',
-    header: 'Type',
-    cell: (info) => info.getValue(),
-    enableColumnFilter: false,
+    enableSorting: true,
   },
 ];

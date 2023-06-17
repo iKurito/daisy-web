@@ -19,14 +19,14 @@ function ProcessTable() {
   const data = response.proteomeResult?.components ?? [];
 
   const formattedData = data
-    .map((d) => {
-      const b = d.structures.map((s) => {
+    .map((datum) => {
+      const value = datum.structures.map((s) => {
         return {
           ...s,
-          name: d.name,
+          name: datum.name,
         };
       });
-      return b;
+      return value;
     })
     .flat();
 
@@ -40,7 +40,6 @@ function ProcessTable() {
         messageNotFound="No data to display"
         renderSubComponent={renderSubComponent}
         getRowCanExpand={() => true}
-        isFilter={false}
       />
     </div>
   );

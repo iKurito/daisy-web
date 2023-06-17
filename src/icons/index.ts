@@ -16,3 +16,4 @@ export { default as MiniChevronDoubleLeftIcon } from './mini-chevron-double-left
 export { default as MiniChevronDoubleRightIcon } from './mini-chevron-double-right.icon';
 export { default as MiniChevronLeftIcon } from './mini-chevron-left.icon';
 export { default as MiniChevronRightIcon } from './mini-chevron-right.icon';
+export { default as MiniChevronUpIcon } from './mini-chevron-up.icon';

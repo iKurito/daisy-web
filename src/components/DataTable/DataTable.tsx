@@ -18,6 +18,7 @@ import PaginationTable from './components/PaginationTable';
 import { FilterTable } from './components/FilterTable';
 import { filterObjectArray, fuzzyFilter } from '../../utilities';
 import TopTable from './components/TopTable';
+import { MiniChevronDownIcon, MiniChevronUpIcon } from '../../icons';
 
 interface Props {
   data: any[];
@@ -93,15 +94,28 @@ function DataTable({
                         key={header.id}
                         colSpan={header.colSpan}
                         className="group px-6 py-3 text-left text-xs sm:stext-sm text-gray-500 uppercase tracking-wider cursor-pointer"
-                        style={{ width: header.getSize() }}
                       >
                         {header.isPlaceholder ? null : (
-                          <div>
-                            {flexRender(
-                              header.column.columnDef.header,
-                              header.getContext()
-                            )}
-                          </div>
+                          <button
+                          type="button"
+                          {...{
+                            className: header.column.getCanSort()
+                              ? 'flex items-center justify-between text-left w-full'
+                              : '',
+                            onClick: header.column.getToggleSortingHandler(),
+                          }}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          {
+                            {
+                              asc: <MiniChevronUpIcon />,
+                              desc: <MiniChevronDownIcon />,
+                            }[(header.column.getIsSorted() as string) ?? null]
+                          }
+                        </button>
                         )}
                       </th>
                     );
