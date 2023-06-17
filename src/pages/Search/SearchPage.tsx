@@ -8,8 +8,9 @@ function SearchPage() {
 
   return (
     <SearchProvider>
-      <div className="max-w-[1440px] mx-auto p-4 sm:p-6 space-y-6">
+      <div className="max-w-[1440px] mx-auto p-4 sm:p-6">
         <SearchProcess loading={loading} callEndpoint={callEndpoint} />
+        <div className="h-6" />
         <ProcessResult loading={loading} />
       </div>
     </SearchProvider>

@@ -96,12 +96,21 @@ function HomePage() {
                     >
                       <em>4GG4 (PDB ID)</em>
                     </button>
+                    <em className="text-blue-700">|</em>
                     <button
                       type="button"
                       className="text-xs sm:text-sm underline text-blue-500 font-bold"
                       onClick={() => setFieldValue('proteinID', 'A0A0B1SDP6')}
                     >
-                      <em>A0A0B1SDP6 (UniProt ID)</em>
+                      <em>A0A0B1SDP6 (Alphafold ID)</em>
+                    </button>
+                    <em className="text-blue-700">|</em>
+                    <button
+                      type="button"
+                      className="text-xs sm:text-sm underline text-blue-500 font-bold"
+                      onClick={() => setFieldValue('proteinID', 'UP000000625')}
+                    >
+                      <em>UP000000625 (Proteome ID)</em>
                     </button>
                   </div>
                   <div className="flex flex-col space-y-1">

@@ -7,7 +7,7 @@ interface Props {
 
 export function FilterTable({ table }: Props) {
   return (
-    <section className="p-4 border rounded-lg bg-primary shadow-lg space-y-2">
+    <section className="space-y-2">
       <span className="text-[18px] xs:text-[20px] sm:text-[25px] font-bold">
         Filters
       </span>

@@ -18,6 +18,10 @@ function ProcessTable() {
 
   const data = response.proteomeResult?.components ?? [];
 
+  const { isReady } = response;
+
+  const { id } = response.proteomeResult ?? {};
+
   const formattedData = data
     .map((datum) => {
       const value = datum.structures.map((s) => {
@@ -34,7 +38,16 @@ function ProcessTable() {
   const columns = useMemo<ColumnDef<Component>[]>(() => dataColumns, []);
 
   return (
-    <div>
+    <div className="bg-primary px-4 py-6 border rounded-lg shadow-lg space-y-4 mb-96">
+      <h4 className="text-[18px] sm:text-[20px] font-bold">
+        Processing Status:{' '}
+        <span className="text-fourth text-[20px] sm:text-[25px]">
+          {isReady ? 'Finished' : 'Processing'}
+        </span>
+      </h4>
+      <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
+        {id}
+      </h2>
       <DataTable
         data={formattedData}
         columns={columns}
