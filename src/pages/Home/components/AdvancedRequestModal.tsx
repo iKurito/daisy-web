@@ -11,7 +11,7 @@ import { useModal } from '../../../hooks';
 import { XIcon } from '../../../icons';
 import { DaisyRequestv2 } from '../../../models';
 import { curationProcessAdvancedForm } from '../../../schemas';
-import ClassAndSubclassOptions from './ClassAndSubClassOptions';
+import ClassAndSubclassOptions from './ClassAndSubclassOptions';
 
 interface Props {
   proteinID: string;
