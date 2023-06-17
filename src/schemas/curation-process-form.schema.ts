@@ -5,7 +5,7 @@ export const curationProcessForm = yup.object().shape({
     .string()
     .trim()
     .matches(
-      /(^[0-9][a-zA-Z_0-9]{3}$)|(^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$)/,
+      /(^[0-9][a-zA-Z_0-9]{3}$)|(^UP[0-9]{9}$)|(^([OPQ][0-9][A-Z0-9]{3}[0-9]|[A-NR-Z][0-9]([A-Z][A-Z0-9]{2}[0-9]){1,2})$)/,
       'Please enter a valid PDB ID or UniProt ID'
     )
     .required('Is required'),
