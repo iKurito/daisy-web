@@ -2,7 +2,7 @@ interface Props {
   options: any;
 }
 
-function ClassAndSubclassOptions({ options }: Props) {
+export function ClassAndSubclassOptions({ options }: Props) {
   return (
     <div className="flex flex-col w-full">
       {options.map((item: any) => {
@@ -43,5 +43,3 @@ function ClassAndSubclassOptions({ options }: Props) {
     </div>
   );
 }
-
-export default ClassAndSubclassOptions;

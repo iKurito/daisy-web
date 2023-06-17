@@ -11,14 +11,14 @@ import { useModal } from '../../../hooks';
 import { XIcon } from '../../../icons';
 import { DaisyRequestv2 } from '../../../models';
 import { curationProcessAdvancedForm } from '../../../schemas';
-import ClassAndSubclassOptions from './ClassAndSubclassOptions';
+import { ClassAndSubclassOptions } from './ClassAndSubclassOptions';
 
 interface Props {
   proteinID: string;
   email: string;
 }
 
-function AdvancedRequestModal({ proteinID, email }: Props) {
+export function AdvancedRequestModal({ proteinID, email }: Props) {
   const navigate = useNavigate();
   const { open } = useModal(openAdvancedRequestSubject$);
 
@@ -183,5 +183,3 @@ function AdvancedRequestModal({ proteinID, email }: Props) {
       </div>
     );
 }
-
-export default AdvancedRequestModal;

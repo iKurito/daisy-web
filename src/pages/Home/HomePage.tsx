@@ -9,7 +9,7 @@ import { clearDaisy } from '../../redux/states/daisy.state';
 import { RequestModal } from './components/RequestModal';
 import { openAdvancedRequestSubject$, openDialogSubject$ } from '../../data';
 import useFetchAndLoad from '../../hooks/useFecthAndLoad.hook';
-import AdvancedRequestModal from './components/AdvancedRequestModal';
+import { AdvancedRequestModal } from './components/AdvancedRequestModal';
 
 function HomePage() {
   const { loading, callEndpoint } = useFetchAndLoad();
