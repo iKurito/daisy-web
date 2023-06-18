@@ -1,123 +1,29 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useNavigate } from 'react-router-dom';
-import { FormikHelpers, useFormik } from 'formik';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
-  PublicRoutes,
   classAndSubclassFive,
   classAndSubclassFour,
   classAndSubclassThree,
   openAdvancedRequestSubject$,
 } from '../../../data';
-import { useModal, useSearch } from '../../../hooks';
+import { useModal } from '../../../hooks';
 import { XIcon } from '../../../icons';
-import { DaisyRequestAdvanced } from '../../../models';
-import { curationProcessAdvancedForm } from '../../../schemas';
 import { ClassAndSubclassOptions } from './ClassAndSubclassOptions';
-import useFetchAndLoad from '../../../hooks/useFecthAndLoad.hook';
-import { DaisyStore } from '../../../redux/store';
-import { clearDaisy } from '../../../redux/states/daisy.state';
+import { useHomeContext } from '../context/home.context';
 
-interface Props {
-  proteinID: string;
-  email: string;
-}
-
-export function AdvancedRequestModal({ proteinID, email }: Props) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const [selected, setSelected] = useState<string>('threshold');
-
+export function AdvancedRequestModal() {
   const { open } = useModal(openAdvancedRequestSubject$);
 
-  const daisyState = useSelector((state: DaisyStore) => state.daisy);
-  const { requestID } = daisyState.response!;
-
-  const { loading, callEndpoint } = useFetchAndLoad();
-
-  const { requestAdvanced } = useSearch(callEndpoint);
-
-  const { values, touched, errors, handleChange, handleSubmit, setFieldValue } =
-    useFormik({
-      initialValues: {
-        proteinID,
-        email,
-        threshold: 100,
-        selectedClasses: {
-          III_1: false,
-          III_2: false,
-          III_3: false,
-          III_4: false,
-          III_5: false,
-          III_6: false,
-          IV_1: false,
-          IV_2: false,
-          IV_3: false,
-          IV_4: false,
-          IV_5: false,
-          IV_6: false,
-          IV_7: false,
-          IV_8: false,
-          IV_9: false,
-          IV_10: false,
-          V_1: false,
-          V_2: false,
-          V_3: false,
-          V_4: false,
-          V_5: false,
-        },
-      } as DaisyRequestAdvanced,
-      validationSchema: curationProcessAdvancedForm,
-      onSubmit: async (
-        data: DaisyRequestAdvanced,
-        actions: FormikHelpers<DaisyRequestAdvanced>
-      ) => {
-        let formData;
-        if (selected === 'threshold') {
-          formData = {
-            ...data,
-            proteinID: data.proteinID.toUpperCase(),
-            selectedClasses: {},
-          };
-        } else {
-          formData = {
-            ...data,
-            proteinID: data.proteinID.toUpperCase(),
-            threshold: -1,
-          };
-        }
-        const wasSuccessful = await requestAdvanced(formData);
-        if (wasSuccessful) {
-          const id = requestID;
-          actions.resetForm();
-          dispatch(clearDaisy());
-          navigate(`/${PublicRoutes.SEARCH}?processID=${id}`);
-          openAdvancedRequestSubject$.setSubject = false;
-        }
-      },
-    });
-
-  const handleExit = () => {
-    openAdvancedRequestSubject$.setSubject = false;
-  };
-
-  useEffect(() => {
-    setFieldValue('proteinID', proteinID);
-    setFieldValue('email', email);
-    setSelected('threshold');
-  }, [open]);
-
-  const handleChangeSubclasses = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-    if (name === 'Class III' || name === 'Class IV' || name === 'Class V')
-      return;
-    setFieldValue('selectedClasses', {
-      ...values.selectedClasses,
-      [name]: checked,
-    });
-  };
+  const {
+    values,
+    selected,
+    touched,
+    errors,
+    loading,
+    handleChange,
+    handleSubmit,
+    handleChangeSubclasses,
+    handleSelect,
+    handleExitAdvancedRequestModal,
+  } = useHomeContext();
 
   if (open)
     return (
@@ -136,7 +42,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
               <button
                 type="button"
                 className="cursor-pointer"
-                onClick={handleExit}
+                onClick={handleExitAdvancedRequestModal}
                 disabled={loading}
               >
                 <XIcon />
@@ -158,6 +64,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                   value={values.proteinID}
                   className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
                   onChange={handleChange}
+                  disabled={loading}
                 />
                 {errors.proteinID && touched.proteinID && (
                   <span className="text-red-500 text-[12px] sm:text-[15px]">
@@ -178,6 +85,8 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                   value={values.email}
                   className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
                   onChange={handleChange}
+                  autoComplete="on"
+                  disabled={loading}
                 />
                 {errors.email && touched.email && (
                   <span className="text-red-500 text-[12px] sm:text-[15px]">
@@ -193,8 +102,11 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                   Select by Threshold or Subclasses
                 </label>
                 <select
+                  id="select"
                   className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
-                  onChange={(e) => setSelected(e.target.value)}
+                  onChange={handleSelect}
+                  value={selected}
+                  disabled={loading}
                 >
                   <option value="threshold">Threshold</option>
                   <option value="subclasses">Subclasses</option>
@@ -211,6 +123,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                       value={values.threshold}
                       onChange={handleChange}
                       className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary hover:accent-primary"
+                      disabled={loading}
                     />
                     <div className="relative inline-block after:absolute after:top-2 after:right-[0.5em] after:content-['%'] after:hover:right-[2em] after:focus-within:right-[2em]">
                       <input
@@ -222,13 +135,14 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                         value={values.threshold}
                         onChange={handleChange}
                         content="%"
+                        disabled={loading}
                       />
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col space-y-1">
-                  <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                  <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2">
                     <ClassAndSubclassOptions
                       options={classAndSubclassThree}
                       handleChange={handleChangeSubclasses}
@@ -251,7 +165,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
               <button
                 className="text-sm md:text-base text-red-500 hover:text-red-600 font-bold px-4 py-2 outline-none focus:outline-none ease-linear transition-all duration-150"
                 type="button"
-                onClick={handleExit}
+                onClick={handleExitAdvancedRequestModal}
                 disabled={loading}
               >
                 Cancel

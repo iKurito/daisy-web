@@ -78,3 +78,9 @@ export interface DaisyRequestAdvanced {
   threshold: number;
   selectedClasses: { [key: string]: boolean };
 }
+
+export interface IdNameValue {
+  id: number;
+  name: string;
+  value: string;
+}

@@ -1,4 +1,4 @@
-import { DownloadOptions, SubjectManager } from '../models';
+import { DownloadOptions, IdNameValue, SubjectManager } from '../models';
 
 export const predictionsHeader = [
   'III_1',
@@ -90,108 +90,35 @@ export const openDialogSubject$ = new SubjectManager<boolean>();
 
 export const openAdvancedRequestSubject$ = new SubjectManager<boolean>();
 
-export const classAndSubclassThree = [
-  {
-    id: 0,
-    name: 'Class III',
-  },
-  {
-    id: 1,
-    name: 'III_1',
-
-  },
-  {
-    id: 2,
-    name: 'III_2',
-  },
-  {
-    id: 3,
-    name: 'III_3',
-  },
-  {
-    id: 4,
-    name: 'III_4',
-  },
-  {
-    id: 5,
-    name: 'III_5',
-  },
-  {
-    id: 6,
-    name: 'III_6',
-  },
+export const classAndSubclassThree: IdNameValue[] = [
+  { id: 0, name: 'Class_III', value: 'Class III' },
+  { id: 1, name: 'III_1', value: 'III.1' },
+  { id: 2, name: 'III_2', value: 'III.2' },
+  { id: 3, name: 'III_3', value: 'III.3' },
+  { id: 4, name: 'III_4', value: 'III.4'},
+  { id: 5, name: 'III_5', value: 'III.5'},
+  { id: 6, name: 'III_6', value: 'III.6'},
 ];
 
-export const classAndSubclassFour = [
-  {
-    id: 0,
-    name: 'Class IV',
-  },
-  {
-    id: 1,
-    name: 'IV_1',
-  },
-  {
-    id: 2,
-    name: 'IV_2',
-  },
-  {
-    id: 3,
-    name: 'IV_3',
-  },
-  {
-    id: 4,
-    name: 'IV_4',
-  },
-  {
-    id: 5,
-    name: 'IV_5',
-  },
-  {
-    id: 6,
-    name: 'IV_6',
-  },
-  {
-    id: 7,
-    name: 'IV_7',
-  },
-  {
-    id: 8,
-    name: 'IV_8',
-  },
-  {
-    id: 9,
-    name: 'IV_9',
-  },
-  {
-    id: 10,
-    name: 'IV_10',
-  },
+export const classAndSubclassFour: IdNameValue[] = [
+  { id: 0, name: 'Class_IV', value: 'Class IV' },
+  { id: 1, name: 'IV_1', value: 'IV.1' },
+  { id: 2, name: 'IV_2', value: 'IV.2' },
+  { id: 3, name: 'IV_3', value: 'IV.3' },
+  { id: 4, name: 'IV_4', value: 'IV.4' },
+  { id: 5, name: 'IV_5', value: 'IV.5' },
+  { id: 6, name: 'IV_6', value: 'IV.6' },
+  { id: 7, name: 'IV_7', value: 'IV.7' },
+  { id: 8, name: 'IV_8', value: 'IV.8' },
+  { id: 9, name: 'IV_9', value: 'IV.9' },
+  { id: 10, name: 'IV_10', value: 'IV.10' },
 ];
 
-export const classAndSubclassFive = [
-  {
-    id: 0,
-    name: 'Class V',
-  },
-  {
-    id: 1,
-    name: 'V_1',
-  },
-  {
-    id: 2,
-    name: 'V_2',
-  },
-  {
-    id: 3,
-    name: 'V_3',
-  },
-  {
-    id: 4,
-    name: 'V_4',
-  },
-  {
-    id: 5,
-    name: 'V_5',
-  },
+export const classAndSubclassFive: IdNameValue[] = [
+  { id: 0, name: 'Class_V', value: 'Class V' },
+  { id: 1, name: 'V_1', value: 'V.1' },
+  { id: 2, name: 'V_2', value: 'V.2' },
+  { id: 3, name: 'V_3', value: 'V.3' },
+  { id: 4, name: 'V_4', value: 'V.4' },
+  { id: 5, name: 'V_5', value: 'V.5' },
 ];
