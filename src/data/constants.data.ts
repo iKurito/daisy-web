@@ -97,28 +97,28 @@ export const classAndSubclassThree = [
   },
   {
     id: 1,
-    name: 'III.1',
+    name: 'III_1',
 
   },
   {
     id: 2,
-    name: 'III.2',
+    name: 'III_2',
   },
   {
     id: 3,
-    name: 'III.3',
+    name: 'III_3',
   },
   {
     id: 4,
-    name: 'III.4',
+    name: 'III_4',
   },
   {
     id: 5,
-    name: 'III.5',
+    name: 'III_5',
   },
   {
     id: 6,
-    name: 'III.6',
+    name: 'III_6',
   },
 ];
 
@@ -129,43 +129,43 @@ export const classAndSubclassFour = [
   },
   {
     id: 1,
-    name: 'IV.1',
+    name: 'IV_1',
   },
   {
     id: 2,
-    name: 'IV.2',
+    name: 'IV_2',
   },
   {
     id: 3,
-    name: 'IV.3',
+    name: 'IV_3',
   },
   {
     id: 4,
-    name: 'IV.4',
+    name: 'IV_4',
   },
   {
     id: 5,
-    name: 'IV.5',
+    name: 'IV_5',
   },
   {
     id: 6,
-    name: 'IV.6',
+    name: 'IV_6',
   },
   {
     id: 7,
-    name: 'IV.7',
+    name: 'IV_7',
   },
   {
     id: 8,
-    name: 'IV.8',
+    name: 'IV_8',
   },
   {
     id: 9,
-    name: 'IV.9',
+    name: 'IV_9',
   },
   {
     id: 10,
-    name: 'IV.10',
+    name: 'IV_10',
   },
 ];
 
@@ -176,22 +176,22 @@ export const classAndSubclassFive = [
   },
   {
     id: 1,
-    name: 'V.1',
+    name: 'V_1',
   },
   {
     id: 2,
-    name: 'V.2',
+    name: 'V_2',
   },
   {
     id: 3,
-    name: 'V.3',
+    name: 'V_3',
   },
   {
     id: 4,
-    name: 'V.4',
+    name: 'V_4',
   },
   {
     id: 5,
-    name: 'V.5',
+    name: 'V_5',
   },
 ];

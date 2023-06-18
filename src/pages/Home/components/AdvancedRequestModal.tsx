@@ -44,7 +44,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
       initialValues: {
         proteinID,
         email,
-        threshold: 50,
+        threshold: 100,
         selectedClasses: {
           III_1: false,
           III_2: false,
@@ -88,15 +88,14 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
             threshold: -1,
           };
         }
-        console.log(formData);
         const wasSuccessful = await requestAdvanced(formData);
-        // if (wasSuccessful) {
-        //   const id = requestID;
-        //   actions.resetForm();
-        //   dispatch(clearDaisy());
-        //   navigate(`/${PublicRoutes.SEARCH}?processID=${id}`);
-        //   openAdvancedRequestSubject$.setSubject = false;
-        // }
+        if (wasSuccessful) {
+          const id = requestID;
+          actions.resetForm();
+          dispatch(clearDaisy());
+          navigate(`/${PublicRoutes.SEARCH}?processID=${id}`);
+          openAdvancedRequestSubject$.setSubject = false;
+        }
       },
     });
 
@@ -109,6 +108,16 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
     setFieldValue('email', email);
     setSelected('threshold');
   }, [open]);
+
+  const handleChangeSubclasses = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    if (name === 'Class III' || name === 'Class IV' || name === 'Class V')
+      return;
+    setFieldValue('selectedClasses', {
+      ...values.selectedClasses,
+      [name]: checked,
+    });
+  };
 
   if (open)
     return (
@@ -197,7 +206,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                     <input
                       id="threshold"
                       type="range"
-                      max={50}
+                      max={100}
                       min={0}
                       value={values.threshold}
                       onChange={handleChange}
@@ -208,7 +217,7 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
                         name="threshold"
                         type="number"
                         className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth w-20 text-center hover:text-left focus-within:text-left"
-                        max={50}
+                        max={100}
                         min={0}
                         value={values.threshold}
                         onChange={handleChange}
@@ -220,9 +229,18 @@ export function AdvancedRequestModal({ proteinID, email }: Props) {
               ) : (
                 <div className="flex flex-col space-y-1">
                   <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                    <ClassAndSubclassOptions options={classAndSubclassThree} />
-                    <ClassAndSubclassOptions options={classAndSubclassFour} />
-                    <ClassAndSubclassOptions options={classAndSubclassFive} />
+                    <ClassAndSubclassOptions
+                      options={classAndSubclassThree}
+                      handleChange={handleChangeSubclasses}
+                    />
+                    <ClassAndSubclassOptions
+                      options={classAndSubclassFour}
+                      handleChange={handleChangeSubclasses}
+                    />
+                    <ClassAndSubclassOptions
+                      options={classAndSubclassFive}
+                      handleChange={handleChangeSubclasses}
+                    />
                   </div>
                 </div>
               )}

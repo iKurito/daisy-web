@@ -1,8 +1,9 @@
 interface Props {
   options: any;
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function ClassAndSubclassOptions({ options }: Props) {
+export function ClassAndSubclassOptions({ options, handleChange }: Props) {
   return (
     <div className="flex flex-col w-full">
       {options.map((item: any) => {
@@ -25,19 +26,24 @@ export function ClassAndSubclassOptions({ options }: Props) {
               {item.name}
             </span>
             <label className="relative inline-flex items-center cursor-pointer">
-              <input
+              {/* <input
                 // ref={refPermissionsByCompany[item.sku]}
                 id={item.name}
                 name={item.name}
                 type="checkbox"
                 value=""
                 className="sr-only peer"
-                // onChange={handleChangePermissions}
+                onChange={(e) => handleChange(e)}
                 disabled={item.id !== 0}
-              />
+              /> */}
               <input
+                // ref={refPermissionsByCompany[item.sku]}
+                id={item.name}
+                name={item.name}
                 type="checkbox"
                 className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+                onChange={handleChange}
+                // disabled={item.id !== 0}
               />
             </label>
           </div>

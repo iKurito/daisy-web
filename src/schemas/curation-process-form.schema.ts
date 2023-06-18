@@ -31,7 +31,7 @@ export const curationProcessAdvancedForm = yup.object().shape({
   threshold: yup
     .number()
     .min(0, 'Please enter a number between 0 and 50')
-    .max(50, 'Please enter a number between 0 and 50'),
+    .max(100, 'Please enter a number between 0 and 50'),
   selectedClasses: yup.object().shape({
     'III_1': yup.boolean(),
     'III_2': yup.boolean(),
