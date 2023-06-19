@@ -8,6 +8,24 @@ import { Chain } from "../models";
 declare let PDBeMolstarPlugin: any;
 declare let msa: any;
 
+export function proteinBuilder(
+  baseUrl: string,
+  proteinContainer: React.RefObject<HTMLDivElement>
+) {
+  const viewerInstance = new PDBeMolstarPlugin();
+  const options = {
+    customData: {
+      url: `${baseUrl}/pdb`,
+      format: 'pdb',
+    },
+    bgColor: { r: 0, g: 0, b: 0 },
+    hideControls: true,
+  };  
+  const viewerContainer = proteinContainer!.current;
+  viewerInstance.render(viewerContainer, options);
+  return viewerInstance;
+}
+
 export function alphaBuilder(
   id: string,
   alphaFoldContainer: React.MutableRefObject<null>
@@ -83,28 +101,31 @@ export function readFile(url: string) {
   xhr.send();
 }
 
+export function getSelectedUnitsColorFromChain(chain: Chain) {
+  const { regions, name } = chain;
+  const newRegions = regions!.map((region) => {
+    const { start, end, units } = region;
+    const init = {
+      struct_asym_id: name,
+      start_residue_number: start,
+      end_residue_number: end,
+      color: { r: 255, g: 255, b: 255 },
+    };
+    const newUnits = units!.map((unit, index) => ({
+      struct_asym_id: name,
+      start_residue_number: unit.start,
+      end_residue_number: unit.end,
+      color: unitsColor[index],
+    }));
+    return [init, ...newUnits];
+  });
+  return newRegions.flat(Infinity);
+}
+
 export function getSelectedUnitsColor(chains: Chain[]) {
   return chains
     .filter((chain) => chain.isRepeat)
-    .map((chain) => {
-      const { regions, name } = chain;
-      const newRegions = regions!.map((region) => {
-        const { start, end, units } = region;
-        const init = {
-          struct_asym_id: name,
-          start_residue_number: start,
-          end_residue_number: end,
-          color: { r: 128, g: 128, b: 128 },
-        };
-        const newUnits = units!.map((unit, index) => ({
-          struct_asym_id: name,
-          start_residue_number: unit.start,
-          end_residue_number: unit.end,
-          color: unitsColor[index],
-        }));
-        return [init, ...newUnits];
-      });
-      return newRegions;
-    })
-    .flat(Infinity);
+    .map((chain) => {      
+      return getSelectedUnitsColorFromChain(chain);
+    });
 }

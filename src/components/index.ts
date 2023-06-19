@@ -7,3 +7,4 @@ export * from './Routes/RoutesWithNotFound';
 export { default as RepeatClassification } from './RepeatClassification/RepeatClassification';
 export { default as Structure } from './Structure/Structure';
 export { default as RepeatedUnits } from './RepeatedUnits/RepeatedUnits';
+export { default as MolStarViewer } from './MolStarViewer/MolStarViewer';

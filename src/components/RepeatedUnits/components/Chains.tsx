@@ -1,20 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useRef } from 'react';
+import MolStarViewer from '../../MolStarViewer/MolStarViewer';
+
 interface Props {
+  selectedColors: any;
   baseUrl: string;
 }
 
-function Chains({ baseUrl }: Props) {
+function Chains({ selectedColors, baseUrl }: Props) {
+  const chainContainer = useRef<HTMLDivElement>(null);
+
   return (
-    <div
+    <MolStarViewer
       id="chainViewer"
-      className="w-auto h-[300px] sm:h-[400px] relative z-[99]"
-    >
-      <pdbe-molstar
-        id="pdbeMolstarComponent"
-        custom-data-url={`${baseUrl}/pdb`}
-        custom-data-format="pdb"
-        hide-controls="false"
-      />
-    </div>
+      refContainer={chainContainer}
+      baseUrl={baseUrl}
+      selectedColors={selectedColors}
+    />
   );
 }
 

@@ -4,7 +4,7 @@ import Pagination from './components/Pagination';
 import Chains from './components/Chains';
 import Regions from './components/Regions';
 import { ProteinResult } from '../../models';
-import { getEnvEnvariables } from '../../utilities';
+import { getEnvEnvariables, getSelectedUnitsColor } from '../../utilities';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { downloadChainOptions } from '../../data';
 
@@ -17,6 +17,9 @@ function RepeatedUnits({ proteinResult }: Props) {
   const { chains, id, type } = proteinResult;
 
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
+
+  const selectedColors = getSelectedUnitsColor(chainsWithRegions);
+  console.log(selectedColors);
 
   const [currentChain, setCurrentChain] = useState(chainsWithRegions[0]);
 
@@ -105,7 +108,10 @@ function RepeatedUnits({ proteinResult }: Props) {
             </div>
           ) : (
             <>
-              <Chains baseUrl={baseUrl} />
+              <Chains
+                selectedColors={selectedColors[currentChainIndex - 1]}
+                baseUrl={baseUrl}
+              />
               <hr />
               <Regions
                 proteinResult={proteinResult}

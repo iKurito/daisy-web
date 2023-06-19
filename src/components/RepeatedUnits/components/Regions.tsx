@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Chain, ProteinResult, Region } from '../../../models';
 import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
 import { downloadRegionOptions } from '../../../data';
 import { getEnvEnvariables } from '../../../utilities';
 import { Dropdown } from '../../Dropdown/Dropdown';
+import MolStarViewer from '../../MolStarViewer/MolStarViewer';
 
 interface Props {
   proteinResult: ProteinResult;
@@ -13,6 +14,7 @@ interface Props {
 
 function Regions({ proteinResult, currentChain }: Props) {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
+  const regionContainer = useRef(null);
 
   const [loading, setLoading] = useState(true);
 
@@ -55,6 +57,7 @@ function Regions({ proteinResult, currentChain }: Props) {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
+      // const a = proteinBuilder(baseUrl, regionContainer);
       setLoading(false);
     }, 500);
   }, [baseUrl]);
@@ -106,17 +109,12 @@ function Regions({ proteinResult, currentChain }: Props) {
                   </div>
                 </div>
               </div>
-              <div
+              <MolStarViewer
                 id="regionViewer"
-                className="w-auto h-[300px] sm:h-[400px] relative z-[99]"
-              >
-                <pdbe-molstar
-                  id="pdbeMolstarComponent"
-                  custom-data-url={`${baseUrl}/pdb`}
-                  custom-data-format="pdb"
-                  hide-controls="false"
-                />
-              </div>
+                selectedColors={[]}
+                baseUrl={baseUrl}
+                refContainer={regionContainer}
+              />
               <AlignedUnits baseUrl={baseUrl} />
             </>
           )}
