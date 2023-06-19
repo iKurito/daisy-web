@@ -49,8 +49,34 @@ export const requestAdvancedService = (
   data: DaisyRequestAdvanced
 ) => {
   const controller = loadAbort();
+  const newData = {
+    proteinID: data.proteinID,
+    email: data.email,
+    threshold: data.threshold,
+    III_1: data.selectedClasses.III_1 ? 1 : 0,
+    III_2: data.selectedClasses.III_2 ? 1 : 0,
+    III_3: data.selectedClasses.III_3 ? 1 : 0,
+    III_4: data.selectedClasses.III_4 ? 1 : 0,
+    III_5: data.selectedClasses.III_5 ? 1 : 0,
+    III_6: data.selectedClasses.III_6 ? 1 : 0,
+    IV_1: data.selectedClasses.IV_1 ? 1 : 0,
+    IV_2: data.selectedClasses.IV_2 ? 1 : 0,
+    IV_3: data.selectedClasses.IV_3 ? 1 : 0,
+    IV_4: data.selectedClasses.IV_4 ? 1 : 0,
+    IV_5: data.selectedClasses.IV_5 ? 1 : 0,
+    IV_6: data.selectedClasses.IV_6 ? 1 : 0,
+    IV_7: data.selectedClasses.IV_7 ? 1 : 0,
+    IV_8: data.selectedClasses.IV_8 ? 1 : 0,
+    IV_9: data.selectedClasses.IV_9 ? 1 : 0,
+    IV_10: data.selectedClasses.IV_10 ? 1 : 0,
+    V_1: data.selectedClasses.V_1 ? 1 : 0,
+    V_2: data.selectedClasses.V_2 ? 1 : 0,
+    V_3: data.selectedClasses.V_3 ? 1 : 0,
+    V_4: data.selectedClasses.V_4 ? 1 : 0,
+    V_5: data.selectedClasses.V_5 ? 1 : 0,    
+  }
   return {
-    call: api.post('/request/advance', data, {
+    call: api.post('/request/advanced', newData, {
       signal: controller.signal,
       headers: {
         'Content-Type': 'multipart/form-data',
