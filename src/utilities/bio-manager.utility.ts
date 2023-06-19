@@ -111,12 +111,16 @@ export function getSelectedUnitsColorFromChain(chain: Chain) {
       end_residue_number: end,
       color: { r: 255, g: 255, b: 255 },
     };
-    const newUnits = units!.map((unit, index) => ({
-      struct_asym_id: name,
-      start_residue_number: unit.start,
-      end_residue_number: unit.end,
-      color: unitsColor[index],
-    }));
+    const newUnits = units!.map((unit, index) => {
+      const mult = Math.floor(index / (unitsColor.length));
+      const idx = index > unitsColor.length - 1 ? index - (unitsColor.length) * mult : index;
+      return {
+        struct_asym_id: name,
+        start_residue_number: unit.start,
+        end_residue_number: unit.end,
+        color: unitsColor[idx],
+      }
+    });
     return [init, ...newUnits];
   });
   return newRegions.flat(Infinity);
@@ -128,4 +132,21 @@ export function getSelectedUnitsColor(chains: Chain[]) {
     .map((chain) => {      
       return getSelectedUnitsColorFromChain(chain);
     });
+}
+
+export function getSelectedUnitsColorFromRegion(chain: Chain, regionIndex: number) {
+  const { regions } = chain;
+  const region = regions![regionIndex];
+  const { start, end, units } = region;
+    const init = {
+      start_residue_number: start,
+      end_residue_number: end,
+      color: { r: 255, g: 255, b: 255 },
+    };
+    const newUnits = units!.map((unit, index) => ({
+      start_residue_number: unit.start,
+      end_residue_number: unit.end,
+      color: unitsColor[index],
+    }));
+  return [init, ...newUnits];
 }

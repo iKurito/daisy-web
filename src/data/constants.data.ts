@@ -124,24 +124,24 @@ export const classAndSubclassFive: IdNameValue[] = [
 ];
 
 export const unitsColor = [
-  { r: 255, g: 0, b: 0 }, // Rojo
-  { r: 0, g: 0, b: 255 }, // Azul
-  { r: 0, g: 255, b: 0 }, // Verde
-  { r: 255, g: 255, b: 0 }, // Amarillo
-  { r: 255, g: 165, b: 0 }, // Naranja
-  { r: 255, g: 192, b: 203 }, // Rosa
-  { r: 128, g: 0, b: 128 }, // Morado
-  { r: 128, g: 128, b: 128 }, // Gris
-  { r: 255, g: 255, b: 255 }, // Blanco
-  { r: 0, g: 0, b: 0 }, // Negro
-  { r: 64, g: 224, b: 208 }, // Turquesa
-  { r: 255, g: 0, b: 255 }, // Magenta
-  { r: 0, g: 255, b: 255 }, // Celeste
-  { r: 165, g: 42, b: 42 }, // Marrón
-  { r: 0, g: 100, b: 0 }, // Verde oscuro
-  { r: 255, g: 215, b: 0 }, // Oro
-  { r: 192, g: 192, b: 192 }, // Plata
-  { r: 0, g: 255, b: 255 }, // Cian
-  { r: 230, g: 230, b: 250 }, // Lavanda
-  { r: 245, g: 245, b: 220 }, // Beige
-];
+  { r: 255, g: 0, b: 0 },       // Rojo
+  { r: 0, g: 0, b: 255 },       // Azul
+  { r: 0, g: 255, b: 0 },       // Verde
+  { r: 255, g: 255, b: 0 },     // Amarillo
+  { r: 255, g: 165, b: 0 },     // Naranja
+  { r: 255, g: 192, b: 203 },   // Rosa
+  { r: 128, g: 0, b: 128 },     // Morado
+  { r: 64, g: 224, b: 208 },    // Turquesa
+  { r: 255, g: 0, b: 255 },     // Magenta
+  { r: 0, g: 255, b: 255 },     // Celeste
+  { r: 165, g: 42, b: 42 },     // Marrón
+  { r: 0, g: 100, b: 0 },       // Verde oscuro
+  { r: 255, g: 215, b: 0 },     // Oro
+  { r: 0, g: 255, b: 255 },     // Cian
+  { r: 230, g: 230, b: 250 },   // Lavanda
+  { r: 245, g: 245, b: 220 },   // Beige
+  { r: 128, g: 128, b: 0 },     // Verde oliva
+  { r: 255, g: 20, b: 147 },    // Rosa chicle
+  { r: 218, g: 165, b: 32 },    // Oro viejo
+  { r: 75, g: 0, b: 130 }       // Índigo
+]

@@ -19,7 +19,6 @@ function RepeatedUnits({ proteinResult }: Props) {
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
 
   const selectedColors = getSelectedUnitsColor(chainsWithRegions);
-  console.log(selectedColors);
 
   const [currentChain, setCurrentChain] = useState(chainsWithRegions[0]);
 
