@@ -1,6 +1,6 @@
 function HelpPage() {
   return (
-    <div>
+    <div className="p-4">
       <h1>Help</h1>
     </div>
   );

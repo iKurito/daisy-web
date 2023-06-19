@@ -2,16 +2,15 @@
 import { useEffect, useRef } from 'react';
 import { downloadAlphaFoldStructureOptions } from '../../../data';
 import { ProteinResult } from '../../../models';
-import { alphaBuilder } from '../../../utilities';
+import { alphaBuilder, getSelectedUnitsColor } from '../../../utilities';
 import { Dropdown } from '../../Dropdown/Dropdown';
 
 interface Props {
   proteinResult: ProteinResult;
 }
 
-
 function AlphafoldStructure({ proteinResult }: Props) {
-  const { id, type, isRepeat } = proteinResult;
+  const { id, type, isRepeat, chains } = proteinResult;
 
   const alphaFoldContainer = useRef(null);
 
@@ -23,7 +22,14 @@ function AlphafoldStructure({ proteinResult }: Props) {
   });
 
   useEffect(() => {
-    alphaBuilder(id, alphaFoldContainer);
+    const viewerInstance: any = alphaBuilder(id, alphaFoldContainer);
+    const selectedColors = getSelectedUnitsColor(chains);
+    setTimeout(() => {
+      viewerInstance!.visual.select({
+        data: selectedColors,
+        nonSelectedColor: { r: 255, g: 255, b: 255 },
+      });
+    }, 1000);
   }, []);
 
   return (

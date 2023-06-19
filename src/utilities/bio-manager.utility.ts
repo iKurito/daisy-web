@@ -2,6 +2,9 @@
 // https://biocomputingup.github.io/ProSeqViewer-documentation/doc
 // https://embed.plnkr.co/plunk/WlRx73uuGA9EJbpn
 
+import { unitsColor } from "../data";
+import { Chain } from "../models";
+
 declare let PDBeMolstarPlugin: any;
 declare let msa: any;
 
@@ -23,9 +26,10 @@ export function alphaBuilder(
       'controlToggle',
       'controlInfo',
     ],
-  };
+  };  
   const viewerContainer = alphaFoldContainer.current;
   viewerInstance.render(viewerContainer, options);
+  return viewerInstance;
 }
 
 export function msaBuilder(
@@ -77,4 +81,30 @@ export function readFile(url: string) {
     }
   };
   xhr.send();
+}
+
+export function getSelectedUnitsColor(chains: Chain[]) {
+  return chains
+    .filter((chain) => chain.isRepeat)
+    .map((chain) => {
+      const { regions, name } = chain;
+      const newRegions = regions!.map((region) => {
+        const { start, end, units } = region;
+        const init = {
+          struct_asym_id: name,
+          start_residue_number: start,
+          end_residue_number: end,
+          color: { r: 128, g: 128, b: 128 },
+        };
+        const newUnits = units!.map((unit, index) => ({
+          struct_asym_id: name,
+          start_residue_number: unit.start,
+          end_residue_number: unit.end,
+          color: unitsColor[index],
+        }));
+        return [init, ...newUnits];
+      });
+      return newRegions;
+    })
+    .flat(Infinity);
 }
