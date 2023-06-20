@@ -1,5 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { Component } from '../../../models';
+import { formattedTime } from '../../../utilities/time.utility';
 
 export const dataColumns: ColumnDef<Component>[] = [
   {
@@ -46,9 +47,7 @@ export const dataColumns: ColumnDef<Component>[] = [
     accessorKey: 'time',
     header: 'Processing Time',
     cell: (info) => {
-      return new Date((info.getValue() as number) * 1000)
-        .toISOString()
-        .slice(11, 19);
+      return formattedTime(info.getValue() as number);
     },
     enableColumnFilter: false,
     enableSorting: true,

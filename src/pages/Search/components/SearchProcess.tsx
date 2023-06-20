@@ -53,6 +53,7 @@ function SearchProcess({ loading, callEndpoint }: Props) {
           </label>
           <div className="flex flex-col md:flex-row gap-2 md:gap-6">
             <input
+              id="processId"
               name="processId"
               type="text"
               value={processId}
