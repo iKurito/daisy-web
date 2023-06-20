@@ -55,7 +55,7 @@ export function AdvancedRequestModal() {
                   htmlFor="pdbUnitprot"
                   className="text-[14px] xs:text-[16px] sm:text-[18px] text-black tracking-tight"
                 >
-                  Protein ID (PDB or AlphaFold) or Proteome ID (Uniprot)
+                  Protein ID (PDB or AlphaFold)
                 </label>
                 <input
                   id="pdbUnitprot"

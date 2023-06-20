@@ -7,6 +7,7 @@ import { ProteinResult } from '../../models';
 import { getEnvEnvariables, getSelectedUnitsColor } from '../../utilities';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { downloadChainOptions } from '../../data';
+import ProcessingHeader from '../Structure/components/ProcessingHeader';
 
 interface Props {
   proteinResult: ProteinResult;
@@ -14,7 +15,7 @@ interface Props {
 
 function RepeatedUnits({ proteinResult }: Props) {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
-  const { chains, id, type } = proteinResult;
+  const { chains, id, type, time } = proteinResult;
 
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
 
@@ -64,12 +65,7 @@ function RepeatedUnits({ proteinResult }: Props) {
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-          <h4 className="text-[18px] sm:text-[20px] font-bold">
-            Processing Status:{' '}
-            <span className="text-fourth text-[20px] sm:text-[25px]">
-              Completed
-            </span>
-          </h4>
+          <ProcessingHeader time={time} />
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})

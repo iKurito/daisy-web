@@ -4,13 +4,14 @@ import { downloadAlphaFoldStructureOptions } from '../../../data';
 import { ProteinResult } from '../../../models';
 import { alphaBuilder } from '../../../utilities';
 import { Dropdown } from '../../Dropdown/Dropdown';
+import ProcessingHeader from './ProcessingHeader';
 
 interface Props {
   proteinResult: ProteinResult;
 }
 
 function AlphafoldStructure({ proteinResult }: Props) {
-  const { id, type, isRepeat } = proteinResult;
+  const { id, type, isRepeat, time } = proteinResult;
 
   const alphaFoldContainer = useRef(null);
 
@@ -23,25 +24,13 @@ function AlphafoldStructure({ proteinResult }: Props) {
 
   useEffect(() => {
     alphaBuilder(id, alphaFoldContainer);
-    // const selectedColors = getSelectedUnitsColor(chains);
-    // setTimeout(() => {
-    //   viewerInstance!.visual.select({
-    //     data: selectedColors,
-    //     nonSelectedColor: { r: 128, g: 128, b: 128 },
-    //   });
-    // }, 1000);
   }, []);
 
   return (
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
       <div className="flex flex-col gap-2">
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-          <h4 className="text-[18px] sm:text-[20px] font-bold">
-            Processing Status:{' '}
-            <span className="text-fourth text-[20px] sm:text-[25px]">
-              Completed
-            </span>
-          </h4>
+          <ProcessingHeader time={time} />
           <Dropdown items={options} />
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">

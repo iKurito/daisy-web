@@ -1,24 +1,20 @@
 import { predictionsHeader } from '../../data';
 import { ProteinResult } from '../../models';
+import ProcessingHeader from '../Structure/components/ProcessingHeader';
 
 interface Props {
   proteinResult: ProteinResult;
 }
 
 function RepeatClassification({ proteinResult }: Props) {
-  const { chains, id, type } = proteinResult;
+  const { chains, id, type, time } = proteinResult;
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <div className="flex flex-col sm:flex-row">
           <div className="w-full flex justify-between">
-            <h4 className="text-[18px] sm:text-[20px] font-bold">
-              Processing Status:{' '}
-              <span className="text-fourth text-[20px] sm:text-[25px]">
-                Completed
-              </span>
-            </h4>
+            <ProcessingHeader time={time} />
           </div>
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
