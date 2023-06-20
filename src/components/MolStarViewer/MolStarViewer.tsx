@@ -12,9 +12,13 @@ interface Props {
 function MolStarViewer({ selectedColors, baseUrl, id, refContainer }: Props) {
   useEffect(() => {
     const viewerInstance = proteinBuilder(baseUrl, refContainer);
+    const startResidueNumber = selectedColors[0].start_residue_number;
+    const filterColor = selectedColors.filter(
+      (color: any) => color.start_residue_number >= startResidueNumber
+    );
     setTimeout(() => {
       viewerInstance!.visual.select({
-        data: selectedColors,
+        data: filterColor,
         nonSelectedColor: { r: 128, g: 128, b: 128 },
       });
     }, 1000);

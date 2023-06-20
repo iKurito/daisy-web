@@ -3,19 +3,25 @@ import { Chain, ProteinResult, Region } from '../../../models';
 import Pagination from './Pagination';
 import AlignedUnits from './AlignedUnits';
 import { downloadRegionOptions } from '../../../data';
-import {
-  getEnvEnvariables,
-  getSelectedUnitsColorFromRegion,
-} from '../../../utilities';
+import { getEnvEnvariables } from '../../../utilities';
 import { Dropdown } from '../../Dropdown/Dropdown';
 import MolStarViewer from '../../MolStarViewer/MolStarViewer';
 
 interface Props {
   proteinResult: ProteinResult;
   currentChain: Chain;
+  currentRegionIndex: number;
+  setCurrentRegionIndex: (index: number) => void;
+  selectedColors: any;
 }
 
-function Regions({ proteinResult, currentChain }: Props) {
+function Regions({
+  proteinResult,
+  currentChain,
+  currentRegionIndex,
+  setCurrentRegionIndex,
+  selectedColors,
+}: Props) {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
   const regionContainer = useRef(null);
 
@@ -27,12 +33,6 @@ function Regions({ proteinResult, currentChain }: Props) {
     currentChain?.regions !== undefined
       ? currentChain.regions[0]
       : ({} as Region)
-  );
-  const [currentRegionIndex, setCurrentRegionIndex] = useState<number>(1);
-
-  const selectedColors = getSelectedUnitsColorFromRegion(
-    currentChain,
-    currentRegionIndex - 1
   );
 
   const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
