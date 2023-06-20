@@ -44,7 +44,7 @@ function ProcessResult({ loading }: Props) {
   if (!response.valid)
     return (
       <ResultsNotFound
-        message=" We're sorry, but we were not able to process your request. Please
+        message="We're sorry, but we were not able to process your request. Please
   check if you are using a valid accesion ID (PDB/Uniprot). If you are
   using an Uniprot acession ID, please verify that it has an AlphaFold
   entry."
