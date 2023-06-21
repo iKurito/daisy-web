@@ -31,6 +31,7 @@ function ProcessTable() {
         return {
           ...s,
           isRepeat: s.isRepeat ? 'Yes' : 'No',
+          type: s.type === 'ERROR' ? 'Unavailable' : s.type,
           name: datum.name,
         };
       });
