@@ -7,9 +7,10 @@ import ProcessingHeader from './ProcessingHeader';
 
 interface Props {
   proteinResult: ProteinResult;
+  text: string;
 }
 
-function ProteinStructure({ proteinResult }: Props) {
+function ProteinStructure({ proteinResult, text }: Props) {
   const { id, type, isRepeat, time } = proteinResult;
 
   const options = downloadPdbStructureOptions.map((option) => {
@@ -29,7 +30,7 @@ function ProteinStructure({ proteinResult }: Props) {
     <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
       <div className="flex flex-col gap-2">
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-          <ProcessingHeader time={time} />
+          <ProcessingHeader time={time} text={text} />
           <Dropdown items={options} />
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">

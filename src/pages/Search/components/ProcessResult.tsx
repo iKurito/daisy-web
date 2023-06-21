@@ -75,15 +75,15 @@ function ProcessResult({ loading }: Props) {
             })}
           </ul>
           {activeTab === 0 && (
-            <Structure proteinResult={response.proteinResult!} />
+            <Structure proteinResult={response.proteinResult!} isAdvanced={response.isAdvanced} />
           )}
           {activeTab === 1 && (
-            <RepeatClassification proteinResult={response.proteinResult!} />
+            <RepeatClassification proteinResult={response.proteinResult!} isAdvanced={response.isAdvanced} />
           )}
           {activeTab === 2 && (
             <RepeatedUnits
               proteinResult={response.proteinResult!}
-              isAdvanced={response.isAdvanced!}
+              isAdvanced={response.isAdvanced}
               requestID={response.requestID}
             />
           )}

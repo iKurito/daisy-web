@@ -2,9 +2,14 @@ import { formattedTime } from '../../../utilities/time.utility';
 
 interface Props {
   time: number;
+  text?: string;
 }
 
-function ProcessingHeader({ time }: Props) {
+const defaultProps = {
+  text: '',
+};
+
+function ProcessingHeader({ time, text }: Props & typeof defaultProps) {
   const formatTime = formattedTime(time);
 
   return (
@@ -18,8 +23,11 @@ function ProcessingHeader({ time }: Props) {
       <h5 className="text-[15px] sm:text-[18px] font-semibold">
         Processing Time - {formatTime} (HH:MM:SS)
       </h5>
+      <h5 className="text-[15px] sm:text-[18px] font-semibold">{text}</h5>
     </div>
   );
 }
+
+ProcessingHeader.defaultProps = defaultProps;
 
 export default ProcessingHeader;

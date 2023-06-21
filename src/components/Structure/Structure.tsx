@@ -5,17 +5,28 @@ import ResultsNotFound from '../ResultsNotFound/ResultsNotFound';
 
 interface Props {
   proteinResult: ProteinResult;
+  isAdvanced?: boolean;
 }
 
-function Structure({ proteinResult }: Props) {
+const defaultProps = {
+  isAdvanced: false,
+};
+
+function Structure({ proteinResult, isAdvanced }: Props & typeof defaultProps) {
   const { type } = proteinResult;
+
+  const text = isAdvanced
+    ? 'This is a simulated processing with user personalized parameters'
+    : '';
 
   return (
     <>
       <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
-        {type === 'PDB' && <ProteinStructure proteinResult={proteinResult} />}
+        {type === 'PDB' && (
+          <ProteinStructure proteinResult={proteinResult} text={text} />
+        )}
         {type === 'AlphaFold' && (
-          <AlphafoldStructure proteinResult={proteinResult} />
+          <AlphafoldStructure proteinResult={proteinResult} text={text} />
         )}
       </section>
       {type === 'ERROR' && (
@@ -29,5 +40,7 @@ function Structure({ proteinResult }: Props) {
     </>
   );
 }
+
+Structure.defaultProps = defaultProps;
 
 export default Structure;

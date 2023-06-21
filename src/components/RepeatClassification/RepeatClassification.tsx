@@ -4,28 +4,42 @@ import ProcessingHeader from '../Structure/components/ProcessingHeader';
 
 interface Props {
   proteinResult: ProteinResult;
+  isAdvanced?: boolean;
 }
 
-function RepeatClassification({ proteinResult }: Props) {
+const defaultProps = {
+  isAdvanced: false,
+};
+
+function RepeatClassification({
+  proteinResult,
+  isAdvanced,
+}: Props & typeof defaultProps) {
   const { chains, id, type, time } = proteinResult;
+
+  const text = isAdvanced
+    ? 'This is a simulated processing with user personalized parameters'
+    : '';
 
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <div className="flex flex-col sm:flex-row">
           <div className="w-full flex justify-between">
-            <ProcessingHeader time={time} />
+            <ProcessingHeader time={time} text={text} />
           </div>
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
         </h2>
-        <div className="flex items-center justify-start">
-          <p className="text-[18px] sm:text-[20px] leading-5 text-center">
-            Tandem repeat classes with a prediction probability higher than 50%
-            are considered for ReUPred processing.
-          </p>
-        </div>
+        {!isAdvanced && (
+          <div className="flex items-center justify-start">
+            <p className="text-[18px] sm:text-[20px] leading-5 text-center">
+              Tandem repeat classes with a prediction probability higher than
+              50% are considered for ReUPred processing.
+            </p>
+          </div>
+        )}
         <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4">
           <div className="flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-6">
             <span className="text-[15px] sm:text-[18px]">
@@ -95,5 +109,7 @@ function RepeatClassification({ proteinResult }: Props) {
     </section>
   );
 }
+
+RepeatClassification.defaultProps = defaultProps;
 
 export default RepeatClassification;
