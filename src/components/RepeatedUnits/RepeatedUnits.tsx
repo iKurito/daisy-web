@@ -33,8 +33,6 @@ function RepeatedUnits({
 
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
 
-  // const selectedColors = getSelectedUnitsColor(chainsWithRegions);
-
   const [currentChain, setCurrentChain] = useState(chainsWithRegions[0]);
 
   const [currentChainIndex, setCurrentChainIndex] = useState(1);
@@ -48,6 +46,7 @@ function RepeatedUnits({
 
   const handleChangeUp = () => {
     if (currentChainIndex < chainsWithRegions.length) {
+      setCurrentRegionIndex(1);
       setCurrentChain(chainsWithRegions[currentChainIndex]);
       setCurrentChainIndex(currentChainIndex + 1);
     }
@@ -55,21 +54,23 @@ function RepeatedUnits({
 
   const handleChangeDown = () => {
     if (currentChainIndex > 1) {
+      setCurrentRegionIndex(1);
       setCurrentChain(chainsWithRegions[currentChainIndex - 2]);
       setCurrentChainIndex(currentChainIndex - 1);
     }
   };
 
-  const baseUrl = isAdvanced ? `${VITE_DAISY_SERVICE_URL}/file/advanced/${requestID}/${proteinResult.id}/${
-    proteinResult.type
-  }/${currentChain?.name}/${currentChain?.regions![0].repeatClass}/${
-    currentChain?.regions![0].repeatSubclass
-  }`
-  : `${VITE_DAISY_SERVICE_URL}/file/${proteinResult.id}/${
-    proteinResult.type
-  }/${currentChain?.name}/${currentChain?.regions![0].repeatClass}/${
-    currentChain?.regions![0].repeatSubclass
-  }`;
+  const baseUrl = isAdvanced
+    ? `${VITE_DAISY_SERVICE_URL}/file/advanced/${requestID}/${
+        proteinResult.id
+      }/${proteinResult.type}/${currentChain?.name}/${
+        currentChain?.regions![0].repeatClass
+      }/${currentChain?.regions![0].repeatSubclass}`
+    : `${VITE_DAISY_SERVICE_URL}/file/${proteinResult.id}/${
+        proteinResult.type
+      }/${currentChain?.name}/${currentChain?.regions![0].repeatClass}/${
+        currentChain?.regions![0].repeatSubclass
+      }`;
 
   const options = downloadChainOptions.map((option) => {
     return {
@@ -130,7 +131,6 @@ function RepeatedUnits({
           ) : (
             <>
               <Chains
-                // selectedColors={selectedColors[currentChainIndex - 1]}
                 selectedColors={selectedColors}
                 baseUrl={baseUrl}
               />
