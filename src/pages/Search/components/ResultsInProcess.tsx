@@ -4,7 +4,7 @@ function ResultsInProcess() {
   useEffect(() => {
     const refreshPage = setTimeout(() => {
       window.location.reload();
-    }, 300000);
+    }, 120000);
     return () => {
       clearTimeout(refreshPage);
     };

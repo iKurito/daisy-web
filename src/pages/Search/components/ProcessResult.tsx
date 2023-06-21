@@ -43,12 +43,7 @@ function ProcessResult({ loading }: Props) {
 
   if (!response.valid)
     return (
-      <ResultsNotFound
-        message="We're sorry, but we were not able to process your request. Please
-  check if you are using a valid accesion ID (PDB/Uniprot). If you are
-  using an Uniprot acession ID, please verify that it has an AlphaFold
-  entry."
-      />
+      <ResultsNotFound message="We're sorry, but we were not able to process your request, because it was not found." />
     );
 
   if (response.type === 'PROTEOME') return <ProcessTable />;
@@ -86,7 +81,11 @@ function ProcessResult({ loading }: Props) {
             <RepeatClassification proteinResult={response.proteinResult!} />
           )}
           {activeTab === 2 && (
-            <RepeatedUnits proteinResult={response.proteinResult!} />
+            <RepeatedUnits
+              proteinResult={response.proteinResult!}
+              isAdvanced={response.isAdvanced!}
+              requestID={response.requestID}
+            />
           )}
         </>
       )}

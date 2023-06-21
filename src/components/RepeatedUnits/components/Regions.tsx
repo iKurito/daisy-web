@@ -13,6 +13,8 @@ interface Props {
   currentRegionIndex: number;
   setCurrentRegionIndex: (index: number) => void;
   selectedColors: any;
+  isAdvanced: boolean;
+  requestID: string;
 }
 
 function Regions({
@@ -21,6 +23,8 @@ function Regions({
   currentRegionIndex,
   setCurrentRegionIndex,
   selectedColors,
+  isAdvanced,
+  requestID,
 }: Props) {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
   const regionContainer = useRef(null);
@@ -35,7 +39,9 @@ function Regions({
       : ({} as Region)
   );
 
-  const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
+  const baseUrl = isAdvanced
+    ? `${VITE_DAISY_SERVICE_URL}/file/advanced/${requestID}/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`
+    : `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
 
   const options = downloadRegionOptions.map((option) => {
     return {

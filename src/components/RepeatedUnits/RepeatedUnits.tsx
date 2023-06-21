@@ -14,9 +14,20 @@ import ProcessingHeader from '../Structure/components/ProcessingHeader';
 
 interface Props {
   proteinResult: ProteinResult;
+  isAdvanced?: boolean;
+  requestID?: string;
 }
 
-function RepeatedUnits({ proteinResult }: Props) {
+const defaultProps = {
+  isAdvanced: false,
+  requestID: '',
+};
+
+function RepeatedUnits({
+  proteinResult,
+  isAdvanced,
+  requestID,
+}: Props & typeof defaultProps) {
   const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
   const { chains, id, type, time } = proteinResult;
 
@@ -49,7 +60,12 @@ function RepeatedUnits({ proteinResult }: Props) {
     }
   };
 
-  const baseUrl = `${VITE_DAISY_SERVICE_URL}/file/${proteinResult.id}/${
+  const baseUrl = isAdvanced ? `${VITE_DAISY_SERVICE_URL}/file/advanced/${requestID}/${proteinResult.id}/${
+    proteinResult.type
+  }/${currentChain?.name}/${currentChain?.regions![0].repeatClass}/${
+    currentChain?.regions![0].repeatSubclass
+  }`
+  : `${VITE_DAISY_SERVICE_URL}/file/${proteinResult.id}/${
     proteinResult.type
   }/${currentChain?.name}/${currentChain?.regions![0].repeatClass}/${
     currentChain?.regions![0].repeatSubclass
@@ -125,6 +141,8 @@ function RepeatedUnits({ proteinResult }: Props) {
                 currentRegionIndex={currentRegionIndex}
                 setCurrentRegionIndex={setCurrentRegionIndex}
                 selectedColors={selectedColors}
+                isAdvanced={isAdvanced}
+                requestID={requestID}
               />
             </>
           )}
@@ -133,5 +151,7 @@ function RepeatedUnits({ proteinResult }: Props) {
     </section>
   );
 }
+
+RepeatedUnits.defaultProps = defaultProps;
 
 export default RepeatedUnits;

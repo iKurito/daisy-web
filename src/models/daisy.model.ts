@@ -4,7 +4,7 @@ export interface DaisyInfo {
 }
 
 export interface DaisyResponse {
-  isAdvanced: boolean;
+  isAdvanced?: boolean;
   isReady?: boolean;
   requestID?: string;
   proteinResult?: ProteinResult;
