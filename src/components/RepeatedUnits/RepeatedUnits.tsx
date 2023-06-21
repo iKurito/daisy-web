@@ -81,6 +81,10 @@ function RepeatedUnits({
 
   const [loading, setLoading] = useState(false);
 
+  const text = isAdvanced
+    ? 'This is a simulated processing with user personalized parameters'
+    : '';
+
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -92,7 +96,7 @@ function RepeatedUnits({
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
-          <ProcessingHeader time={time} />
+          <ProcessingHeader time={time} text={text} />
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
@@ -130,10 +134,7 @@ function RepeatedUnits({
             </div>
           ) : (
             <>
-              <Chains
-                selectedColors={selectedColors}
-                baseUrl={baseUrl}
-              />
+              <Chains selectedColors={selectedColors} baseUrl={baseUrl} />
               <hr />
               <Regions
                 proteinResult={proteinResult}

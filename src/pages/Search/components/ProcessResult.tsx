@@ -17,7 +17,7 @@ interface Props {
 }
 
 function ProcessResult({ loading }: Props) {
-  const { response, activeTab, handleSetTab } = useSearchContext();
+  const { processId, response, activeTab, handleSetTab } = useSearchContext();
   const size = Object.entries(response).length;
   const items =
     size === 0 || !response.isReady
@@ -84,7 +84,7 @@ function ProcessResult({ loading }: Props) {
             <RepeatedUnits
               proteinResult={response.proteinResult!}
               isAdvanced={response.isAdvanced}
-              requestID={response.requestID}
+              requestID={processId}
             />
           )}
         </>
