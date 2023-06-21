@@ -46,7 +46,7 @@ export function RequestModal() {
             <div className="relative p-6 flex-auto">
               <div className="flex flex-col justify-center gap-2">
                 <p className="text-[18px] sm:text-[20px] leading-5">
-                  Your request was recived sucsessfuly, your request ID is the
+                  Your request was received successfully, your request ID is the
                   following:
                 </p>
                 <p className="text-[18px] sm:text-[20px] leading-5">

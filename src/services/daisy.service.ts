@@ -51,7 +51,7 @@ export const requestAdvancedService = (
 ) => {
   const controller = loadAbort();
   const newData = {
-    proteinID: data.proteinID,
+    proteinID: data.proteinID.toUpperCase(),
     email: data.email,
     threshold: data.threshold,
     III_1: data.threshold >= 0 ? 0 : (data.selectedClasses.III_1 ? 1 : 0),

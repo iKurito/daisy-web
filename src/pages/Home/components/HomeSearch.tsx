@@ -71,6 +71,7 @@ function HomeSearch() {
                     value={values.proteinID}
                     className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
                     onChange={handleChange}
+                    disabled={loading}
                   />
                   {errors.proteinID && touched.proteinID && (
                     <span className="text-red-500 text-[12px] sm:text-[15px]">
@@ -84,6 +85,7 @@ function HomeSearch() {
                     type="button"
                     className="text-xs sm:text-sm underline text-blue-500 font-bold cursor-pointer"
                     onClick={() => setFieldValue('proteinID', '4GG4')}
+                    disabled={loading}
                   >
                     <em>4GG4 (PDB ID)</em>
                   </button>
@@ -91,6 +93,7 @@ function HomeSearch() {
                     type="button"
                     className="text-xs sm:text-sm underline text-blue-500 font-bold"
                     onClick={() => setFieldValue('proteinID', 'A0A0B1SDP6')}
+                    disabled={loading}
                   >
                     <em>A0A0B1SDP6 (Alphafold ID)</em>
                   </button>
@@ -98,6 +101,7 @@ function HomeSearch() {
                     type="button"
                     className="text-xs sm:text-sm underline text-blue-500 font-bold"
                     onClick={() => setFieldValue('proteinID', 'UP000000625')}
+                    disabled={loading}
                   >
                     <em>UP000000625 (Proteome ID)</em>
                   </button>
@@ -117,6 +121,7 @@ function HomeSearch() {
                     className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
                     onChange={handleChange}
                     autoComplete="on"
+                    disabled={loading}
                   />
                   {errors.email && touched.email && (
                     <span className="text-red-500 text-[12px] sm:text-[15px]">
@@ -130,6 +135,7 @@ function HomeSearch() {
                     <button
                       type="button"
                       onClick={() => handleOpenAdvancedRequestModal()}
+                      disabled={loading}
                     >
                       <em className="underline text-[15px] sm:text-[18px]">
                         Advanced Request

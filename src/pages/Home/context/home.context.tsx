@@ -1,13 +1,11 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import { createContext, useContext, useRef, useState } from 'react';
 import { FormikErrors, FormikHelpers, FormikTouched, useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
 import { openAdvancedRequestSubject$ } from '../../../data';
 import useFetchAndLoad from '../../../hooks/useFecthAndLoad.hook';
 import { useSearch } from '../../../hooks';
 import { DaisyRequestAdvanced } from '../../../models';
 import { curationProcessAdvancedForm } from '../../../schemas';
-import { clearDaisy } from '../../../redux/states/daisy.state';
 
 interface HomeContextProps {
   refClassesSubclasses: {
@@ -33,8 +31,6 @@ interface Props {
 }
 
 export function HomeProvider({ children }: Props) {
-  const dispatch = useDispatch();
-
   const [selected, setSelected] = useState<string>('threshold');
 
   const refIII = useRef<HTMLInputElement>(null);
@@ -144,7 +140,6 @@ export function HomeProvider({ children }: Props) {
         const wasSuccessful = await requestAdvanced(formData);
         if (wasSuccessful) {
           actions.resetForm();
-          dispatch(clearDaisy());
           openAdvancedRequestSubject$.setSubject = false;
         }
       },

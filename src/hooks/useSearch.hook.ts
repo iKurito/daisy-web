@@ -27,11 +27,13 @@ const useSearch = (callEndpoint: any) => {
   };
 
   const requestResponse = async (data: DaisyRequest): Promise<boolean> => {
+    const id = SnackBarUtilities.loading('Your search is being processed...');
     const result = await callEndpoint(requestResponseService(daisyApi, data));
     if (result.status !== 200) {
-      SnackBarUtilities.error('Something went wrong, please try again later');
+      SnackBarUtilities.update(id, 'Something went wrong, please try again later', 'error');
       return false;
     }
+    SnackBarUtilities.update(id, 'Your search was processed successfully', 'success');
     if (!result.data.isReady) {
       dispatch(setDaisyResponse(result.data));
       openDialogSubject$.setSubject = true;
