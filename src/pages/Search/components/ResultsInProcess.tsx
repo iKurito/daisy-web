@@ -1,4 +1,15 @@
+import { useEffect } from 'react';
+
 function ResultsInProcess() {
+  useEffect(() => {
+    const refreshPage = setTimeout(() => {
+      window.location.reload();
+    }, 300000);
+    return () => {
+      clearTimeout(refreshPage);
+    };
+  }, []);
+
   return (
     <section className="shadow-lg bg-primary border-none rounded-lg">
       <div className="p-2 sm:px-6 sm:py-4 space-y-1">
