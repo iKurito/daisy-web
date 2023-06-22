@@ -143,10 +143,15 @@ export function getSelectedUnitsColorFromRegion(chain: Chain, regionIndex: numbe
       end_residue_number: end,
       color: { r: 255, g: 255, b: 255 },
     };
-    const newUnits = units!.map((unit, index) => ({
-      start_residue_number: unit.start,
-      end_residue_number: unit.end,
-      color: unitsColor[index],
-    }));
+    const newUnits = units!.map((unit, index) => {
+      const mult = Math.floor(index / (unitsColor.length));
+      const idx = index > unitsColor.length - 1 ? index - (unitsColor.length) * mult : index;
+      return ({
+        start_residue_number: unit.start,
+        end_residue_number: unit.end,
+        color: unitsColor[idx],
+      })
+    }
+  );      
   return [init, ...newUnits];
 }
