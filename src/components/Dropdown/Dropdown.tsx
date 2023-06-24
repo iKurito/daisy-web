@@ -9,8 +9,8 @@ interface Props {
 
 export function Dropdown({ items }: Props) {
   return (
-    <div className="z-[200]">
-      <Menu as="div" className="relative inline-block text-left">
+    <div className="z-[200] w-full sm:w-auto">
+      <Menu as="div" className="relative sm:inline-block text-left">
         <div>
           <Menu.Button className="rounded-lg bg-third px-4 py-2 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center">
             <div className="text-fourth">

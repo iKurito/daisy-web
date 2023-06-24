@@ -80,7 +80,7 @@ function Regions({
       {currentChain?.isRepeat && currentChain?.regions && (
         <div>
           <div className="space-y-2">
-            <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-2">
+            <div className="w-full flex flex-col sm:flex-row items-center sm:justify-between gap-2">
               <h2 className="text-[18px] xs:text-[20px] sm:text-[25px] font-bold w-full">
                 Region number:{' '}
                 <span className="text-fourth text-[20px] sm:text-[25px]">
@@ -94,10 +94,17 @@ function Regions({
                 handleChangeDown={handleChangeDownRegion}
                 handleChangeUp={handleChangeUpRegion}
               />
-              <div className="flex justify-end w-full">
+              <div className="flex w-full justify-end">
                 <Dropdown items={options} />
               </div>
             </div>
+            {currentRegion.confidence !== -1 && (
+              <div className="flex justify-end">
+                <h5 className="text-[15px] sm:text-[18px] font-semibold text-center w-full sm:w-auto">
+                  Average RMSD: {currentRegion.confidence.toFixed(2)} Å
+                </h5>
+              </div>
+            )}
           </div>
           {loading ? (
             <div className="flex items-center justify-center w-full py-10">

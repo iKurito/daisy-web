@@ -31,6 +31,7 @@ export interface Chain {
 
 export interface Region {
   classRegionNumber: number;
+  confidence: number;
   end: number;
   repeatClass: string;
   repeatSubclass: string;
