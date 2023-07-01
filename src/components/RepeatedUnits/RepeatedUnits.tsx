@@ -28,7 +28,7 @@ function RepeatedUnits({
   isAdvanced,
   requestID,
 }: Props & typeof defaultProps) {
-  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
+  const { VITE_DAISY_SERVICE_FILE_URL } = getEnvEnvariables();
   const { chains, id, type, time } = proteinResult;
 
   const chainsWithRegions = chains.filter((chain) => chain.isRepeat);
@@ -61,12 +61,12 @@ function RepeatedUnits({
   };
 
   const baseUrl = isAdvanced
-    ? `${VITE_DAISY_SERVICE_URL}/file/advanced/${requestID}/${
+    ? `${VITE_DAISY_SERVICE_FILE_URL}/file/advanced/${requestID}/${
         proteinResult.id
       }/${proteinResult.type}/${currentChain?.name}/${
         currentChain?.regions![0].repeatClass
       }/${currentChain?.regions![0].repeatSubclass}`
-    : `${VITE_DAISY_SERVICE_URL}/file/${proteinResult.id}/${
+    : `${VITE_DAISY_SERVICE_FILE_URL}/file/${proteinResult.id}/${
         proteinResult.type
       }/${currentChain?.name}/${currentChain?.regions![0].repeatClass}/${
         currentChain?.regions![0].repeatSubclass

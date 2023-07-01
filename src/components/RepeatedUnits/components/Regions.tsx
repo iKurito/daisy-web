@@ -26,7 +26,7 @@ function Regions({
   isAdvanced,
   requestID,
 }: Props) {
-  const { VITE_DAISY_SERVICE_URL } = getEnvEnvariables();
+  const { VITE_DAISY_SERVICE_FILE_URL } = getEnvEnvariables();
   const regionContainer = useRef(null);
 
   const [loading, setLoading] = useState(true);
@@ -40,8 +40,8 @@ function Regions({
   );
 
   const baseUrl = isAdvanced
-    ? `${VITE_DAISY_SERVICE_URL}/file/advanced/${requestID}/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`
-    : `${VITE_DAISY_SERVICE_URL}/file/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
+    ? `${VITE_DAISY_SERVICE_FILE_URL}/file/advanced/${requestID}/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`
+    : `${VITE_DAISY_SERVICE_FILE_URL}/file/${id}/${type}/${currentChain?.name}/${currentRegion.repeatClass}/${currentRegion.repeatSubclass}/${currentRegion.classRegionNumber}`;
 
   const options = downloadRegionOptions.map((option) => {
     return {
