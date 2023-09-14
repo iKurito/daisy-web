@@ -31,7 +31,7 @@ interface Props {
 }
 
 export function HomeProvider({ children }: Props) {
-  const [selected, setSelected] = useState<string>('threshold');
+  const [selected, setSelected] = useState<string>('subclasses');
 
   const refIII = useRef<HTMLInputElement>(null);
   const refIII1 = useRef<HTMLInputElement>(null);

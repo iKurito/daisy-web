@@ -9,17 +9,19 @@ import { XIcon } from '../../../icons';
 import { ClassAndSubclassOptions } from './ClassAndSubclassOptions';
 import { useHomeContext } from '../context/home.context';
 
-export function AdvancedRequestModal() {
+export function AdvancedRequestModalOld() {
   const { open } = useModal(openAdvancedRequestSubject$);
 
   const {
     values,
+    selected,
     touched,
     errors,
     loading,
     handleChange,
     handleSubmit,
     handleChangeSubclasses,
+    handleSelect,
     handleExitAdvancedRequestModal,
   } = useHomeContext();
 
@@ -97,25 +99,65 @@ export function AdvancedRequestModal() {
                   htmlFor="select"
                   className="text-[14px] xs:text-[16px] sm:text-[18px] text-black tracking-tight"
                 >
-                  Select by Subclasses
+                  Select by Threshold or Subclasses
                 </label>
+                <select
+                  id="select"
+                  className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
+                  onChange={handleSelect}
+                  value={selected}
+                  disabled={loading}
+                >
+                  <option value="threshold">Threshold</option>
+                  <option value="subclasses">Subclasses</option>
+                </select>
               </div>
-              <div className="flex flex-col space-y-1">
-                <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2">
-                  <ClassAndSubclassOptions
-                    options={classAndSubclassThree}
-                    handleChange={handleChangeSubclasses}
-                  />
-                  <ClassAndSubclassOptions
-                    options={classAndSubclassFour}
-                    handleChange={handleChangeSubclasses}
-                  />
-                  <ClassAndSubclassOptions
-                    options={classAndSubclassFive}
-                    handleChange={handleChangeSubclasses}
-                  />
+              {selected === 'threshold' ? (
+                <div className="flex flex-col space-y-1">
+                  <div className="flex items-center justify-center space-x-2">
+                    <input
+                      id="threshold"
+                      type="range"
+                      max={100}
+                      min={0}
+                      value={values.threshold}
+                      onChange={handleChange}
+                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-primary hover:accent-primary"
+                      disabled={loading}
+                    />
+                    <div className="relative inline-block after:absolute after:top-2 after:right-[0.5em] after:content-['%'] after:hover:right-[2em] after:focus-within:right-[2em]">
+                      <input
+                        name="threshold"
+                        type="number"
+                        className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth w-20 text-center hover:text-left focus-within:text-left"
+                        max={100}
+                        min={0}
+                        value={values.threshold}
+                        onChange={handleChange}
+                        content="%"
+                        disabled={loading}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
+              ) : (
+                <div className="flex flex-col space-y-1">
+                  <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-2">
+                    <ClassAndSubclassOptions
+                      options={classAndSubclassThree}
+                      handleChange={handleChangeSubclasses}
+                    />
+                    <ClassAndSubclassOptions
+                      options={classAndSubclassFour}
+                      handleChange={handleChangeSubclasses}
+                    />
+                    <ClassAndSubclassOptions
+                      options={classAndSubclassFive}
+                      handleChange={handleChangeSubclasses}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
             {/* footer */}
             <div className="border-t border-solid border-slate-200" />
