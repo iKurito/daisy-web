@@ -22,7 +22,7 @@ function RepeatClassification({
   const { id, pfamScan, type, time } = proteinResult;
 
   const text = isAdvanced
-    ? 'This is a simulated processing with user personalized parameters'
+    ? 'The following results were obtained through personalized parameters processing'
     : '';
 
   const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
@@ -51,42 +51,20 @@ function RepeatClassification({
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
         </h2>
-        {!isAdvanced && (
-          <div className="flex items-center justify-start">
-            <p className="text-[18px] sm:text-[20px] leading-5 text-center">
-              Tandem repeat classes with a prediction probability higher than
-              50% are considered for ReUPred processing.
-            </p>
-          </div>
-        )}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-2 xs:gap-6">
-            <div className="space-y-2">
-              <p className="text-[14px] sm:text-[20px] w-full">
-                Using PfamScan, each chain has been searched against a library
-                of Pfam HMM. In RepeatsDB, some protein families are
-                asociatiated with repeat classifications. Every
-                subclassification found for each chain are considered for the
-                ReUPred processing. If there are no associated classes but at
-                least a &quot;Repeat&quot; protein family was found, every class
-                is taken in consideration.
-              </p>
-              <p className="text-[14px] sm:text-[20px] w-full">
-                If you consider that the requested structure could present a
-                regions from a different repeat class not listed below, it is
-                encouraged to register a personalized advanced request.
-              </p>
-            </div>
-            <span className="text-[15px] sm:text-[18px] font-bold">
-              Powered by
-            </span>
-            <img
-              src="/assets/img/repeatsdb-paper-shadow_logo.webp"
-              className="w-20"
-              alt="pfam"
-            />
-            <img src="/assets/img/pfam_logo.webp" className="w-40" alt="pfam" />
-          </div>
+        <div className="space-y-2">
+          <p className="text-[14px] sm:text-[20px] w-full">
+            Using PfamScan, each chain has been searched against a library of
+            Pfam HMM. In RepeatsDB, some protein families are asociatiated with
+            repeat classifications. Every subclassification found for each chain
+            are considered for the ReUPred processing. If there are no
+            associated classes but at least a &quot;Repeat&quot; protein family
+            was found, every class is taken in consideration.
+          </p>
+          <p className="text-[14px] sm:text-[20px] w-full">
+            If you consider that the requested structure could present a regions
+            from a different repeat class not listed below, it is encouraged to
+            register a personalized advanced request.
+          </p>
         </div>
         <div className="min-w-full px-2 sm:px-0">
           <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900 mb-1">
@@ -187,6 +165,23 @@ function RepeatClassification({
               })}
             </Tab.Panels>
           </Tab.Group>
+        </div>
+        <div className="flex flex-col md:flex-row items-center justify-center sm:justify-end gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 xs:gap-6">
+            <span className="text-[15px] sm:text-[18px] font-bold">
+              Powered by
+            </span>
+            <img
+              src="/assets/img/repeatsdb-paper-shadow_logo.webp"
+              className="w-20"
+              alt="pfam"
+            />
+            <img
+              src="/assets/img/pfam_logo.webp"
+              className="w-36 sm:w-40"
+              alt="pfam"
+            />
+          </div>
         </div>
       </div>
     </section>

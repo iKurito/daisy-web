@@ -18,7 +18,7 @@ function RepeatClassificationOld({
   const { chains, id, type, time } = proteinResult;
 
   const text = isAdvanced
-    ? 'This is a simulated processing with user personalized parameters'
+    ? 'The following results were obtained through personalized parameters processing'
     : '';
 
   return (

@@ -16,7 +16,7 @@ function Structure({ proteinResult, isAdvanced }: Props & typeof defaultProps) {
   const { type } = proteinResult;
 
   const text = isAdvanced
-    ? 'This is a simulated processing with user personalized parameters'
+    ? 'The following results were obtained through personalized parameters processing'
     : '';
 
   return (
