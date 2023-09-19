@@ -54,7 +54,7 @@ function ProcessResult({ loading }: Props) {
         <ResultsInProcess />
       ) : (
         <>
-          <ul className="flex overflow-x-auto test-sm font-semibold text-center gap-1">
+          <ul className="flex overflow-x-auto text-sm font-semibold text-center gap-1">
             {items.map((tab) => {
               return (
                 <li key={tab.id}>
@@ -75,10 +75,16 @@ function ProcessResult({ loading }: Props) {
             })}
           </ul>
           {activeTab === 0 && (
-            <Structure proteinResult={response.proteinResult!} isAdvanced={response.isAdvanced} />
+            <Structure
+              proteinResult={response.proteinResult!}
+              isAdvanced={response.isAdvanced}
+            />
           )}
           {activeTab === 1 && (
-            <RepeatClassification proteinResult={response.proteinResult!} isAdvanced={response.isAdvanced} />
+            <RepeatClassification
+              proteinResult={response.proteinResult!}
+              isAdvanced={response.isAdvanced}
+            />
           )}
           {activeTab === 2 && (
             <RepeatedUnits

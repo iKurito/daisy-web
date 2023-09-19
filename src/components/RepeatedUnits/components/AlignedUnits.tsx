@@ -43,8 +43,8 @@ function AlignedUnits({ baseUrl }: Props) {
       <div className="flex flex-col xs:flex-row items-center justify-end gap-2 xs:gap-6">
         <span className="text-[15px] sm:text-[18px] font-bold">Powered by</span>
         <img
-          src="/assets/img/repeatsdb-paper-shadow_logo.webp"
-          className="w-20"
+          src="/assets/img/repeats-db-lite_logo.webp"
+          className="w-60"
           alt="trnet-lite"
         />
       </div>

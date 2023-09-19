@@ -93,7 +93,7 @@ function DataTable({
                       <th
                         key={header.id}
                         colSpan={header.colSpan}
-                        className="group px-6 py-3 text-left text-xs sm:stext-sm text-gray-500 uppercase tracking-wider cursor-pointer"
+                        className="group px-6 py-3 text-left text-xs sm:text-sm text-gray-500 uppercase tracking-wider cursor-pointer"
                       >
                         {header.isPlaceholder ? null : (
                           <button

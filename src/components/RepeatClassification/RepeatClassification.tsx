@@ -52,17 +52,27 @@ function RepeatClassification({
               Powered by
             </span>
             <img src="/assets/img/pfam_logo.webp" className="w-40" alt="pfam" />
+            <img
+              src="/assets/img/repeatsdb-paper-shadow_logo.webp"
+              className="w-20"
+              alt="pfam"
+            />
+            <img
+              src="/assets/img/EMBL-EBI_logo.webp"
+              className="w-48"
+              alt="pfam"
+            />
           </div>
         </div>
-        <div className="w-full px-2 sm:px-0">
+        <div className="min-w-full px-2 sm:px-0">
           <Tab.Group>
-            <Tab.List className="flex p-1 space-x-1 bg-blue-900/20 rounded-lg">
+            <Tab.List className="flex space-x-1 bg-blue-900/20 rounded-lg overflow-x-auto relative">
               {pfamScan.chains.map((chain) => {
                 return (
                   <Tab
                     key={chain.chain}
                     className={({ selected }) =>
-                      `w-full py-2.5 text-sm leading-5 text-blue-700 font-bold rounded-lg ${
+                      `flex items-center min-w-[60px] xs:w-full justify-center py-2.5 text-sm leading-5 text-blue-700 font-bold rounded-lg ${
                         selected
                           ? 'bg-white shadow'
                           : 'text-blue-100 hover:bg-white/[0.12] hover:text-white'
@@ -74,11 +84,11 @@ function RepeatClassification({
                 );
               })}
             </Tab.List>
-            <Tab.Panels className="mt-2 shadow-md overflow-x-auto relative rounded-lg">
+            <Tab.Panels className="mt-2 shadow-md rounded-lg">
               {pfamScan.chains.map((chain) => {
                 return (
                   <Tab.Panel key={chain.chain}>
-                    <div className="p-4 flex flex-row items-start justify-between gap-2 bg-blue-900/20">
+                    <div className="p-4 flex flex-row items-start justify-between gap-2 bg-blue-900/20 rounded-t-lg">
                       <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900">
                         Classes: {chain.classes.join(', ')}
                       </h5>
@@ -86,53 +96,62 @@ function RepeatClassification({
                         Found Repeat Family: {chain.hasRepeat ? 'Yes' : 'No'}
                       </h5>
                     </div>
-                    <table
-                      key={chain.chain}
-                      className="min-w-full divide-y divide-gray-200"
-                    >
-                      <thead className="bg-gray-50">
-                        <tr className="table-row align-middle outline-0 font-bold">
-                          {pfamHeader.map((header) => {
+                    <div className="overflow-x-auto relative rounded-b-lg">
+                      <table
+                        key={chain.chain}
+                        className="min-w-full divide-y divide-gray-200"
+                      >
+                        <thead className="bg-gray-50">
+                          <tr className="table-row align-middle outline-0 font-bold">
+                            {pfamHeader.map((header) => {
+                              return (
+                                <th
+                                  key={header}
+                                  className="group px-4 py-3 text-left text-xs sm:text-sm text-gray-500 tracking-wider cursor-pointer"
+                                >
+                                  {header}
+                                </th>
+                              );
+                            })}
+                          </tr>
+                        </thead>
+                        <tbody className="bg-white divide-y divide-gray-200">
+                          {chain.families.map((family, index) => {
                             return (
-                              <th
-                                key={header}
-                                className="group px-4 py-3 text-left text-xs sm:stext-sm text-gray-500 tracking-wider cursor-pointer"
-                              >
-                                {header}
-                              </th>
+                              <tr key={family.id}>
+                                <td className="text-xs sm:text-sm px-4 py-4 whitespace-pre-wrap">
+                                  {index + 1}
+                                </td>
+                                <td className="text-xs sm:text-sm px-4 py-4 whitespace-pre-wrap">
+                                  <a
+                                    href={`https://www.ebi.ac.uk/interpro/entry/pfam/${family.id}`}
+                                    className="underline"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    {family.id}
+                                  </a>
+                                </td>
+                                <td className="text-xs sm:text-sm px-4 py-4 whitespace-pre-wrap">
+                                  {family.name}
+                                </td>
+                                <td className="text-xs sm:text-sm px-4 py-4 whitespace-pre-wrap">
+                                  {family.classes.length > 0
+                                    ? family.classes.join(', ')
+                                    : 'None'}
+                                </td>
+                                <td className="text-xs sm:text-sm px-4 py-4 whitespace-pre-wrap">
+                                  {family.clan}
+                                </td>
+                                <td className="text-xs sm:text-sm px-4 py-4 whitespace-pre-wrap">
+                                  {family.type}
+                                </td>
+                              </tr>
                             );
                           })}
-                        </tr>
-                      </thead>
-                      <tbody className="bg-white divide-y divide-gray-200">
-                        {chain.families.map((family, index) => {
-                          return (
-                            <tr key={family.id} className="font-bold">
-                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
-                                {index + 1}
-                              </td>
-                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
-                                {family.id}
-                              </td>
-                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
-                                {family.name}
-                              </td>
-                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
-                                {family.classes.length > 0
-                                  ? family.classes.join(', ')
-                                  : 'None'}
-                              </td>
-                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
-                                {family.clan}
-                              </td>
-                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
-                                {family.type}
-                              </td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </table>
+                        </tbody>
+                      </table>
+                    </div>
                   </Tab.Panel>
                 );
               })}
