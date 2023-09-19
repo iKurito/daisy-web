@@ -61,7 +61,7 @@ function RepeatClassification({
             was found, every class is taken in consideration.
           </p>
           <p className="text-[14px] sm:text-[20px] w-full">
-            If you consider that the requested structure could present a regions
+            If you consider that the requested structure could present regions
             from a different repeat class not listed below, it is encouraged to
             register a personalized advanced request.
           </p>
