@@ -1,7 +1,9 @@
 import { Tab } from '@headlessui/react';
+import { useRef } from 'react';
 import { ProteinResult } from '../../models';
 import ProcessingHeader from '../Structure/components/ProcessingHeader';
 import { pfamHeader } from '../../data';
+import { MiniDownloadIcon } from '../../icons';
 
 interface Props {
   proteinResult: ProteinResult;
@@ -16,19 +18,35 @@ function RepeatClassification({
   proteinResult,
   isAdvanced,
 }: Props & typeof defaultProps) {
+  const anchorRef = useRef<HTMLAnchorElement>(null);
   const { id, pfamScan, type, time } = proteinResult;
 
   const text = isAdvanced
     ? 'This is a simulated processing with user personalized parameters'
     : '';
 
+  const dataStr = `data:text/json;charset=utf-8,${encodeURIComponent(
+    JSON.stringify(pfamScan.chains)
+  )}`;
+
   return (
     <section className="shadow-lg bg-primary border-none rounded-b-lg sm:rounded-tr-lg">
       <div className="p-2 sm:px-6 sm:py-4 mb-40 sm:mb-20 space-y-4">
-        <div className="flex flex-col sm:flex-row">
+        <div className="flex flex-col sm:flex-row gap-4">
           <div className="w-full flex justify-between">
             <ProcessingHeader time={time} text={text} />
           </div>
+          <a
+            className="rounded-lg bg-third px-4 h-12 hover:shadow-lg font-bold tracking-wide text-[15px] sm:text-[20px] w-full sm:w-auto flex items-center gap-2 justify-center"
+            ref={anchorRef}
+            href={dataStr}
+            download={`${id}_PfamScan.json`}
+          >
+            <div className="text-fourth">
+              <MiniDownloadIcon />
+            </div>
+            <span>Download</span>
+          </a>
         </div>
         <h2 className="text-2xl xs:text-4xl sm:text-[40px] font-bold text-center">
           {id} ({type === 'PDB' ? 'PDB ID' : 'UniProt ID'})
@@ -51,20 +69,18 @@ function RepeatClassification({
             <span className="text-[15px] sm:text-[18px] font-bold">
               Powered by
             </span>
-            <img src="/assets/img/pfam_logo.webp" className="w-40" alt="pfam" />
             <img
               src="/assets/img/repeatsdb-paper-shadow_logo.webp"
               className="w-20"
               alt="pfam"
             />
-            <img
-              src="/assets/img/EMBL-EBI_logo.webp"
-              className="w-48"
-              alt="pfam"
-            />
+            <img src="/assets/img/pfam_logo.webp" className="w-40" alt="pfam" />
           </div>
         </div>
         <div className="min-w-full px-2 sm:px-0">
+          <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900 mb-1">
+            Chains:
+          </h5>
           <Tab.Group>
             <Tab.List className="flex space-x-1 bg-blue-900/20 rounded-lg overflow-x-auto relative">
               {pfamScan.chains.map((chain) => {
@@ -90,10 +106,13 @@ function RepeatClassification({
                   <Tab.Panel key={chain.chain}>
                     <div className="p-4 flex flex-row items-start justify-between gap-2 bg-blue-900/20 rounded-t-lg">
                       <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900">
-                        Classes: {chain.classes.join(', ')}
+                        Classes:{' '}
+                        {chain.classes.length > 0
+                          ? chain.classes.join(', ')
+                          : 'None'}
                       </h5>
                       <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900">
-                        Found Repeat Family: {chain.hasRepeat ? 'Yes' : 'No'}
+                        Repeat Family Type: {chain.hasRepeat ? 'Yes' : 'No'}
                       </h5>
                     </div>
                     <div className="overflow-x-auto relative rounded-b-lg">
