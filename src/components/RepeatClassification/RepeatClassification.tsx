@@ -54,7 +54,7 @@ function RepeatClassification({
         <div className="space-y-2">
           <p className="text-[14px] sm:text-[20px] w-full">
             Using PfamScan, each chain has been searched against a library of
-            Pfam HMM. In RepeatsDB, some protein families are asociatiated with
+            Pfam HMM. In RepeatsDB, some protein families are associated with
             repeat classifications. Every subclassification found for each chain
             are considered for the ReUPred processing. If there are no
             associated classes but at least a &quot;Repeat&quot; protein family
