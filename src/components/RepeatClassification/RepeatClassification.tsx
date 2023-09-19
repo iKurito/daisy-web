@@ -59,13 +59,24 @@ function RepeatClassification({
             </p>
           </div>
         )}
-        <div className="flex flex-col md:flex-row items-center justify-center md:justify-between gap-4">
-          <div className="flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-6">
-            <span className="text-[15px] sm:text-[18px]">
-              Full class prediction results:
-            </span>
-          </div>
-          <div className="flex flex-col xs:flex-row items-center justify-center gap-2 xs:gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-2 xs:gap-6">
+            <div className="space-y-2">
+              <p className="text-[14px] sm:text-[20px] w-full">
+                Using PfamScan, each chain has been searched against a library
+                of Pfam HMM. In RepeatsDB, some protein families are
+                asociatiated with repeat classifications. Every
+                subclassification found for each chain are considered for the
+                ReUPred processing. If there are no associated classes but at
+                least a &quot;Repeat&quot; protein family was found, every class
+                is taken in consideration.
+              </p>
+              <p className="text-[14px] sm:text-[20px] w-full">
+                If you consider that the requested structure could present a
+                regions from a different repeat class not listed below, it is
+                encouraged to register a personalized advanced request.
+              </p>
+            </div>
             <span className="text-[15px] sm:text-[18px] font-bold">
               Powered by
             </span>

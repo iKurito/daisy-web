@@ -105,7 +105,8 @@ function RepeatedUnits({
           <p className="text-[18px] sm:text-[20px] leading-5 text-left">
             The following tandem repeat protein chains have been identified by
             RepeatsDBLite 2.0. For each chain, you can visualise and download
-            the output files for each region.
+            the output files for each region. The presented white
+            &quot;units&quot; are considered insertions,
           </p>
         </div>
         <div className="flex flex-col gap-5">
