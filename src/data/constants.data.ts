@@ -4,6 +4,7 @@ export const pfamHeader = [
   '#',
   'ID',
   'Name',
+  'Classes',
   'Clan',
   'Type'
 ]

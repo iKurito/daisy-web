@@ -74,10 +74,18 @@ function RepeatClassification({
                 );
               })}
             </Tab.List>
-            <Tab.Panels className="mt-2 shadow-md overflow-x-auto relative border border-gray-200 rounded-lg">
+            <Tab.Panels className="mt-2 shadow-md overflow-x-auto relative rounded-lg">
               {pfamScan.chains.map((chain) => {
                 return (
                   <Tab.Panel key={chain.chain}>
+                    <div className="p-4 flex flex-row items-start justify-between gap-2 bg-blue-900/20">
+                      <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900">
+                        Classes: {chain.classes.join(', ')}
+                      </h5>
+                      <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900">
+                        Found Repeat Family: {chain.hasRepeat ? 'Yes' : 'No'}
+                      </h5>
+                    </div>
                     <table
                       key={chain.chain}
                       className="min-w-full divide-y divide-gray-200"
@@ -108,6 +116,11 @@ function RepeatClassification({
                               </td>
                               <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
                                 {family.name}
+                              </td>
+                              <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
+                                {family.classes.length > 0
+                                  ? family.classes.join(', ')
+                                  : 'None'}
                               </td>
                               <td className="text-xs sm:stext-sm px-4 py-4 whitespace-pre-wrap">
                                 {family.clan}
