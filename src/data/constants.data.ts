@@ -1,5 +1,13 @@
 import { DownloadOptions, IdNameValue, SubjectManager } from '../models';
 
+export const pfamHeader = [
+  '#',
+  'ID',
+  'Name',
+  'Clan',
+  'Type'
+]
+
 export const predictionsHeader = [
   'III_1',
   'III_2',

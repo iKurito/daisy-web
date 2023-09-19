@@ -18,7 +18,28 @@ export interface ProteinResult {
   id: string;
   isProcessed: boolean;
   isRepeat: boolean;
+  pfamScan: PfamScan;
   time: number;
+  type: string;
+}
+
+export interface PfamScan {
+  chains: ChainPS[];
+  id: string;
+}
+
+export interface ChainPS {
+  chain: string;
+  classes: any[];
+  families: FamilyPS[];
+  hasRepeat: boolean;
+}
+
+export interface FamilyPS {
+  clan: string;
+  classes: any[];
+  id: string;
+  name: string;
   type: string;
 }
 

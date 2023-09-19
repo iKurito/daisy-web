@@ -60,9 +60,9 @@ function AlphafoldStructure({ proteinResult, text }: Props) {
                 Powered by
               </span>
               <img
-                src="/assets/img/deep-mind_logo.webp"
+                src="/assets/img/EMBL-EBI_logo.webp"
                 className="w-60"
-                alt="deep-mind"
+                alt="embl-ebi"
               />
             </div>
           </div>
