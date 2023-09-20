@@ -43,7 +43,7 @@ function AlphafoldStructure({ proteinResult, text }: Props) {
             {isRepeat ? (
               <span className="text-fourth">Identified</span>
             ) : (
-              <span className="text-red-600">Not Identified</span>
+              <span className="text-red-600">Not Identified*</span>
             )}
           </p>
         </div>
@@ -105,6 +105,15 @@ function AlphafoldStructure({ proteinResult, text }: Props) {
             </p>
           </div>
         </div>
+        {!isRepeat && (
+          <div className="flex flex-start">
+            <p className="text-[12px] sm:text-[16px]">
+              *If no region was identified during the process, it does not
+              necessarily imply that the evaluated structure is not considered
+              to present tandem repeat regions.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
