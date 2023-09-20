@@ -166,7 +166,11 @@ function RepeatClassification({
             </Tab.Panels>
           </Tab.Group>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-center sm:justify-end gap-4">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+          <p className="text-[12px] sm:text-[16px] text-center lg:text-start">
+            If ýou cant visualize the protein family entry on the InterPro
+            website, try pressing Shift+F5
+          </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 xs:gap-6">
             <span className="text-[15px] sm:text-[18px] font-bold">
               Powered by
