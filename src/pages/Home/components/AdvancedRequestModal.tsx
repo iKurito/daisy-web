@@ -94,10 +94,10 @@ export function AdvancedRequestModal() {
                 )}
               </div>
               <Tooltip anchorSelect=".email" id="tooltip" place="top">
-                <span className="text-xs sm:text-sm">
+                <p className="flex w-[200px] text-xs sm:text-sm">
                   The Daisy Web Service will have an email notification system
                   very soon.
-                </span>
+                </p>
               </Tooltip>
               <div className="flex flex-col space-y-1">
                 <label
