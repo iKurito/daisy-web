@@ -97,7 +97,7 @@ export function AdvancedRequestModal() {
                   htmlFor="select"
                   className="text-[14px] xs:text-[16px] sm:text-[18px] text-black tracking-tight"
                 >
-                  Select by Subclasses
+                  Subclasses for ReUPred Processing
                 </label>
               </div>
               <div className="flex flex-col space-y-1">

@@ -95,7 +95,7 @@ function RepeatClassification({
                   <Tab.Panel key={chain.chain}>
                     <div className="p-4 flex flex-row items-start justify-between gap-2 bg-blue-900/20 rounded-t-lg">
                       <h5 className="text-[15px] sm:text-[18px] font-semibold text-gray-900">
-                        Classes:{' '}
+                        Probable Classification:{' '}
                         {chain.classes.length > 0
                           ? chain.classes.join(', ')
                           : 'None'}
