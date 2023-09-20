@@ -12,7 +12,6 @@ export const curationProcessForm = yup.object().shape({
   email: yup
     .string()
     .email('Please enter a valid email address')
-    .required('Is required'),
 });
 
 export const curationProcessAdvancedForm = yup.object().shape({
@@ -26,8 +25,7 @@ export const curationProcessAdvancedForm = yup.object().shape({
     .required('Is required'),
   email: yup
     .string()
-    .email('Please enter a valid email address')
-    .required('Is required'),
+    .email('Please enter a valid email address'),
   threshold: yup
     .number()
     .min(0, 'Please enter a number between 0 and 50')

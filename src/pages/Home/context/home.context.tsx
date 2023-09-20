@@ -127,12 +127,14 @@ export function HomeProvider({ children }: Props) {
         if (selected === 'threshold') {
           formData = {
             ...data,
+            email: 'mbezerrabrandao@pucp.edu.pe',
             proteinID: data.proteinID.toUpperCase(),
             selectedClasses: {},
           };
         } else {
           formData = {
             ...data,
+            email: 'mbezerrabrandao@pucp.edu.pe',
             proteinID: data.proteinID.toUpperCase(),
             threshold: -1,
           };

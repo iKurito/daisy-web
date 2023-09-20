@@ -1,4 +1,5 @@
 import { FormikHelpers, useFormik } from 'formik';
+import { Tooltip } from 'react-tooltip';
 import useFetchAndLoad from '../../../hooks/useFecthAndLoad.hook';
 import { useSearch } from '../../../hooks';
 import { curationProcessForm } from '../../../schemas';
@@ -24,6 +25,7 @@ function HomeSearch() {
       ) => {
         const wasSuccessful = await requestResponse({
           ...data,
+          email: 'mbezerrabrandao@pucp.edu.pe',
           proteinID: data.proteinID.toUpperCase(),
         });
         if (wasSuccessful) {
@@ -118,10 +120,10 @@ function HomeSearch() {
                     name="email"
                     type="email"
                     value={values.email}
-                    className="rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth"
+                    className="email rounded-lg border border-gray-300 outline-none px-3 py-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-fourth bg-gray-200"
                     onChange={handleChange}
                     autoComplete="on"
-                    disabled={loading}
+                    disabled
                   />
                   {errors.email && touched.email && (
                     <span className="text-red-500 text-[12px] sm:text-[15px]">
@@ -129,7 +131,12 @@ function HomeSearch() {
                     </span>
                   )}
                 </div>
-
+                <Tooltip anchorSelect=".email" id="tooltip" place="top">
+                  <span className="text-xs sm:text-sm">
+                    The Daisy Web Service will have an email notification system
+                    very soon.
+                  </span>
+                </Tooltip>
                 <div className="flex flex-col gap-4 sm:flex-row justify-between items-center">
                   <div className="flex flex-col">
                     <button
