@@ -20,7 +20,7 @@ function PaginationTable({ table }: Props) {
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Anterior
+          Previous
         </button>
         <button
           type="button"
@@ -28,7 +28,7 @@ function PaginationTable({ table }: Props) {
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Siguiente
+          Next
         </button>
       </div>
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
